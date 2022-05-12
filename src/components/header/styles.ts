@@ -1,9 +1,9 @@
 import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
 
 export const StyledAppBar = styled(AppBar)`
-  justify-content: space-between;
   background-image: linear-gradient(
     to right,
     rgb(203, 17, 171) 0px,
@@ -17,4 +17,16 @@ export const StyledIconButton = styled(IconButton)`
   border-radius: 10%;
   margin-right: 1rem;
   font-size: 3rem;
+`;
+
+export const StyledTextField = styled(TextField)`
+  border-radius: 25px;
+  & .MuiOutlinedInput-root {
+    border-radius: 25px;
+  }
+  & .Mui-focused {
+    background-color: white;
+    border: none;
+    color: black;
+  }
 `;

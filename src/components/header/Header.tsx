@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import Toolbar from "@mui/material/Toolbar";
-import { Box, Container } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -16,28 +16,34 @@ import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // styled components
 
-import { StyledAppBar, StyledIconButton } from "./styles";
+import { StyledAppBar, StyledIconButton, StyledTextField } from "./styles";
 
 const styles = {
   homeLink: {
     color: "primary.contrastText",
     userSelect: "none",
   },
-  textField: {
-    borderRadius: "100%",
-    ":focus": {
-      backgroundColor: "white",
-    },
-  },
   searchIcon: {
     color: "primary.500",
+  },
+  navLinks: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "primary.light",
   },
 };
 function Header() {
   return (
     <Grid item xs={12}>
       <StyledAppBar>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
           <StyledIconButton color="inherit" size="large">
             <MenuIcon fontSize="large" />
           </StyledIconButton>
@@ -48,13 +54,13 @@ function Header() {
             variant="h4"
             noWrap
           >
-            <Typography variant="h4" component="span" noWrap>
+            <Typography variant="h4" component="span">
               CHERRYBERRIES
             </Typography>
           </Link>
 
           <form style={{ width: " 40%" }}>
-            <TextField
+            <StyledTextField
               name="search"
               type="text"
               placeholder="Я ищу..."
@@ -67,29 +73,25 @@ function Header() {
                   </InputAdornment>
                 ),
               }}
-              sx={styles.textField}
             />
           </form>
-          <Link
-            to="/"
-            component={NavLink}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <LocationOnIcon color="primary" fontSize="large" />
+          <Link to="/" component={NavLink} sx={styles.navLinks}>
+            <LocationOnIcon fontSize="large" />
             <Typography variant="body1" component="span" fontWeight={300}>
               Адреса
             </Typography>
           </Link>
-          <Link to="/" component={NavLink}>
-            <PersonIcon color="primary" fontSize="large" />
+          <Link to="/" component={NavLink} sx={styles.navLinks}>
+            <PersonIcon color="inherit" fontSize="large" />
+            <Typography variant="body1" component="span" fontWeight={300}>
+              Аккаунт
+            </Typography>
           </Link>
-          <Link to="/" component={NavLink}>
-            <ShoppingCartIcon color="primary" fontSize="large" />
+          <Link to="/" component={NavLink} sx={styles.navLinks}>
+            <ShoppingCartIcon fontSize="large" />
+            <Typography variant="body1" component="span" fontWeight={300}>
+              Корзина
+            </Typography>
           </Link>
         </Toolbar>
       </StyledAppBar>
