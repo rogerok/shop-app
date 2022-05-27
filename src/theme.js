@@ -12,8 +12,8 @@ export const theme = createTheme({
       dark: "#e313bf",
     },
     text: {
-      primary: "#FFFFFF",
-      secondary: "#000000",
+      primary: "#000000",
+      secondary: "#FFFFFF",
     },
   },
   components: {
@@ -25,6 +25,7 @@ export const theme = createTheme({
       },
     },
   },
+  spacing: 8,
 });
 
 export const theme2 = {

@@ -1,14 +1,20 @@
+import React, { FC } from "react";
+import { useRoutes } from "react-router-dom";
+
 import Grid from "@mui/material/Grid";
-import React from "react";
+import Container from "@mui/material/Container";
+import Sidebar from "./components/nav/Sidebar";
 import Header from "./components/header/Header";
 
-function App() {
+import { routes } from "./routes";
+
+const App: FC = () => {
+  const elements = useRoutes(routes);
   return (
-    <Grid container>
-      <Header />
-      <div className="App"> app</div>
+    <Grid container spacing="2">
+      {elements}
     </Grid>
   );
-}
+};
 
 export default App;
