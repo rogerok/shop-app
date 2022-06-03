@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useRoutes } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import Adress from "./pages/adress/Adress";
@@ -8,23 +8,16 @@ import Collection from "./pages/collection/Collection";
 import Home from "./pages/home/Home";
 import Account from "./pages/account/Account";
 
-const ROUTES_PATHS = {
-  HOME: "/",
-  ADRESS: "adress",
-  ACCOUNT: "account",
-  CART: "cart",
-  COLLECTION: "collection",
-} as const;
-
-// interface
-interface Route {
-  path: string;
-  element: React.ReactElement;
-  children?: {}[];
-  index?: boolean;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+enum ROUTES_PATHS {
+  HOME = "/",
+  ADRESS = "adress",
+  ACCOUNT = "account",
+  CART = "cart",
+  COLLECTION = "collection",
 }
 
-export const routes: Route[] = [
+export const routes: RouteObject[] = [
   {
     path: ROUTES_PATHS.HOME,
     element: <Layout />,

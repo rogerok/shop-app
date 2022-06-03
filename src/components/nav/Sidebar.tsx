@@ -42,7 +42,7 @@ const data = [
 ];
 
 const ListItem = ({ path }: { path: string }) => {
-  const text = path[0].toUpperCase() + path.slice(1);
+  const capitalizedString = path[0].toUpperCase() + path.slice(1);
 
   return (
     <ListItemButton>
@@ -50,7 +50,7 @@ const ListItem = ({ path }: { path: string }) => {
         <ShoppingBasketIcon />
       </ListItemIcon>
       <Link to={`category/${path}`} component={RouterLink}>
-        <ListItemText primary={text} />
+        <ListItemText primary={capitalizedString} />
       </Link>
     </ListItemButton>
   );
