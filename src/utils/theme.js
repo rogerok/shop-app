@@ -24,7 +24,15 @@ export const theme = createTheme({
         },
       },
     },
+    ul: {
+      styleOverrides: {
+        root: {
+          listStyleTypes: "none",
+        },
+      },
+    },
   },
+
   spacing: 8,
 });
 

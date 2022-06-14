@@ -1,24 +1,25 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Link from "@mui/material/Link";
 import {
   List,
   ListItemButton,
   ListItemText,
   ListItemIcon,
+  Grid,
+  Box,
+  Drawer,
+  Link,
 } from "@mui/material";
 
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link as RouterLink } from "react-router-dom";
+import { StyledList } from "./styles";
 
 interface NavProps {
   isOpen: boolean;
   toggleOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const data = [
+const categories = [
   "smartphones",
   "laptops",
   "fragrances",
@@ -41,34 +42,29 @@ const data = [
   "lighting",
 ];
 
-const ListItem = ({ path }: { path: string }) => {
-  const capitalizedString = path[0].toUpperCase() + path.slice(1);
+const ListItem = ({ category }: { category: string }) => {
+  const upperCased = category[0].toUpperCase() + category.slice(1);
 
   return (
-    <ListItemButton>
+    <ListItemButton component="li">
       <ListItemIcon>
         <ShoppingBasketIcon />
       </ListItemIcon>
-      <Link to={`category/${path}`} component={RouterLink}>
-        <ListItemText primary={capitalizedString} />
+      <Link to={`collection/${category}`} component={RouterLink}>
+        <ListItemText primary={upperCased} />
       </Link>
     </ListItemButton>
   );
 };
 
 const Sidebar: FC<NavProps> = ({ isOpen, toggleOpen }) => (
-  <Grid item xs={6} onClick={() => toggleOpen(false)}>
-    <Drawer
-      open={isOpen}
-      onClose={() => toggleOpen(false)}
-      anchor="left"
-      style={{ width: "100%" }}
-    >
-      <List>
-        {data.map((item) => (
-          <ListItem key={item} path={item} />
+  <Grid item xs={6} component="aside">
+    <Drawer open={isOpen} onClose={() => toggleOpen(false)} anchor="left">
+      <StyledList>
+        {categories.map((category) => (
+          <ListItem key={category} category={category} />
         ))}
-      </List>
+      </StyledList>
     </Drawer>
   </Grid>
 );

@@ -1,14 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, useState } from "react";
 import { NavLink } from "react-router-dom";
-// Mui components
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import { IconButton, List, ListItem } from "@mui/material";
 
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -17,7 +9,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // components
-import Sidebar from "../nav/Sidebar";
+import { Typography, Link, Grid, InputAdornment } from "@mui/material";
+import Sidebar from "../sidebar/Sidebar";
 // styled components
 
 import {
@@ -25,7 +18,7 @@ import {
   StyledIconButton,
   StyledTextField,
   StyledToolbar,
-  HeaderNavLink,
+  StyledIconLink,
 } from "./styles";
 
 const styles = {
@@ -38,13 +31,13 @@ const styles = {
   },
 };
 
-interface HeaderLinkProps {
+type IconLinkProps = {
   name: string;
   path: string;
   icon: React.ReactElement;
-}
+};
 
-const data: HeaderLinkProps[] = [
+const data: IconLinkProps[] = [
   {
     name: "Аккаунт",
     path: "account",
@@ -62,14 +55,13 @@ const data: HeaderLinkProps[] = [
   },
 ];
 
-const HeaderLink: FC<HeaderLinkProps> = ({ name, path, icon }) => (
-  <HeaderNavLink to={path} component={NavLink}>
+const IconLink: FC<IconLinkProps> = ({ name, path, icon }) => (
+  <StyledIconLink to={path} component={NavLink}>
     {icon}
-    {/*  <LocationOnIcon fontSize="large" /> */}
     <Typography variant="body1" component="span" fontWeight={300}>
       {name}
     </Typography>
-  </HeaderNavLink>
+  </StyledIconLink>
 );
 
 const Header = () => {
@@ -93,24 +85,22 @@ const Header = () => {
               </Typography>
             </Link>
 
-            <form style={{ width: " 40%" }}>
-              <StyledTextField
-                name="search"
-                type="text"
-                placeholder="Я ищу..."
-                variant="outlined"
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon sx={styles.searchIcon} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </form>
+            <StyledTextField
+              name="search"
+              type="text"
+              placeholder="Я ищу..."
+              variant="outlined"
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon sx={styles.searchIcon} />
+                  </InputAdornment>
+                ),
+              }}
+            />
             {data.map((link) => (
-              <HeaderLink key={link.path} {...link} />
+              <IconLink key={link.path} {...link} />
             ))}
           </StyledToolbar>
         </StyledAppBar>

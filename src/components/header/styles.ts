@@ -1,9 +1,11 @@
-import { styled } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+import {
+  styled,
+  AppBar,
+  Toolbar,
+  IconButton,
+  TextField,
+  Link,
+} from "@mui/material";
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundImage: `linear-gradient(
@@ -30,20 +32,21 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
 }));
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
+  width: "40%",
   borderRadius: theme.shape.borderRadius,
   "& .MuiOutlinedInput-root": {
     borderRadius: "1.5rem",
-    background: "rgba(255,255,255,.2)",
+    background: " rgba(255, 255, 255, 0.2)",
   },
   "& .Mui-focused": {
-    backgroundColor: theme.palette.grey[100],
+    backgroundColor: theme.palette.grey[300],
     border: "none",
     color: theme.palette.text.primary,
     outlineColor: theme.palette.grey[500],
   },
 }));
 
-export const HeaderNavLink = styled(Link)<any>(({ theme }) => ({
+export const StyledIconLink = styled(Link)<any>(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

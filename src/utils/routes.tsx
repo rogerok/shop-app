@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { RouteObject } from "react-router-dom";
 
-import Layout from "./components/Layout/Layout";
-import Adress from "./pages/adress/Adress";
-import Cart from "./pages/cart/Cart";
-import Collection from "./pages/collection/Collection";
-import Home from "./pages/home/Home";
-import Account from "./pages/account/Account";
+import Layout from "../components/Layout/Layout";
+import Adress from "../pages/adress/Adress";
+import Cart from "../pages/cart/Cart";
+import Collection from "../pages/collection/Collection";
+import Home from "../pages/home/Home";
+import Account from "../pages/account/Account";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 enum ROUTES_PATHS {
@@ -14,7 +14,7 @@ enum ROUTES_PATHS {
   ADRESS = "adress",
   ACCOUNT = "account",
   CART = "cart",
-  COLLECTION = "collection",
+  COLLECTION = "collection/:category",
 }
 
 export const routes: RouteObject[] = [
