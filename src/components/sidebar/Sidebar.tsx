@@ -11,13 +11,21 @@ import {
 } from "@mui/material";
 
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
 import { StyledList } from "./styles";
-
-interface NavProps {
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+/* import { ROUTES_PATHS } from "../../utils/routes";
+ */
+/* interface NavProps {
   isOpen: boolean;
   toggleOpen: Dispatch<SetStateAction<boolean>>;
 }
+ */
+
+import {
+  selectIsSideBarOpen,
+  setSidebarOpen,
+} from "../../redux/sidebar/sidebarSlice";
 
 const categories = [
   "smartphones",
@@ -43,30 +51,39 @@ const categories = [
 ];
 
 const ListItem = ({ category }: { category: string }) => {
+  const navigate = useNavigate();
   const upperCased = category[0].toUpperCase() + category.slice(1);
-
   return (
-    <ListItemButton component="li">
+    <ListItemButton
+      component="li"
+      onClick={() => navigate(`collection/${category}`)}
+    >
       <ListItemIcon>
         <ShoppingBasketIcon />
       </ListItemIcon>
-      <Link to={`collection/${category}`} component={RouterLink}>
-        <ListItemText primary={upperCased} />
-      </Link>
+      <ListItemText primary={upperCased} />
     </ListItemButton>
   );
 };
 
-const Sidebar: FC<NavProps> = ({ isOpen, toggleOpen }) => (
-  <Grid item xs={6} component="aside">
-    <Drawer open={isOpen} onClose={() => toggleOpen(false)} anchor="left">
-      <StyledList>
-        {categories.map((category) => (
-          <ListItem key={category} category={category} />
-        ))}
-      </StyledList>
-    </Drawer>
-  </Grid>
-);
+const Sidebar: FC /* <NavProps> */ = (/*  */) => {
+  const dispatch = useAppDispatch();
+  const isidebarOpen = useAppSelector(selectIsSideBarOpen);
 
+  return (
+    <Grid item xs={6} component="aside">
+      <Drawer
+        open={isidebarOpen}
+        onClose={() => dispatch(setSidebarOpen(false))}
+        anchor="left"
+      >
+        <StyledList>
+          {categories.map((category) => (
+            <ListItem key={category} category={category} />
+          ))}
+        </StyledList>
+      </Drawer>
+    </Grid>
+  );
+};
 export default Sidebar;

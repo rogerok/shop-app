@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
-
+import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { store } from "./redux/store";
+import { store, persistor } from "./redux/store";
+
 import { theme } from "./utils/theme";
 
 import App from "./App";
@@ -19,7 +20,9 @@ root.render(
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <App />
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
         </Provider>
       </ThemeProvider>
     </BrowserRouter>

@@ -9,13 +9,14 @@ import Home from "../pages/home/Home";
 import Account from "../pages/account/Account";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-enum ROUTES_PATHS {
-  HOME = "/",
-  ADRESS = "adress",
-  ACCOUNT = "account",
-  CART = "cart",
-  COLLECTION = "collection/:category",
-}
+export const ROUTES_PATHS = {
+  HOME: "/",
+  ADRESS: "adress",
+  ACCOUNT: "account",
+  CART: "cart",
+  COLLECTION: "collection",
+  COLLECTION_CATEGORY: "collection/:category",
+} as const;
 
 export const routes: RouteObject[] = [
   {
@@ -24,7 +25,7 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <Home /> },
       { path: ROUTES_PATHS.ADRESS, element: <Adress /> },
-      { path: ROUTES_PATHS.COLLECTION, element: <Collection /> },
+      { path: ROUTES_PATHS.COLLECTION_CATEGORY, element: <Collection /> },
       { path: ROUTES_PATHS.CART, element: <Cart /> },
       { path: ROUTES_PATHS.ACCOUNT, element: <Account /> },
     ],

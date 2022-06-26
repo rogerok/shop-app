@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 // icons
@@ -9,8 +9,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // components
-import { Typography, Link, Grid, InputAdornment } from "@mui/material";
-import Sidebar from "../sidebar/Sidebar";
+import { Typography, Grid, InputAdornment, Badge } from "@mui/material";
 // styled components
 
 import {
@@ -19,17 +18,14 @@ import {
   StyledTextField,
   StyledToolbar,
   StyledIconLink,
+  Logo,
 } from "./styles";
-
-const styles = {
-  homeLink: {
-    color: "primary.contrastText",
-    userSelect: "none",
-  },
-  searchIcon: {
-    color: "primary.500",
-  },
-};
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { getTotalQuantity } from "../../redux/cart/cartSlice";
+import {
+  selectIsSideBarOpen,
+  setSidebarOpen,
+} from "../../redux/sidebar/sidebarSlice";
 
 type IconLinkProps = {
   name: string;
@@ -48,11 +44,6 @@ const data: IconLinkProps[] = [
     path: "adress",
     icon: <LocationOnIcon />,
   },
-  {
-    name: "Корзина",
-    path: "cart",
-    icon: <ShoppingCartIcon />,
-  },
 ];
 
 const IconLink: FC<IconLinkProps> = ({ name, path, icon }) => (
@@ -65,48 +56,59 @@ const IconLink: FC<IconLinkProps> = ({ name, path, icon }) => (
 );
 
 const Header = () => {
-  const [isOpen, toggleOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getTotalQuantity());
+  }, [cart, dispatch]);
 
   return (
-    <>
-      <Grid item xs={12}>
-        <StyledAppBar position="static">
-          <StyledToolbar>
-            <StyledIconButton
-              color="inherit"
-              size="large"
-              onClick={() => toggleOpen(true)}
-            >
-              <MenuIcon />
-            </StyledIconButton>
-            <Link to="/" component={NavLink} sx={styles.homeLink} variant="h4">
-              <Typography variant="h4" component="span">
-                CHERRYBERRIES
-              </Typography>
-            </Link>
+    <Grid item xs={12}>
+      <StyledAppBar position="static">
+        <StyledToolbar>
+          <StyledIconButton
+            color="inherit"
+            size="large"
+            onClick={() => {
+              dispatch(setSidebarOpen(true));
+            }}
+          >
+            <MenuIcon />
+          </StyledIconButton>
+          <Logo to="/" variant="h4" component={NavLink}>
+            <Typography variant="h4" component="span">
+              CHERRYBERRIES
+            </Typography>
+          </Logo>
 
-            <StyledTextField
-              name="search"
-              type="text"
-              placeholder="Я ищу..."
-              variant="outlined"
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon sx={styles.searchIcon} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-            {data.map((link) => (
-              <IconLink key={link.path} {...link} />
-            ))}
-          </StyledToolbar>
-        </StyledAppBar>
-      </Grid>
-      <Sidebar isOpen={isOpen} toggleOpen={toggleOpen} />
-    </>
+          <StyledTextField
+            name="search"
+            type="text"
+            placeholder="Я ищу..."
+            variant="outlined"
+            fullWidth
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+          {data.map((link) => (
+            <IconLink key={link.path} {...link} />
+          ))}
+          <Badge
+            badgeContent={cart.cartQuantity}
+            overlap="circular"
+            color="secondary"
+          >
+            <IconLink name="Корзина" path="/cart" icon={<ShoppingCartIcon />} />
+          </Badge>
+        </StyledToolbar>
+      </StyledAppBar>
+    </Grid>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   TextField,
   Link,
 } from "@mui/material";
+import { LinkProps } from "../../interfaces/types";
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundImage: `linear-gradient(
@@ -14,6 +15,7 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
     rgb(72, 17, 115) 100%
   )`,
   padding: theme.spacing(2),
+  borderRadius: "0 0 -20% 0",
 }));
 
 export const StyledToolbar = styled(Toolbar)`
@@ -46,7 +48,7 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-export const StyledIconLink = styled(Link)<any>(({ theme }) => ({
+export const StyledIconLink = styled(Link)<LinkProps>(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -60,4 +62,9 @@ export const StyledIconLink = styled(Link)<any>(({ theme }) => ({
   "&: hover": {
     color: theme.palette.text.primary,
   },
+}));
+
+export const Logo = styled(Link)<LinkProps>(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
+  userSelect: "none",
 }));
