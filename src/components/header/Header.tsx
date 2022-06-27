@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 // icons
@@ -21,11 +21,11 @@ import {
   Logo,
 } from "./styles";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { getTotalQuantity } from "../../redux/cart/cartSlice";
 import {
-  selectIsSideBarOpen,
-  setSidebarOpen,
-} from "../../redux/sidebar/sidebarSlice";
+  getTotalQuantity,
+  selectTotalQuantity,
+} from "../../redux/cart/cartSlice";
+import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
 
 type IconLinkProps = {
   name: string;
@@ -55,13 +55,25 @@ const IconLink: FC<IconLinkProps> = ({ name, path, icon }) => (
   </StyledIconLink>
 );
 
-const Header = () => {
+const CartIcon = () => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart);
+  const cartQuantity = useAppSelector(selectTotalQuantity);
 
   useEffect(() => {
     dispatch(getTotalQuantity());
   }, [cart, dispatch]);
+  return (
+    <Badge badgeContent={cartQuantity} overlap="circular" color="secondary">
+      <IconLink name="Корзина" path="/cart" icon={<ShoppingCartIcon />} />
+    </Badge>
+  );
+};
+
+const CartIconMemoized = React.memo(CartIcon);
+
+const Header = () => {
+  const dispatch = useAppDispatch();
 
   return (
     <Grid item xs={12}>
@@ -99,17 +111,10 @@ const Header = () => {
           {data.map((link) => (
             <IconLink key={link.path} {...link} />
           ))}
-          <Badge
-            badgeContent={cart.cartQuantity}
-            overlap="circular"
-            color="secondary"
-          >
-            <IconLink name="Корзина" path="/cart" icon={<ShoppingCartIcon />} />
-          </Badge>
+          <CartIconMemoized />
         </StyledToolbar>
       </StyledAppBar>
     </Grid>
   );
 };
-
 export default Header;

@@ -3,7 +3,7 @@ import { Grid, Paper } from "@mui/material";
 
 import ProductsCollection from "../../components/products-collection/ProductsCollection";
 
-const Collection = () => (
+const CollectionPage = () => (
   <Grid container>
     <Grid item xs={3}>
       <Paper elevation={3}>filters</Paper>
@@ -11,4 +11,4 @@ const Collection = () => (
     <ProductsCollection />
   </Grid>
 );
-export default Collection;
+export default CollectionPage;

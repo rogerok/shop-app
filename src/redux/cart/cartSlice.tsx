@@ -1,7 +1,10 @@
-import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  PayloadAction,
+  current,
+  createSelector,
+} from "@reduxjs/toolkit";
 import { Product } from "../../interfaces/types";
-// eslint-disable-next-line import/no-cycle
-import { RootState } from "../rootReducer";
 
 type CartState = {
   cartItems: Product[];
@@ -69,11 +72,20 @@ const cartSlice = createSlice({
   },
 });
 
-export const selectCartItems = (state: RootState): Product[] =>
+const selectCart = (state: { cart: CartState }) => state.cart;
+export const selectTotalQuantity = createSelector(
+  [selectCart],
+  (cart) => cart.cartQuantity
+);
+
+export const selectCartItems = (state: { cart: CartState }): Product[] =>
   state.cart.cartItems;
-export const selectTotalSum = (state: RootState) => state.cart.cartTotalSum;
-export const selectTotalQuantity = (state: RootState) =>
-  state.cart.cartQuantity;
+
+export const selectTotalSum = createSelector(
+  [selectCart],
+  (cart) => cart.cartTotalSum
+);
+
 export const { addToCart, removeFromCart, getTotalQuantity, getTotalSum } =
   cartSlice.actions;
 

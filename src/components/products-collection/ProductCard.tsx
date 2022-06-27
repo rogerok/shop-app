@@ -9,7 +9,7 @@ import {
   Link,
 } from "@mui/material";
 import React, { FC } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import { Product } from "../../interfaces/types";
 import { addToCart } from "../../redux/cart/cartSlice";
 import { useAppDispatch } from "../../hooks/redux";
@@ -21,12 +21,13 @@ type ProductCardProps = {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
-
+  const params = useParams();
+  console.log(params);
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
   return (
     <Grid item xs={4} component="li" key={title}>
       <Card sx={{ pb: 2 }}>
-        <Link component={RouterLink} to={id}>
+        <Link component={RouterLink} to={`${id}`}>
           <CardMedia
             component="img"
             image={thumbnail}
@@ -36,13 +37,13 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         </Link>
 
         <CardContent>
-          <Typography variant="h6" component="h6">
+          <Typography variant="h6" component="h6" gutterBottom>
             {title.length > 15 ? `${title.slice(0, 15)}...` : title}
           </Typography>
-          <Typography variant="subtitle1" paragraph gutterBottom>
+          <Typography variant="h5" paragraph gutterBottom>
             -{discountPercentage}%
           </Typography>
-          <Typography variant="subtitle1" paragraph gutterBottom>
+          <Typography variant="h5" paragraph gutterBottom>
             ${price}
           </Typography>
           <Rating readOnly value={rating} precision={0.1} />

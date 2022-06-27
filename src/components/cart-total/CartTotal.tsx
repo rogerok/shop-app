@@ -1,4 +1,4 @@
-import { Grid, Box, Paper, Typography } from "@mui/material";
+import { Grid, Box, Paper, Typography, Divider } from "@mui/material";
 import React, { FC, useEffect } from "react";
 import useGetTotal from "../../hooks/useGetTotal";
 
@@ -22,8 +22,11 @@ const Total: FC<CountProps> = ({ description, total, type }) => (
   </Box>
 );
 
+const TotalMemoized = React.memo(Total);
+
 const CartTotal = () => {
   const { data, getDescription } = useGetTotal();
+
   return (
     <Grid item xs={4} component="aside">
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -31,6 +34,8 @@ const CartTotal = () => {
           <Typography variant="h4" gutterBottom>
             Итого:
           </Typography>
+          <Divider />
+
           {data.map((unit) => {
             const description = getDescription(unit);
             return (
@@ -47,4 +52,4 @@ const CartTotal = () => {
     </Grid>
   );
 };
-export default CartTotal;
+export default React.memo(CartTotal);

@@ -24,7 +24,7 @@ const useGetTotal = () => {
     { type: "quantity", total: totalQuantity },
   ];
 
-  const getDescription = (unit: TotalType): string => {
+  const getDescription = (unit: TotalType) => {
     if (unit.type === "sum") return "Сумма:";
     return "Итого:";
   };

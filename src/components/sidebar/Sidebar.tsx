@@ -14,13 +14,6 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
 import { StyledList } from "./styles";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-/* import { ROUTES_PATHS } from "../../utils/routes";
- */
-/* interface NavProps {
-  isOpen: boolean;
-  toggleOpen: Dispatch<SetStateAction<boolean>>;
-}
- */
 
 import {
   selectIsSideBarOpen,
@@ -66,7 +59,7 @@ const ListItem = ({ category }: { category: string }) => {
   );
 };
 
-const Sidebar: FC /* <NavProps> */ = (/*  */) => {
+const Sidebar = () => {
   const dispatch = useAppDispatch();
   const isidebarOpen = useAppSelector(selectIsSideBarOpen);
 

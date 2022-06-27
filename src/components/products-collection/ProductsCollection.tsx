@@ -17,7 +17,7 @@ const ProductsCollection = () => {
       <Container sx={{ mt: 3 }}>
         <Grid
           container
-          spacing={6}
+          spacing={4}
           component="ul"
           sx={{ listStyleType: "none" }}
         >
