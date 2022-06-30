@@ -1,11 +1,11 @@
-import { styled, Button } from "@mui/material";
+import { styled, Button, ButtonProps } from "@mui/material";
 
-export const StyledButton = styled(Button)(({ theme }) => ({
+export const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
   padding: theme.spacing(2),
   backgroundColor: theme.palette.secondary.main,
   color: theme.palette.text.secondary,
   fontSize: "1rem",
-  fontWeight: theme.typography.fontWeightMedium,
+  fontWeight: theme.typography.fontWeightBold,
   "&: hover": {
     backgroundColor: theme.palette.secondary.dark,
   },

@@ -1,8 +1,8 @@
 import React from "react";
+import { Grid } from "@mui/material";
+
 import { Outlet } from "react-router-dom";
 
-import { Container, Grid, Box } from "@mui/material";
-// eslint-disable-next-line import/no-cycle
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 

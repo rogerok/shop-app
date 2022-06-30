@@ -1,24 +1,21 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React from "react";
 import {
-  List,
   ListItemButton,
   ListItemText,
   ListItemIcon,
   Grid,
-  Box,
   Drawer,
-  Link,
 } from "@mui/material";
-
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
-import { StyledList } from "./styles";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   selectIsSideBarOpen,
   setSidebarOpen,
 } from "../../redux/sidebar/sidebarSlice";
+
+import { StyledList } from "./styles";
 
 const categories = [
   "smartphones",

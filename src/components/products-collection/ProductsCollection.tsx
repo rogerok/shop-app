@@ -1,9 +1,11 @@
 import React from "react";
-import { useParams, Link as RouterLink } from "react-router-dom";
 import { Container, Grid, Typography } from "@mui/material";
-import ProductCard from "./ProductCard";
-import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopApi";
+
+import { useParams } from "react-router-dom";
 import { Product } from "../../interfaces/types";
+import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopApi";
+
+import ProductCard from "./ProductCard";
 
 const ProductsCollection = () => {
   const { category } = useParams();

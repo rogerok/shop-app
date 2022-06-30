@@ -1,3 +1,5 @@
+import React, { FC } from "react";
+
 import {
   Grid,
   Card,
@@ -8,11 +10,12 @@ import {
   CardActions,
   Link,
 } from "@mui/material";
-import React, { FC } from "react";
+
 import { Link as RouterLink, useParams } from "react-router-dom";
 import { Product } from "../../interfaces/types";
 import { addToCart } from "../../redux/cart/cartSlice";
 import { useAppDispatch } from "../../hooks/redux";
+
 import { StyledButton } from "./styles";
 
 type ProductCardProps = {
@@ -22,7 +25,6 @@ type ProductCardProps = {
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const params = useParams();
-  console.log(params);
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
   return (
     <Grid item xs={4} component="li" key={title}>
