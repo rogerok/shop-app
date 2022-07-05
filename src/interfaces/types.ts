@@ -15,6 +15,7 @@ export type Product = {
   quantity?: any;
 };
 
+export type CartProduct = Omit<Product, "images" | "rating" | "description">;
 export type Products = Product[];
 
 export interface AddedProduct extends Product {
@@ -24,4 +25,10 @@ export interface AddedProduct extends Product {
 export type LinkProps = {
   component?: React.ElementType;
   to: To;
+};
+
+export type StatusType = {
+  isLoading: boolean;
+  isError: boolean;
+  isSuccess: boolean;
 };

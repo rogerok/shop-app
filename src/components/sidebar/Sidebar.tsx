@@ -41,13 +41,17 @@ const categories = [
 ];
 
 const ListItem = ({ category }: { category: string }) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const upperCased = category[0].toUpperCase() + category.slice(1);
+
+  const handleClick = () => {
+    navigate(`collection/${category}`);
+    dispatch(setSidebarOpen(false));
+  };
+
   return (
-    <ListItemButton
-      component="li"
-      onClick={() => navigate(`collection/${category}`)}
-    >
+    <ListItemButton component="li" onClick={() => handleClick()}>
       <ListItemIcon>
         <ShoppingBasketIcon />
       </ListItemIcon>

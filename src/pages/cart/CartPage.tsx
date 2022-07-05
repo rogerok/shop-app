@@ -4,6 +4,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   Container,
   Divider,
   Grid,
@@ -15,6 +16,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CartTotal from "../../components/cart-total/CartTotal";
 import CartList from "../../components/cart-list/CartList";
 import OrderForm from "../../components/order-form/OrderForm";
+import BasicModal from "../../components/basic-modal/BasicModal";
 
 const CartPage = () => (
   <Grid
@@ -23,9 +25,9 @@ const CartPage = () => (
     mt={2}
     p={2}
     component="section"
-    sx={{ justifyContent: "space-between" }}
+    alignItems="baseline"
   >
-    <Grid item xs={12}>
+    <Grid item xs={8}>
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h4" mb={4}>
@@ -40,13 +42,15 @@ const CartPage = () => (
         </Paper>
       </Accordion>
     </Grid>
-    <Grid container item spacing={4} xs={12}>
-      <Grid item xs={6}>
-        <OrderForm />
-      </Grid>
-      <Grid item xs={6}>
-        <CartTotal />
-      </Grid>
+    <Grid container item spacing={4} xs={4}>
+      <Container>
+        <Box mb={4}>
+          <CartTotal />
+        </Box>
+        <Box>
+          <OrderForm />
+        </Box>
+      </Container>
     </Grid>
   </Grid>
 );

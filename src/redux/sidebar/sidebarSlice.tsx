@@ -45,7 +45,7 @@ export const { setSidebarOpen } = sidebarSlice.actions;
 export const selectIsSideBarOpen = ({ sidebar }: { sidebar: SidebarState }) =>
   sidebar.isOpen;
 
-export const selectIsSideState = ({ sidebar }: { sidebar: SidebarState }) =>
+export const selectIsSidebarState = ({ sidebar }: { sidebar: SidebarState }) =>
   sidebar;
 
 export default sidebarSlice.reducer;

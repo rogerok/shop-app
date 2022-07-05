@@ -3,13 +3,13 @@ import { Box, Typography, IconButton } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-import { Product } from "../../../interfaces/types";
+import { CartProduct, Product } from "../../../interfaces/types";
 import { useAppDispatch } from "../../../hooks/redux";
 import { removeFromCart, addToCart } from "../../../redux/cart/cartSlice";
 
 import { StyledCard, StyledCardMedia, StyledCardActions } from "./styles";
 
-const CartListItem = ({ product }: { product: Product }) => {
+const CartListItem = ({ product }: { product: CartProduct }) => {
   const dispatch = useAppDispatch();
   const { id, thumbnail, title, quantity, price } = product;
 

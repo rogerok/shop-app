@@ -17,6 +17,7 @@ import { addToCart } from "../../redux/cart/cartSlice";
 import { useAppDispatch } from "../../hooks/redux";
 
 import { StyledButton } from "./styles";
+import CustomButton from "../custom-button/CustomButton";
 
 type ProductCardProps = {
   product: Product;
@@ -51,13 +52,13 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Rating readOnly value={rating} precision={0.1} />
         </CardContent>
         <CardActions>
-          <StyledButton
+          <CustomButton
             size="large"
             fullWidth
             onClick={() => dispatch(addToCart(product))}
           >
             Добавить в корзину
-          </StyledButton>
+          </CustomButton>
         </CardActions>
       </Card>
     </Grid>

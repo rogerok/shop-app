@@ -5,12 +5,14 @@ import storage from "redux-persist/lib/storage";
 // eslint-disable-next-line import/no-cycle
 import cartReducer from "./cart/cartSlice";
 import sidebarReducer from "./sidebar/sidebarSlice";
+import shopReducer from "./shop/shopSlice";
 import { shopApi } from "../services/shopServices/shopApi";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   [shopApi.reducerPath]: shopApi.reducer,
   sidebar: sidebarReducer,
+  shop: shopReducer,
 });
 const persistConfig = {
   key: "root",

@@ -3,14 +3,47 @@ import {
   PayloadAction,
   current,
   createSelector,
+  createEntityAdapter,
 } from "@reduxjs/toolkit";
-import { Product } from "../../interfaces/types";
+import { Product, CartProduct } from "../../interfaces/types";
+import { shopApi } from "../../services/shopServices/shopApi";
 
 type CartState = {
-  cartItems: Product[];
+  cartItems: CartProduct[];
   cartTotalSum: number;
   cartQuantity: number;
 };
+
+/* const isCartProduct = (product: CartProduct | Product): product is CartProduct => {
+  return 
+}
+ */
+/* const cartAdapter = createEntityAdapter<Product>({
+  sortComparer: (a, b) => Number(a.price) - Number(b.price),
+}); */
+
+/* const initialState: CartState = cartAdapter.getInitialState({
+  cartItems: [],
+  cartTotalSum: 0,
+  cartQuantity: 0,
+});
+ */
+
+/* const extendedShopApi = shopApi.injectEndpoints({
+  endpoints: (builder) => ({
+    addUserOrder: builder.mutation({
+      query: (orderData) => ({
+        url: `${SHOP_API.USERS}/add`,
+        method: "POST",
+        body: {orderData, initialState.},
+      }),
+    }),
+  }),
+}); */
+
+const isCartProduct = (
+  product: CartProduct | Product
+): product is CartProduct => typeof product.quantity !== undefined;
 
 const initialState: CartState = {
   cartItems: [],
@@ -23,7 +56,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: {
-      reducer(state: CartState, action: PayloadAction<Product>) {
+      reducer(state: CartState, action: PayloadAction<CartProduct>) {
         const productIndex = state.cartItems.findIndex(
           (product) => product.id === action.payload.id
         );
@@ -33,11 +66,28 @@ const cartSlice = createSlice({
           state.cartItems.push(action.payload);
         }
       },
-      prepare(product: Product): { payload: Product } {
+      prepare({
+        id,
+        brand,
+        category,
+        discountPercentage,
+        price,
+        title,
+        stock,
+        thumbnail,
+        quantity,
+      }: Product | CartProduct): { payload: CartProduct } {
         return {
           payload: {
-            ...product,
-            quantity: product.quantity ? product.quantity : 1,
+            id,
+            brand,
+            category,
+            discountPercentage,
+            price,
+            title,
+            stock,
+            thumbnail,
+            quantity: quantity || 1,
           },
         };
       },
@@ -78,7 +128,7 @@ export const selectTotalQuantity = createSelector(
   (cart) => cart.cartQuantity
 );
 
-export const selectCartItems = (state: { cart: CartState }): Product[] =>
+export const selectCartItems = (state: { cart: CartState }): CartProduct[] =>
   state.cart.cartItems;
 
 export const selectTotalSum = createSelector(
