@@ -3,4 +3,5 @@ export const SHOP_API = {
   PRODUCTS: "/products",
   CATEGORY: "/category",
   USERS: "/users",
+  SEARCH: "/search?q=",
 } as const;

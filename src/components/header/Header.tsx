@@ -1,11 +1,10 @@
 import React, { FC, useEffect } from "react";
 
-import { Typography, Grid, InputAdornment, Badge } from "@mui/material";
+import { Typography, Grid, Badge } from "@mui/material";
 
 import { NavLink } from "react-router-dom";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -20,11 +19,11 @@ import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
 import {
   StyledAppBar,
   StyledIconButton,
-  StyledTextField,
   StyledToolbar,
   StyledIconLink,
   Logo,
 } from "./styles";
+import SearchInput from "../search-input/SearchInput";
 
 type IconLinkProps = {
   name: string;
@@ -94,20 +93,7 @@ const Header = () => {
             </Typography>
           </Logo>
 
-          <StyledTextField
-            name="search"
-            type="text"
-            placeholder="Я ищу..."
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <SearchInput />
           {data.map((link) => (
             <HeaderIconLink key={link.path} {...link} />
           ))}

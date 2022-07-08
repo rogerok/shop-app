@@ -18,6 +18,10 @@ export const shopApi = createApi({
       query: (category) =>
         `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}`,
     }),
+    searchProducts: builder.query<ProductsRespone, string>({
+      query: (searchQuery) =>
+        searchQuery && `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchQuery}`,
+    }),
     addUserOrder: builder.mutation({
       query: (orderData) => ({
         url: `${SHOP_API.USERS}/add`,
@@ -28,5 +32,9 @@ export const shopApi = createApi({
   }),
 });
 
-export const { useGetProductsByCategoryQuery, useAddUserOrderMutation } =
-  shopApi;
+export const {
+  useGetProductsByCategoryQuery,
+  useSearchProductsQuery,
+  useAddUserOrderMutation,
+  usePrefetch,
+} = shopApi;

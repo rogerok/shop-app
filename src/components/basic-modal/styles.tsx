@@ -17,17 +17,3 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
   boxShadow: theme.shadows[24],
 }));
-
-export const StyledErrorIcon = styled(ErrorIcon)(({ theme }) => ({
-  color: theme.palette.secondary.main,
-  fontSize: theme.typography.pxToRem(100),
-}));
-
-export const StyledSuccesIcon = styled(DoneIcon)(({ theme }) => ({
-  color: theme.palette.secondary.main,
-  fontSize: theme.typography.pxToRem(100),
-}));
-
-export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
-  color: theme.palette.secondary.main,
-}));

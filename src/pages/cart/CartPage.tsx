@@ -42,7 +42,7 @@ const CartPage = () => (
         </Paper>
       </Accordion>
     </Grid>
-    <Grid container item spacing={4} xs={4}>
+    <Grid container spacing={4} item xs={4}>
       <Container>
         <Box mb={4}>
           <CartTotal />

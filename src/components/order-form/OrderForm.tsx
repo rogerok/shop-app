@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Paper, Typography } from "@mui/material";
@@ -22,6 +22,8 @@ type FormInputTypes = {
 const OrderForm = () => {
   const [addUserOrder, { isError, isLoading, isSuccess }] =
     useAddUserOrderMutation();
+  const cartItems = useAppSelector(selectCartItems);
+
   const {
     control,
     formState: { errors },
@@ -37,10 +39,10 @@ const OrderForm = () => {
     resolver: yupResolver(orderSchema),
   });
 
-  const cartItems = useAppSelector(selectCartItems);
   const formData = getValues();
 
   const onSubmit = async (e: any) => {
+    // here i select added items to cart,  to avoid rerendering by inreasing item quantity in cart
     e.preventDefault();
     await addUserOrder({ cartItems, formData });
     reset();
@@ -86,8 +88,8 @@ const OrderForm = () => {
                   label="Ваша фамилия"
                   error={!!errors.lastName}
                   helperText={errors.lastName ? errors.lastName?.message : ""}
-                  margin="normal"
                   required
+                  margin="normal"
                   variant="outlined"
                   sx={{ width: "45%" }}
                 />
@@ -106,6 +108,7 @@ const OrderForm = () => {
                 helperText={
                   errors.phoneNumber ? errors.phoneNumber?.message : ""
                 }
+                required
                 fullWidth
                 variant="outlined"
                 margin="normal"

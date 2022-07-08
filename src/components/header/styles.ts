@@ -33,21 +33,6 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-export const StyledTextField = styled(TextField)(({ theme }) => ({
-  width: "40%",
-  borderRadius: theme.shape.borderRadius,
-  "& .MuiOutlinedInput-root": {
-    borderRadius: "1.5rem",
-    background: " rgba(255, 255, 255, 0.2)",
-  },
-  "& .Mui-focused": {
-    backgroundColor: theme.palette.grey[300],
-    border: "none",
-    color: theme.palette.text.primary,
-    outlineColor: theme.palette.grey[500],
-  },
-}));
-
 export const StyledIconLink = styled(Link)<LinkProps>(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
