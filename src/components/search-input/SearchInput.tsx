@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,21 +6,31 @@ import { StyledTextField } from "./styles";
 
 import useDebounce from "../../hooks/useDebounce";
 import SearchCatalog from "../search-catalog/SearchCatalog";
-import { useSearchProductsQuery } from "../../services/shopServices/shopApi";
+import {
+  shopApi,
+  useSearchProductsQuery,
+} from "../../services/shopServices/shopApi";
+import { useAppDispatch } from "../../hooks/redux";
 
 const SearchInput = () => {
   const [searchTerm, setSearchTerm] = useState<string | null>("");
+  const [isFocused, setIsFocused] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm!, 500);
+  const { data } = useSearchProductsQuery(debouncedSearchTerm);
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value.toLocaleLowerCase());
   };
-  const [isFocused, setIsFocused] = useState(false);
-  const { data } = useSearchProductsQuery(debouncedSearchTerm);
+
   const handleBlur = () => {
     setIsFocused(false);
     setSearchTerm("");
   };
+
+  useEffect(() => {
+    if (!isFocused) dispatch(shopApi.util.resetApiState());
+  }, [handleBlur]);
 
   return (
     <Box sx={{ width: "40%", position: "relative" }}>

@@ -3,10 +3,10 @@ import { ListItem, Card, CardMedia, Typography } from "@mui/material";
 import { Product } from "../../interfaces/types";
 
 const SearchProductPreview = (product: Product) => {
-  const { thumbnail, title, price } = product;
+  const { thumbnail, title, price, id } = product;
 
   return (
-    <ListItem sx={{ width: "100%" }}>
+    <ListItem key={id} sx={{ width: "100%" }}>
       <Card
         sx={{
           width: "100%",

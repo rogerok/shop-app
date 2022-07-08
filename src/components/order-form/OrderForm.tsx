@@ -1,12 +1,15 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Paper, Typography } from "@mui/material";
 import { orderSchema } from "../../validations/schema";
 
-import { useAddUserOrderMutation } from "../../services/shopServices/shopApi";
-import { useAppSelector } from "../../hooks/redux";
-import { selectCartItems } from "../../redux/cart/cartSlice";
+import {
+  shopApi,
+  useAddUserOrderMutation,
+} from "../../services/shopServices/shopApi";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { clearCart, selectCartItems } from "../../redux/cart/cartSlice";
 
 import BasicModal from "../basic-modal/BasicModal";
 import CustomButton from "../custom-button/CustomButton";
@@ -23,6 +26,7 @@ const OrderForm = () => {
   const [addUserOrder, { isError, isLoading, isSuccess }] =
     useAddUserOrderMutation();
   const cartItems = useAppSelector(selectCartItems);
+  const dispatch = useAppDispatch();
 
   const {
     control,
@@ -50,6 +54,7 @@ const OrderForm = () => {
 
   useEffect(() => {
     if (!isSuccess) return;
+    dispatch(clearCart());
     reset();
   }, [isSuccess]);
 

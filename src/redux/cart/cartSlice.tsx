@@ -119,6 +119,9 @@ const cartSlice = createSlice({
       );
       state.cartTotalSum = totalSum;
     },
+    clearCart() {
+      return initialState;
+    },
   },
 });
 
@@ -136,7 +139,12 @@ export const selectTotalSum = createSelector(
   (cart) => cart.cartTotalSum
 );
 
-export const { addToCart, removeFromCart, getTotalQuantity, getTotalSum } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  getTotalQuantity,
+  getTotalSum,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
