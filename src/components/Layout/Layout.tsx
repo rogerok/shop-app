@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 import Header from "../header/Header";
+// eslint-disable-next-line import/no-cycle
 import Sidebar from "../sidebar/Sidebar";
 
 const Layout = () => (

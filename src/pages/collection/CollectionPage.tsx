@@ -5,19 +5,22 @@ import { useParams } from "react-router-dom";
 import ProductsCollection from "../../components/products-collection/ProductsCollection";
 import { useAppDispatch } from "../../hooks/redux";
 import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
+import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopApi";
 
 const CollectionPage = () => {
   const dispatch = useAppDispatch();
+  const { category } = useParams();
+  const { products } = useGetProductsByCategoryQuery(category!).data! ?? [];
+
   useEffect(() => {
     dispatch(setSidebarOpen(false));
   });
-  const { category } = useParams();
   return (
     <Grid container>
       <Grid item xs={3}>
         <Paper elevation={3}>filters</Paper>
       </Grid>
-      <ProductsCollection />
+      <ProductsCollection data={products} />
     </Grid>
   );
 };

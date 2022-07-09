@@ -17,6 +17,8 @@ import {
 
 import { StyledList } from "./styles";
 
+import { ROUTES_PATHS } from "../../utils/routes-paths";
+
 const categories = [
   "smartphones",
   "laptops",
@@ -46,7 +48,7 @@ const ListItem = ({ category }: { category: string }) => {
   const upperCased = category[0].toUpperCase() + category.slice(1);
 
   const handleClick = () => {
-    navigate(`collection/${category}`);
+    navigate(`${ROUTES_PATHS.COLLECTION}/${category}`);
     dispatch(setSidebarOpen(false));
   };
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 
 import { useParams } from "react-router-dom";
@@ -8,9 +8,12 @@ import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopA
 
 import ProductCard from "./ProductCard";
 
-const ProductsCollection = () => {
+type ProductsCollectionProps = {
+  data: Products;
+};
+
+const ProductsCollection: FC<ProductsCollectionProps> = ({ data }) => {
   const { category } = useParams();
-  const { data } = useGetProductsByCategoryQuery(category!);
 
   return (
     <Grid item xs={8} component="section">
@@ -24,7 +27,7 @@ const ProductsCollection = () => {
           component="ul"
           sx={{ listStyleType: "none" }}
         >
-          {data?.products.map((product: Product) => (
+          {data?.map((product: Product) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </Grid>
