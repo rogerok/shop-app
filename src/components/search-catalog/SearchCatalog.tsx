@@ -5,13 +5,14 @@ import { Product, Products } from "../../interfaces/types";
 
 type SearchCatalogProps = {
   searchResult: Products;
+  onClick: () => void;
 };
 
-const SearchCatalog: FC<SearchCatalogProps> = ({ searchResult }) => {
+const SearchCatalog: FC<SearchCatalogProps> = ({ searchResult, onClick }) => {
   const num = 0;
   return (
     searchResult && (
-      <Paper elevation={3} sx={{}}>
+      <Paper elevation={3} sx={{}} onClick={onClick}>
         <List
           sx={{
             position: "absolute",

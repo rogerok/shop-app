@@ -17,7 +17,7 @@ export const ROUTES_PATHS = {
   CART: "cart",
   COLLECTION: "collection",
   COLLECTION_CATEGORY: "collection/:category",
-  COLLECTION_PRODUCT: "collection/:category/:id",
+  COLLECTION_PRODUCT: "product/:productId",
 } as const;
 
 export const routes: RouteObject[] = [

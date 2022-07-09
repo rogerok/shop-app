@@ -30,7 +30,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <Grid item xs={4} component="li" key={title}>
       <Card sx={{ pb: 2 }}>
-        <Link component={RouterLink} to={`${id}`}>
+        <Link component={RouterLink} to={`/product/${id}`}>
           <CardMedia
             component="img"
             image={thumbnail}

@@ -1,12 +1,18 @@
 import React from "react";
 import { ListItem, Card, CardMedia, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Product } from "../../interfaces/types";
 
 const SearchProductPreview = (product: Product) => {
   const { thumbnail, title, price, id } = product;
+  const navigate = useNavigate();
 
   return (
-    <ListItem key={id} sx={{ width: "100%" }}>
+    <ListItem
+      key={id}
+      sx={{ width: "100%" }}
+      onClick={() => navigate(`/product/${id}`)}
+    >
       <Card
         sx={{
           width: "100%",

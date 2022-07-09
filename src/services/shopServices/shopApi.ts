@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Products } from "../../interfaces/types";
+import { Product, Products } from "../../interfaces/types";
 import { SHOP_API } from "../../utils/api-consts";
 
 export type ProductsRespone = {
@@ -18,9 +18,14 @@ export const shopApi = createApi({
       query: (category) =>
         `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}`,
     }),
-    searchProducts: builder.query<ProductsRespone, string>({
+    getProductById: builder.query<Product, string>({
+      query: (id) => `${SHOP_API.PRODUCTS}/${id}`,
+    }),
+    searchProducts: builder.query<Products, string>({
       query: (searchQuery) =>
-        searchQuery && `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchQuery}`,
+        searchQuery &&
+        `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchQuery}&select=title,price,thumbnail`,
+      transformResponse: (result: ProductsRespone) => result.products,
     }),
     addUserOrder: builder.mutation({
       query: (orderData) => ({
@@ -34,7 +39,7 @@ export const shopApi = createApi({
 
 export const {
   useGetProductsByCategoryQuery,
+  useGetProductByIdQuery,
   useSearchProductsQuery,
   useAddUserOrderMutation,
-  usePrefetch,
 } = shopApi;
