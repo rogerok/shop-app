@@ -6,7 +6,7 @@ import {
   TextField,
   Link,
 } from "@mui/material";
-import { LinkProps } from "../../interfaces/types";
+import { LinkProps } from "../../ts/types";
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundImage: `linear-gradient(

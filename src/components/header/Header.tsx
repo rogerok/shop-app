@@ -22,8 +22,8 @@ import {
   StyledToolbar,
   StyledIconLink,
   Logo,
-} from "./styles";
-import SearchInput from "../search-input/SearchInput";
+} from "./Header.styles";
+import SearchInput from "../search/search-input/SearchInput";
 
 type IconLinkProps = {
   name: string;

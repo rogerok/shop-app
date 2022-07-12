@@ -13,10 +13,9 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import CartTotal from "../../components/cart-total/CartTotal";
-import CartList from "../../components/cart-list/CartList";
+import CartTotal from "../../components/cart/cart-total/CartTotal";
+import CartList from "../../components/cart/cart-list/CartList";
 import OrderForm from "../../components/order-form/OrderForm";
-import BasicModal from "../../components/basic-modal/BasicModal";
 
 const CartPage = () => (
   <Grid

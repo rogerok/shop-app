@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { List, Paper, Typography } from "@mui/material";
 import SearchProductPreview from "./SearchProductPreview";
-import { Product, Products } from "../../interfaces/types";
+import { Product, Products } from "../../../ts/types";
 
 type SearchCatalogProps = {
   searchResult: Products;
@@ -12,7 +12,7 @@ const SearchCatalog: FC<SearchCatalogProps> = ({ searchResult, onClick }) => {
   const num = 0;
   return (
     searchResult && (
-      <Paper elevation={3} sx={{}} onClick={onClick}>
+      <Paper elevation={3} onClick={onClick}>
         <List
           sx={{
             position: "absolute",

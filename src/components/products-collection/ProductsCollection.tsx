@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 
 import { useParams } from "react-router-dom";
-import { Product, Products } from "../../interfaces/types";
+import { Product, Products } from "../../ts/types";
 import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopApi";
 /* import { useGetProductsByCategoryQuery } from "../../redux/shop/shopSlice"; */
 

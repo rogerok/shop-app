@@ -4,8 +4,7 @@ import {
   EntityState,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { BaseQueryResult } from "@reduxjs/toolkit/dist/query/baseQueryTypes";
-import { Products, Product } from "../../interfaces/types";
+import { Products, Product } from "../../ts/types";
 
 import { ProductsRespone, shopApi } from "../../services/shopServices/shopApi";
 import { SHOP_API } from "../../utils/api-consts";

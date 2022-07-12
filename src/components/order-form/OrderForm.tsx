@@ -13,7 +13,7 @@ import { clearCart, selectCartItems } from "../../redux/cart/cartSlice";
 
 import BasicModal from "../basic-modal/BasicModal";
 import CustomButton from "../custom-button/CustomButton";
-import { StyledTextField } from "./styles";
+import { StyledTextField } from "./OrderForm.styles";
 
 type FormInputTypes = {
   firstName: string;

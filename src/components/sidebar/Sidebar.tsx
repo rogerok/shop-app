@@ -15,7 +15,7 @@ import {
   setSidebarOpen,
 } from "../../redux/sidebar/sidebarSlice";
 
-import { StyledList } from "./styles";
+import { StyledList } from "./Sidebar.styles";
 
 import { ROUTES_PATHS } from "../../utils/routes-paths";
 

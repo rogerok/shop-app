@@ -5,7 +5,7 @@ import {
   createSelector,
   createEntityAdapter,
 } from "@reduxjs/toolkit";
-import { Product, CartProduct } from "../../interfaces/types";
+import { Product, CartProduct } from "../../ts/types";
 import { shopApi } from "../../services/shopServices/shopApi";
 
 type CartState = {

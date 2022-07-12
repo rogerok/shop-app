@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 
 import { Grid, Box, Paper, Typography, Divider } from "@mui/material";
 
-import useGetTotal from "../../hooks/useGetTotal";
+import useGetTotal from "../../../hooks/useGetTotal";
 
 type TotalType = {
   type: "sum" | "quantity";

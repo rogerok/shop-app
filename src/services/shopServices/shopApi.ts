@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Product, Products } from "../../interfaces/types";
+import { Product, Products } from "../../ts/types";
 import { SHOP_API } from "../../utils/api-consts";
 
 export type ProductsRespone = {

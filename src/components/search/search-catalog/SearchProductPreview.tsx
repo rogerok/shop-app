@@ -1,10 +1,9 @@
 import React from "react";
 import { ListItem, Card, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Product } from "../../interfaces/types";
+import { Product } from "../../../ts/types";
 
-// eslint-disable-next-line import/no-cycle
-import { ROUTES_PATHS } from "../../utils/routes-paths";
+import { ROUTES_PATHS } from "../../../utils/routes-paths";
 
 const SearchProductPreview = (product: Product) => {
   const { thumbnail, title, price, id } = product;

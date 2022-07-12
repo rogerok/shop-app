@@ -12,11 +12,10 @@ import {
 } from "@mui/material";
 
 import { Link as RouterLink, useParams } from "react-router-dom";
-import { Product } from "../../interfaces/types";
+import { Product } from "../../ts/types";
 import { addToCart } from "../../redux/cart/cartSlice";
 import { useAppDispatch } from "../../hooks/redux";
 
-import { StyledButton } from "./styles";
 import CustomButton from "../custom-button/CustomButton";
 
 type ProductCardProps = {

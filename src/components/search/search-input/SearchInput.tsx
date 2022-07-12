@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import { Box, InputAdornment, ClickAwayListener } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { StyledTextField } from "./styles";
+import { StyledTextField } from "./SearchInput.styles";
 
-import useDebounce from "../../hooks/useDebounce";
+import useDebounce from "../../../hooks/useDebounce";
 import SearchCatalog from "../search-catalog/SearchCatalog";
 import {
   shopApi,
   useSearchProductsQuery,
-} from "../../services/shopServices/shopApi";
-import { useAppDispatch } from "../../hooks/redux";
+} from "../../../services/shopServices/shopApi";
+import { useAppDispatch } from "../../../hooks/redux";
 
 const SearchInput = () => {
   const [searchTerm, setSearchTerm] = useState<string | null>("");
@@ -40,6 +40,7 @@ const SearchInput = () => {
         <StyledTextField
           name="search"
           type="text"
+          autoComplete="off"
           value={searchTerm}
           onChange={handleChange}
           onFocus={() => setIsFocused(true)}

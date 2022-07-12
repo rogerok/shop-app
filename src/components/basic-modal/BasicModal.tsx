@@ -3,7 +3,7 @@ import React from "react";
 import { Modal } from "@mui/material";
 
 import { StyledContainer } from "./styles";
-import { StatusType } from "../../interfaces/types";
+import { StatusType } from "../../ts/types";
 import useModal from "../../hooks/useModal";
 
 type ModalProps = StatusType;

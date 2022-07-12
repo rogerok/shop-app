@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import StatusError from "../components/status-components/StatusError";
 import StatusLoading from "../components/status-components/StatusLoading";
 import StatusSuccess from "../components/status-components/StatusSuccess";
-import { StatusType } from "../interfaces/types";
+import { StatusType } from "../ts/types";
 
 const getContent = ({ isLoading, isSuccess, isError }: StatusType) => {
   if (isLoading) return <StatusLoading />;
