@@ -18,7 +18,7 @@ const StatusSuccess = () => (
   >
     <StyledSuccesIcon />
     <Typography variant="h6" paragraph>
-      Окно закроется автоматически
+      The window will closs automatically
     </Typography>
   </Box>
 );

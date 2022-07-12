@@ -31,7 +31,7 @@ const CartTotal = () => {
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Paper elevation={3} sx={{ p: 2 }}>
         <Typography variant="h4" gutterBottom>
-          Итого:
+          Total:
         </Typography>
         <Divider />
 

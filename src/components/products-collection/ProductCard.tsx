@@ -14,9 +14,12 @@ import {
 import { Link as RouterLink, useParams } from "react-router-dom";
 import { Product } from "../../ts/types";
 import { addToCart } from "../../redux/cart/cartSlice";
-import { useAppDispatch } from "../../hooks/redux";
 
-import CustomButton from "../custom-button/CustomButton";
+import { useAppDispatch } from "../../hooks/redux";
+import useSnackbar from "../../hooks/useSnackbar";
+
+import BasicSnackbar from "../basic-snackbar/Snackbar";
+import BasicButton from "../basic-button/BasicButton";
 
 type ProductCardProps = {
   product: Product;
@@ -24,8 +27,13 @@ type ProductCardProps = {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
-  const params = useParams();
+  const { isOpen, handleOpen, handleClose } = useSnackbar();
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
+  const handleButtonClick = () => {
+    dispatch(addToCart(product));
+    handleOpen();
+  };
+
   return (
     <Grid item xs={4} component="li" key={title}>
       <Card sx={{ pb: 2 }}>
@@ -51,15 +59,16 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Rating readOnly value={rating} precision={0.1} />
         </CardContent>
         <CardActions>
-          <CustomButton
-            size="large"
-            fullWidth
-            onClick={() => dispatch(addToCart(product))}
-          >
+          <BasicButton size="large" fullWidth onClick={handleButtonClick}>
             Добавить в корзину
-          </CustomButton>
+          </BasicButton>
         </CardActions>
       </Card>
+      <BasicSnackbar
+        isOpen={isOpen}
+        handleClose={handleClose}
+        message="ДОБАВЛЕНО В КОРЗИНУ"
+      />
     </Grid>
   );
 };

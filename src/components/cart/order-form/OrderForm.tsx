@@ -2,17 +2,14 @@ import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Paper, Typography } from "@mui/material";
-import { orderSchema } from "../../validations/schema";
+import { orderSchema } from "../../../validations/schema";
 
-import {
-  shopApi,
-  useAddUserOrderMutation,
-} from "../../services/shopServices/shopApi";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { clearCart, selectCartItems } from "../../redux/cart/cartSlice";
+import { useAddUserOrderMutation } from "../../../services/shopServices/shopApi";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 
-import BasicModal from "../basic-modal/BasicModal";
-import CustomButton from "../custom-button/CustomButton";
+import BasicModal from "../../basic-modal/BasicModal";
+import BasicButton from "../../basic-button/BasicButton";
 import { StyledTextField } from "./OrderForm.styles";
 
 type FormInputTypes = {
@@ -45,7 +42,7 @@ const OrderForm = () => {
 
   const formData = getValues();
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (e: React.SyntheticEvent) => {
     // here i select added items to cart,  to avoid rerendering by inreasing item quantity in cart
     e.preventDefault();
     await addUserOrder({ cartItems, formData });
@@ -62,7 +59,7 @@ const OrderForm = () => {
     <Box>
       <Paper elevation={3} sx={{ padding: 4 }}>
         <Typography variant="h3" gutterBottom>
-          Оформить заказ
+          Checkout
         </Typography>
         <form onSubmit={onSubmit}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -73,7 +70,7 @@ const OrderForm = () => {
                 <StyledTextField
                   {...field}
                   type="text"
-                  label="Ваше имя"
+                  label="Your name"
                   error={!!errors.firstName}
                   helperText={errors.firstName ? errors.firstName?.message : ""}
                   margin="normal"
@@ -90,7 +87,7 @@ const OrderForm = () => {
                 <StyledTextField
                   {...field}
                   type="text"
-                  label="Ваша фамилия"
+                  label="Your lastname"
                   error={!!errors.lastName}
                   helperText={errors.lastName ? errors.lastName?.message : ""}
                   required
@@ -108,7 +105,7 @@ const OrderForm = () => {
               <StyledTextField
                 {...field}
                 type="tel"
-                label="Ваш номер телефона"
+                label="Your phone number"
                 error={!!errors.phoneNumber}
                 helperText={
                   errors.phoneNumber ? errors.phoneNumber?.message : ""
@@ -127,7 +124,7 @@ const OrderForm = () => {
               <StyledTextField
                 {...field}
                 type="email"
-                label="Электронная почта"
+                label="Your email"
                 error={!!errors.email}
                 helperText={errors.email ? errors.email?.message : ""}
                 variant="outlined"
@@ -137,7 +134,7 @@ const OrderForm = () => {
               />
             )}
           />
-          <CustomButton
+          <BasicButton
             type="submit"
             sx={{
               width: "50%",
@@ -145,8 +142,8 @@ const OrderForm = () => {
               marginLeft: "auto",
             }}
           >
-            Заказать
-          </CustomButton>
+            Order
+          </BasicButton>
         </form>
       </Paper>
       <BasicModal

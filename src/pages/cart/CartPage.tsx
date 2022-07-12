@@ -15,7 +15,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import CartTotal from "../../components/cart/cart-total/CartTotal";
 import CartList from "../../components/cart/cart-list/CartList";
-import OrderForm from "../../components/order-form/OrderForm";
+import OrderForm from "../../components/cart/order-form/OrderForm";
 
 const CartPage = () => (
   <Grid
@@ -30,7 +30,7 @@ const CartPage = () => (
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h4" mb={4}>
-            Корзина
+            Cart
           </Typography>
         </AccordionSummary>
         <Divider />

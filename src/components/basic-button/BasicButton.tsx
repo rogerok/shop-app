@@ -1,6 +1,6 @@
 import { SxProps, ButtonProps } from "@mui/material";
 import React, { FC } from "react";
-import { StyledButton } from "./CustomButton.styles";
+import { StyledButton } from "./BasicButton.styles";
 
 interface CustomButtonProps extends ButtonProps {
   children: React.ReactNode;
@@ -8,8 +8,8 @@ interface CustomButtonProps extends ButtonProps {
   sx?: SxProps;
 }
 
-const CustomButton: FC<CustomButtonProps> = ({ children, ...props }) => (
+const BasicButton: FC<CustomButtonProps> = ({ children, ...props }) => (
   <StyledButton {...props}>{children}</StyledButton>
 );
 
-export default CustomButton;
+export default BasicButton;

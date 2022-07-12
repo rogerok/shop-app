@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 
 import { Outlet } from "react-router-dom";
 
@@ -8,10 +8,10 @@ import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 
 const Layout = () => (
-  <Grid container sx={{ backgroundColor: "yellow" }}>
+  <Grid container>
     <Sidebar />
     <Header />
-    <Grid item xs={10} style={{ backgroundColor: "white", margin: "0 auto" }}>
+    <Grid item xs={10} style={{ margin: "0 auto" }}>
       <Outlet />
     </Grid>
   </Grid>

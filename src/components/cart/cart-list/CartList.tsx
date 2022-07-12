@@ -9,7 +9,7 @@ import CartListItem from "./CartListItem";
 
 const EmptyCart = () => (
   <Typography variant="h6" paragraph>
-    Ваша корзина пуста
+    Your cart is empty
   </Typography>
 );
 

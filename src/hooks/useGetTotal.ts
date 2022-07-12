@@ -25,8 +25,8 @@ const useGetTotal = () => {
   ];
 
   const getDescription = (unit: TotalType) => {
-    if (unit.type === "sum") return "Сумма:";
-    return "Итого:";
+    if (unit.type === "sum") return "Amount:";
+    return "Products:";
   };
 
   useEffect(() => {
