@@ -16,11 +16,13 @@ const CollectionPage = () => {
     dispatch(setSidebarOpen(false));
   });
   return (
-    <Grid container>
+    <Grid container spacing={2}>
       <Grid item xs={3}>
         <Paper elevation={3}>filters</Paper>
       </Grid>
-      <ProductsCollection data={products} />
+      <Grid item xs={9} component="section">
+        <ProductsCollection data={products} />
+      </Grid>
     </Grid>
   );
 };

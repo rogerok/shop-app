@@ -4,7 +4,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Product, Products } from "../../ts/types";
 
-import ProductCard from "./ProductCard";
+import ProductCard from "../product-card/ProductCard";
 
 type ProductsCollectionProps = {
   data: Products;
@@ -14,11 +14,11 @@ const ProductsCollection: FC<ProductsCollectionProps> = ({ data }) => {
   const { category } = useParams();
 
   return (
-    <Grid item xs={8} component="section">
+    <>
       <Typography variant="h3" align="center" mt={3} mb={3}>
         {category?.toUpperCase()}
       </Typography>
-      <Container sx={{ mt: 3 }}>
+      <Container sx={{ mt: 3 }} maxWidth="xl">
         <Grid
           container
           spacing={4}
@@ -29,8 +29,8 @@ const ProductsCollection: FC<ProductsCollectionProps> = ({ data }) => {
             <ProductCard product={product} key={product.id} />
           ))}
         </Grid>
-      </Container>
-    </Grid>
+      </Container>{" "}
+    </>
   );
 };
 

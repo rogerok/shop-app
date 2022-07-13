@@ -18,8 +18,12 @@ export const shopApi = createApi({
       query: (category) =>
         `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}`,
     }),
-    getProductById: builder.query<Product, string>({
+    getProductById: builder.query<Product, string | number>({
       query: (id) => `${SHOP_API.PRODUCTS}/${id}`,
+    }),
+    getProductsForHomePage: builder.query<Products, number>({
+      query: (limit) => `${SHOP_API.PRODUCTS}?limit=${limit}`,
+      transformResponse: (result: ProductsRespone) => result.products,
     }),
     searchProducts: builder.query<Products, string>({
       query: (searchQuery) =>
@@ -40,6 +44,7 @@ export const shopApi = createApi({
 export const {
   useGetProductsByCategoryQuery,
   useGetProductByIdQuery,
+  useGetProductsForHomePageQuery,
   useSearchProductsQuery,
   useAddUserOrderMutation,
 } = shopApi;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Carousel from "react-material-ui-carousel";
 import {
   Container,
@@ -15,12 +15,11 @@ import { useGetProductByIdQuery } from "../../services/shopServices/shopApi";
 import { useAppDispatch } from "../../hooks/redux";
 import useSnackbar from "../../hooks/useSnackbar";
 import { addToCart } from "../../redux/cart/cartSlice";
-
-import BasicButton from "../../components/basic-button/BasicButton";
-import BasicSnackbar from "../../components/basic-snackbar/Snackbar";
-import { SHOP_API } from "../../utils/api-consts";
 import { ROUTES_PATHS } from "../../utils/routes-paths";
 import { Product } from "../../ts/types";
+
+import BasicSnackbar from "../../components/basic-snackbar/Snackbar";
+import BasicBackdrop from "../../components/basic-backdrop/BasicBackdrop";
 import ProductDetails from "../../components/product/ProductDetails";
 import ProductPriceBlock from "../../components/product/ProductPriceBlock";
 import ProductCarousel from "../../components/product/ProductCarousel";
@@ -35,7 +34,6 @@ const ProductPage = () => {
     category,
     description,
     discountPercentage,
-    id,
     images,
     price,
     rating,
@@ -49,14 +47,9 @@ const ProductPage = () => {
     handleOpen();
   };
   return response.isLoading ? (
-    <p>Is loading</p>
+    <BasicBackdrop />
   ) : (
-    <Box
-      /*       item
-      xs={10} */
-      component="section"
-      sx={{ padding: 4, margin: "0 auto" }}
-    >
+    <Box component="section" sx={{ padding: 4, margin: "0 auto" }}>
       <Typography variant="h3" align="left" gutterBottom>
         {title.toUpperCase()}
       </Typography>
@@ -74,13 +67,13 @@ const ProductPage = () => {
           {category.toUpperCase()}
         </Link>
       </Typography>
-      <Grid container spacing={4} sx={{ marginTop: 4 }}>
-        <Grid item xs={5}>
+      <Grid container spacing={4} mt={4} justifyContent="space-between">
+        <Grid item xs={3}>
           <ProductCarousel images={images} title={title} />
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={5}
           component="article"
           sx={{ display: "flex", flexDirection: "column" }}
         >

@@ -14,7 +14,7 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
     rgb(203, 17, 171) 0px,
     rgb(72, 17, 115) 100%
   )`,
-  padding: theme.spacing(2),
+  padding: theme.spacing(4),
   borderRadius: "0 0 -20% 0",
 }));
 

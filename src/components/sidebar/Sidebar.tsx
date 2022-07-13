@@ -5,6 +5,8 @@ import {
   ListItemIcon,
   Grid,
   Drawer,
+  Container,
+  Box,
 } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
@@ -67,7 +69,7 @@ const Sidebar = () => {
   const isidebarOpen = useAppSelector(selectIsSideBarOpen);
 
   return (
-    <Grid item xs={6} component="aside">
+    <Box component="aside">
       <Drawer
         open={isidebarOpen}
         onClose={() => dispatch(setSidebarOpen(false))}
@@ -79,7 +81,7 @@ const Sidebar = () => {
           ))}
         </StyledList>
       </Drawer>
-    </Grid>
+    </Box>
   );
 };
 export default Sidebar;

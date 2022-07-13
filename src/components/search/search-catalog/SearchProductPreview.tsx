@@ -22,6 +22,7 @@ const SearchProductPreview = (product: Product) => {
           justifyContent: "space-between",
           alignItems: "center",
           cursor: "pointer",
+          padding: 2,
         }}
       >
         <CardMedia

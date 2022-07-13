@@ -11,7 +11,7 @@ import {
   Link,
 } from "@mui/material";
 
-import { Link as RouterLink, useParams } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { Product } from "../../ts/types";
 import { addToCart } from "../../redux/cart/cartSlice";
 
@@ -41,16 +41,28 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <CardMedia
             component="img"
             image={thumbnail}
-            sx={{ aspectRatio: "2/3" }}
+            sx={{ aspectRatio: "2/1" }}
             alt={title}
           />
         </Link>
 
-        <CardContent>
+        <CardContent sx={{ position: "relative" }}>
           <Typography variant="h6" component="h6" gutterBottom>
             {title.length > 15 ? `${title.slice(0, 15)}...` : title}
           </Typography>
-          <Typography variant="h5" paragraph gutterBottom>
+          <Typography
+            variant="h5"
+            paragraph
+            gutterBottom
+            sx={{
+              position: "absolute",
+              bottom: "100%",
+              padding: 0.5,
+              backgroundColor: "secondary.dark",
+              color: "primary.light",
+              borderRadius: 4,
+            }}
+          >
             -{discountPercentage}%
           </Typography>
           <Typography variant="h5" paragraph gutterBottom>

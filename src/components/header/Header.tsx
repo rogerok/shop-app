@@ -33,13 +33,13 @@ type IconLinkProps = {
 
 const data: IconLinkProps[] = [
   {
-    name: "Аккаунт",
+    name: "Account",
     path: "account",
     icon: <PersonIcon />,
   },
   {
-    name: "Адреса",
-    path: "adress",
+    name: "Addresses",
+    path: "addresses",
     icon: <LocationOnIcon />,
   },
 ];
@@ -64,7 +64,7 @@ const HeaderCartIcon = () => {
 
   return (
     <Badge badgeContent={cartQuantity} overlap="circular" color="secondary">
-      <HeaderIconLink name="Корзина" path="/cart" icon={<ShoppingCartIcon />} />
+      <HeaderIconLink name="Cart" path="/cart" icon={<ShoppingCartIcon />} />
     </Badge>
   );
 };
@@ -88,7 +88,7 @@ const Header = () => {
             <MenuIcon />
           </StyledIconButton>
           <Logo to="/" variant="h4" component={NavLink}>
-            <Typography variant="h4" component="span">
+            <Typography variant="h2" component="span">
               CHERRYBERRIES
             </Typography>
           </Logo>
