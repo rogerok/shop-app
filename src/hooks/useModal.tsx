@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import StatusError from "../components/status-components/StatusError";
-import StatusLoading from "../components/status-components/StatusLoading";
-import StatusSuccess from "../components/status-components/StatusSuccess";
+import StatusError from "../components/common/StatusComponents/StatusError";
+import StatusLoading from "../components/common/StatusComponents/StatusLoading";
+import StatusSuccess from "../components/common/StatusComponents/StatusSuccess";
 import { StatusType } from "../ts/types";
 
 const getContent = ({ isLoading, isSuccess, isError }: StatusType) => {

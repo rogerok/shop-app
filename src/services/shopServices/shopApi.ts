@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Product, Products } from "../../ts/types";
-import { SHOP_API } from "../../utils/api-consts";
+import { SHOP_API } from "../../utils/API";
 
 export type ProductsRespone = {
   limit: number;

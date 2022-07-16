@@ -3,9 +3,7 @@ import {
   ListItemButton,
   ListItemText,
   ListItemIcon,
-  Grid,
   Drawer,
-  Container,
   Box,
 } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
@@ -16,33 +14,10 @@ import {
   selectIsSideBarOpen,
   setSidebarOpen,
 } from "../../redux/sidebar/sidebarSlice";
+import { ROUTES_PATHS } from "../../router/routes";
+import { PRODUCTS_CATEGORIES } from "../../utils/constants/PRODUCTS_CATEGORIES";
 
 import { StyledList } from "./Sidebar.styles";
-
-import { ROUTES_PATHS } from "../../utils/routes-paths";
-
-const categories = [
-  "smartphones",
-  "laptops",
-  "fragrances",
-  "skincare",
-  "groceries",
-  "home-decoration",
-  "furniture",
-  "tops",
-  "womens-dresses",
-  "womens-shoes",
-  "mens-shirts",
-  "mens-shoes",
-  "mens-watches",
-  "womens-watches",
-  "womens-bags",
-  "womens-jewellery",
-  "sunglasses",
-  "automotive",
-  "motorcycle",
-  "lighting",
-];
 
 const ListItem = ({ category }: { category: string }) => {
   const dispatch = useAppDispatch();
@@ -76,7 +51,7 @@ const Sidebar = () => {
         anchor="left"
       >
         <StyledList>
-          {categories.map((category) => (
+          {PRODUCTS_CATEGORIES.map((category) => (
             <ListItem key={category} category={category} />
           ))}
         </StyledList>

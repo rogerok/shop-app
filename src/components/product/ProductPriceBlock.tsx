@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Paper, Typography } from "@mui/material";
-import BasicButton from "../basic-button/BasicButton";
+import Button from "../common/Button/Button";
 
 type ProductPriceBlockProps = {
   handleClick: () => void;
@@ -31,14 +31,14 @@ const ProductPriceBlock: FC<ProductPriceBlockProps> = ({
     <Typography variant="h4" sx={{ color: "error.main" }}>
       ${Number(((100 - Number(discountPercentage)) * price) / 100).toFixed(2)}
     </Typography>
-    <BasicButton
+    <Button
       size="large"
       onClick={handleClick}
       sx={{ margin: "0 auto" }}
       fullWidth
     >
       Add to cart
-    </BasicButton>
+    </Button>
   </Paper>
 );
 

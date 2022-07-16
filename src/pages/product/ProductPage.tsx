@@ -15,15 +15,15 @@ import { useGetProductByIdQuery } from "../../services/shopServices/shopApi";
 import { useAppDispatch } from "../../hooks/redux";
 import useSnackbar from "../../hooks/useSnackbar";
 import { addToCart } from "../../redux/cart/cartSlice";
-import { ROUTES_PATHS } from "../../utils/routes-paths";
+import { ROUTES_PATHS } from "../../router/routes";
 import { Product } from "../../ts/types";
 
-import BasicSnackbar from "../../components/basic-snackbar/Snackbar";
-import BasicBackdrop from "../../components/basic-backdrop/BasicBackdrop";
-import ProductDetails from "../../components/product/ProductDetails";
-import ProductPriceBlock from "../../components/product/ProductPriceBlock";
-import ProductCarousel from "../../components/product/ProductCarousel";
-import ProductDescription from "../../components/product/ProductDescription";
+import Snackbar from "../../components/common/Snackbar/Snackbar";
+import Backdrop from "../../components/common/Backdrop/Backdrop";
+import ProductDetails from "../../components/Product/ProductDetails";
+import ProductPriceBlock from "../../components/Product/ProductPriceBlock";
+import ProductCarousel from "../../components/Product/ProductCarousel";
+import ProductDescription from "../../components/Product/ProductDescription";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -47,9 +47,9 @@ const ProductPage = () => {
     handleOpen();
   };
   return response.isLoading ? (
-    <BasicBackdrop />
+    <Backdrop />
   ) : (
-    <Box component="section" sx={{ padding: 4, margin: "0 auto" }}>
+    <Box component="section" p={4} /*  mx="auto" */>
       <Typography variant="h3" align="left" gutterBottom>
         {title.toUpperCase()}
       </Typography>
@@ -75,7 +75,8 @@ const ProductPage = () => {
           item
           xs={5}
           component="article"
-          sx={{ display: "flex", flexDirection: "column" }}
+          display="flex"
+          flexDirection="column"
         >
           <ProductDescription description={description} />
           <ProductDetails brand={brand} category={category} stock={stock} />
@@ -88,7 +89,7 @@ const ProductPage = () => {
           />
         </Grid>
       </Grid>
-      <BasicSnackbar
+      <Snackbar
         isOpen={isOpen}
         handleClose={handleClose}
         message="ADDED TO CART"

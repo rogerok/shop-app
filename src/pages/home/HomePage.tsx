@@ -1,15 +1,15 @@
 import React from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import { useGetProductsForHomePageQuery } from "../../services/shopServices/shopApi";
-import BasicBackdrop from "../../components/basic-backdrop/BasicBackdrop";
+import Backdrop from "../../components/common/Backdrop/Backdrop";
 import { Product } from "../../ts/types";
-import ProductCard from "../../components/product-card/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 const HomePage = () => {
   const { data, isLoading } = useGetProductsForHomePageQuery(15);
 
   return isLoading ? (
-    <BasicBackdrop />
+    <Backdrop />
   ) : (
     <Grid container pt={10} pb={10} spacing={6} justifyContent="center">
       <Grid item xs={10}>

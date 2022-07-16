@@ -7,7 +7,7 @@ import {
 import { Products, Product } from "../../ts/types";
 
 import { ProductsRespone, shopApi } from "../../services/shopServices/shopApi";
-import { SHOP_API } from "../../utils/api-consts";
+import { SHOP_API as API } from "../../utils/API";
 
 const shopAdapter = createEntityAdapter<Products>();
 
@@ -16,8 +16,7 @@ const initialState = shopAdapter.getInitialState({});
 export const extendedShopSlice = shopApi.injectEndpoints({
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<Products, string>({
-      query: (category) =>
-        `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}`,
+      query: (category) => `${API.PRODUCTS}/${API.CATEGORY}/${category}`,
       transformResponse: (responseData: ProductsRespone) =>
         responseData.products,
     }),

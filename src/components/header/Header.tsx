@@ -7,31 +7,23 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import {
-  getTotalQuantity,
-  selectTotalQuantity,
-} from "../../redux/cart/cartSlice";
+import { useAppDispatch } from "../../hooks/redux";
+
 import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
 
 import {
   StyledAppBar,
   StyledIconButton,
   StyledToolbar,
-  StyledIconLink,
   Logo,
 } from "./Header.styles";
-import SearchInput from "../search/search-input/SearchInput";
 
-type IconLinkProps = {
-  name: string;
-  path: string;
-  icon: React.ReactElement;
-};
+import SearchInput from "./search/SearchInput/SearchInput";
+import IconLink from "./IconLink/IconLink";
+import CartIcon from "./CartIcon/CartIcon";
 
-const data: IconLinkProps[] = [
+const iconLinksData = [
   {
     name: "Account",
     path: "account",
@@ -43,33 +35,6 @@ const data: IconLinkProps[] = [
     icon: <LocationOnIcon />,
   },
 ];
-
-const HeaderIconLink: FC<IconLinkProps> = ({ name, path, icon }) => (
-  <StyledIconLink to={path} component={NavLink}>
-    {icon}
-    <Typography variant="body1" component="span" fontWeight={300}>
-      {name}
-    </Typography>
-  </StyledIconLink>
-);
-
-const HeaderCartIcon = () => {
-  const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart);
-  const cartQuantity = useAppSelector(selectTotalQuantity);
-
-  useEffect(() => {
-    dispatch(getTotalQuantity());
-  }, [cart, dispatch]);
-
-  return (
-    <Badge badgeContent={cartQuantity} overlap="circular" color="secondary">
-      <HeaderIconLink name="Cart" path="/cart" icon={<ShoppingCartIcon />} />
-    </Badge>
-  );
-};
-
-const CartIconMemoized = React.memo(HeaderCartIcon);
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -94,10 +59,10 @@ const Header = () => {
           </Logo>
 
           <SearchInput />
-          {data.map((link) => (
-            <HeaderIconLink key={link.path} {...link} />
+          {iconLinksData.map((link) => (
+            <IconLink key={link.path} {...link} />
           ))}
-          <CartIconMemoized />
+          <CartIcon />
         </StyledToolbar>
       </StyledAppBar>
     </Grid>
