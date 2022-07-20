@@ -12,8 +12,8 @@ type DescriptionProps = {
   description: string | number;
 };
 
-const Description: FC<DescriptionProps> = ({ title, description }) => {
-  const capitalizeDescription = (toCapitalize: string | number) => {
+const Detail: FC<DescriptionProps> = ({ title, description }) => {
+  const capitalizeDetail = (toCapitalize: string | number) => {
     if (typeof toCapitalize === "number") return toCapitalize;
     return (
       toCapitalize.charAt(0).toLocaleUpperCase() +
@@ -23,15 +23,12 @@ const Description: FC<DescriptionProps> = ({ title, description }) => {
 
   return (
     <>
-      <Box
-        component="p"
-        sx={{ display: "flex", justifyContent: "space-between" }}
-      >
+      <Box component="p" display="flex" justifyContent="space-between">
         <Typography component="span" variant="h5" fontWeight={600}>
           {title}:
         </Typography>
         <Typography component="span" variant="h5">
-          {capitalizeDescription(description)}
+          {capitalizeDetail(description)}
         </Typography>
       </Box>
       <Divider />
@@ -44,15 +41,10 @@ const ProductDetails: FC<ProductDetailsProps> = ({
   category,
   brand,
 }) => (
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-    }}
-  >
-    <Description title="Brand" description={brand} />
-    <Description title="Stock" description={stock} />
-    <Description title="Category" description={category} />
+  <Box display="flex" flexDirection="column">
+    <Detail title="Brand" description={brand} />
+    <Detail title="Stock" description={stock} />
+    <Detail title="Category" description={category} />
   </Box>
 );
 

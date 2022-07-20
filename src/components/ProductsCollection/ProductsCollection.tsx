@@ -29,7 +29,7 @@ const ProductsCollection: FC<ProductsCollectionProps> = ({ data }) => {
             <ProductCard product={product} key={product.id} />
           ))}
         </Grid>
-      </Container>{" "}
+      </Container>
     </>
   );
 };

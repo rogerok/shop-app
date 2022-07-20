@@ -21,6 +21,8 @@ import useSnackbar from "../../hooks/useSnackbar";
 import Snackbar from "../common/Snackbar/Snackbar";
 import Button from "../common/Button/Button";
 
+import { DiscountLabel } from "./ProductCard.styles";
+
 type ProductCardProps = {
   product: Product;
 };
@@ -50,21 +52,9 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Typography variant="h6" component="h6" gutterBottom>
             {title.length > 15 ? `${title.slice(0, 15)}...` : title}
           </Typography>
-          <Typography
-            variant="h5"
-            paragraph
-            gutterBottom
-            sx={{
-              position: "absolute",
-              bottom: "100%",
-              padding: 0.5,
-              backgroundColor: "secondary.dark",
-              color: "primary.light",
-              borderRadius: 4,
-            }}
-          >
+          <DiscountLabel variant="h5" paragraph gutterBottom>
             -{discountPercentage}%
-          </Typography>
+          </DiscountLabel>
           <Typography variant="h5" paragraph gutterBottom>
             ${price}
           </Typography>

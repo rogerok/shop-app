@@ -5,6 +5,15 @@ import Backdrop from "../../components/common/Backdrop/Backdrop";
 import { Product } from "../../ts/types";
 import ProductCard from "../../components/ProductCard/ProductCard";
 
+import image1 from "../../assets/home-page-carousel/1.jpg";
+import image2 from "../../assets/home-page-carousel/2.jpg";
+import image3 from "../../assets/home-page-carousel/3.jpg";
+import image4 from "../../assets/home-page-carousel/4.jpg";
+import image5 from "../../assets/home-page-carousel/5.jpg";
+import Carousel from "../../components/common/Carousel/Carousel";
+
+const carouselImages = [image1, image2, image3, image4, image5];
+
 const HomePage = () => {
   const { data, isLoading } = useGetProductsForHomePageQuery(15);
 
@@ -23,6 +32,7 @@ const HomePage = () => {
   )`,
             pt: 2,
             pb: 2,
+            mb: 2,
           }}
         >
           <Typography
@@ -35,6 +45,14 @@ const HomePage = () => {
             WELCOME TO CHERRYBERRIES
           </Typography>
         </Paper>
+      </Grid>
+      <Grid item xs={10}>
+        <Carousel
+          images={carouselImages}
+          autoPlay
+          imageAspectRatio="3/1.2"
+          interval={2000}
+        />
       </Grid>
 
       <Grid

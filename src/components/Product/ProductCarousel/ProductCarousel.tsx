@@ -1,18 +1,26 @@
 import React, { FC } from "react";
 import { Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
+import { CarouselProps } from "react-material-ui-carousel/dist/components/types";
 
-type ProductCarouselProps = {
-  title: string;
+interface ProductCarouselProps extends CarouselProps {
+  title?: string;
   images: string[];
-};
+  maxWidth?: string;
+}
 
-const ProductCarousel: FC<ProductCarouselProps> = ({ title, images }) => (
+const ProductCarousel: FC<ProductCarouselProps> = ({
+  title,
+  images,
+  maxWidth = "500",
+  autoPlay = false,
+  height = 500,
+  sx,
+}) => (
   <Carousel
-    fullHeightHover={false}
-    autoPlay={false}
-    height={500}
-    sx={{ width: "500px" }}
+    autoPlay={autoPlay}
+    height={height}
+    sx={{ /* maxWidth: `${maxWidth}px`, */ ...sx }}
   >
     {images?.map((image: string, i: number) => (
       <Paper

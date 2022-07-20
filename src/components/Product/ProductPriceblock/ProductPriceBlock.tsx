@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Paper, Typography } from "@mui/material";
-import Button from "../common/Button/Button";
+import Button from "../../common/Button/Button";
 
 type ProductPriceBlockProps = {
   handleClick: () => void;

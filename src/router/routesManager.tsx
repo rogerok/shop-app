@@ -3,12 +3,12 @@ import { RouteObject } from "react-router-dom";
 
 // eslint-disable-next-line import/no-cycle
 import Layout from "../components/Layout/Layout";
-import AdressPage from "../pages/adress/AdressPage";
-import CartPage from "../pages/cart/CartPage";
-import CollectionPage from "../pages/collection/CollectionPage";
-import HomePage from "../pages/home/HomePage";
-import AccountPage from "../pages/account/AccountPage";
-import ProductPage from "../pages/product/ProductPage";
+import AdressPage from "../pages/Adressess/AdressPage";
+import CartPage from "../pages/Cart/CartPage";
+import CollectionPage from "../pages/Collection/CollectionPage";
+import HomePage from "../pages/Home/HomePage";
+import AccountPage from "../pages/Account/AccountPage";
+import ProductPage from "../pages/Product/ProductPage";
 import { ROUTES_PATHS } from "./routes";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -14,9 +14,10 @@ export const shopApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: SHOP_API.URL }),
 
   endpoints: (builder) => ({
-    getProductsByCategory: builder.query<ProductsRespone, string>({
+    getProductsByCategory: builder.query<Products, string>({
       query: (category) =>
         `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}`,
+      transformResponse: (result: ProductsRespone) => result.products,
     }),
     getProductById: builder.query<Product, string | number>({
       query: (id) => `${SHOP_API.PRODUCTS}/${id}`,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Box, InputAdornment, ClickAwayListener } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,36 +6,23 @@ import { StyledTextField } from "./SearchInput.styles";
 
 import useDebounce from "../../../../hooks/useDebounce";
 import SearchCatalog from "../SearchCatalog/SearchCatalog";
-import {
-  shopApi,
-  useSearchProductsQuery,
-} from "../../../../services/shopServices/shopApi";
-import { useAppDispatch } from "../../../../hooks/redux";
 
 const SearchInput = () => {
   const [searchTerm, setSearchTerm] = useState<string | null>("");
   const [isFocused, setIsFocused] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm!, 500);
-  const { data } = useSearchProductsQuery(debouncedSearchTerm, {
-    skip: !debouncedSearchTerm.length,
-  });
-  const dispatch = useAppDispatch();
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value.toLocaleLowerCase());
   };
+  const isActive = isFocused && debouncedSearchTerm;
 
-  const handleClickAway = () => {
+  const handleClearInput = () => {
     setIsFocused(false);
     setSearchTerm("");
   };
 
-  useEffect(() => {
-    if (!isFocused) dispatch(shopApi.util.resetApiState());
-  }, [handleClickAway]);
-
   return (
-    <ClickAwayListener onClickAway={handleClickAway}>
+    <ClickAwayListener onClickAway={handleClearInput}>
       <Box sx={{ width: "40%", position: "relative" }}>
         <StyledTextField
           name="search"
@@ -55,8 +42,11 @@ const SearchInput = () => {
             ),
           }}
         />
-        {data && isFocused && (
-          <SearchCatalog searchResult={data} onClick={handleClickAway} />
+        {isActive && (
+          <SearchCatalog
+            onClick={handleClearInput}
+            searchTerm={debouncedSearchTerm}
+          />
         )}
       </Box>
     </ClickAwayListener>

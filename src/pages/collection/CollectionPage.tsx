@@ -6,22 +6,25 @@ import ProductsCollection from "../../components/ProductsCollection/ProductsColl
 import { useAppDispatch } from "../../hooks/redux";
 import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
 import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopApi";
+import { Products } from "../../ts/types";
+import Backdrop from "../../components/common/Backdrop/Backdrop";
 
 const CollectionPage = () => {
   const dispatch = useAppDispatch();
   const { category } = useParams();
-  const { products } = useGetProductsByCategoryQuery(category!).data! ?? [];
+  const { data, isLoading } = useGetProductsByCategoryQuery(
+    category!
+  ); /* ?? [] */
 
-  /*   useEffect(() => {
-    dispatch(setSidebarOpen(false));
-  }); */
-  return (
+  return isLoading ? (
+    <Backdrop />
+  ) : (
     <Grid container spacing={2}>
       <Grid item xs={3}>
         <Paper elevation={3}>filters</Paper>
       </Grid>
       <Grid item xs={9} component="section">
-        <ProductsCollection data={products} />
+        <ProductsCollection data={data!} />
       </Grid>
     </Grid>
   );
