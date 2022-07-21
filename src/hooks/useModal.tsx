@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import StatusError from "../components/common/StatusComponents/StatusError";
-import StatusLoading from "../components/common/StatusComponents/StatusLoading";
+import Spinner from "../components/common/Spinner/Spinner";
 import StatusSuccess from "../components/common/StatusComponents/StatusSuccess";
 import { StatusType } from "../ts/types";
 
 const getContent = ({ isLoading, isSuccess, isError }: StatusType) => {
-  if (isLoading) return <StatusLoading />;
+  if (isLoading) return <Spinner />;
   if (isError) return <StatusError />;
   if (isSuccess) return <StatusSuccess />;
   return null;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Backdrop as MuiBackdrop } from "@mui/material";
-import StatusLoading from "../StatusComponents/StatusLoading";
+import Spinner from "../Spinner/Spinner";
 
 const Backdrop = () => (
   <MuiBackdrop open>
-    <StatusLoading />
+    <Spinner />
   </MuiBackdrop>
 );
 

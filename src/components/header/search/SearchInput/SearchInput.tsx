@@ -8,9 +8,10 @@ import useDebounce from "../../../../hooks/useDebounce";
 import SearchCatalog from "../SearchCatalog/SearchCatalog";
 
 const SearchInput = () => {
-  const [searchTerm, setSearchTerm] = useState<string | null>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [isFocused, setIsFocused] = useState(false);
-  const debouncedSearchTerm = useDebounce(searchTerm!, 500);
+  const debouncedSearchTerm = useDebounce(searchTerm.trim(), 500);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value.toLocaleLowerCase());
   };
