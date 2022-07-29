@@ -7,14 +7,12 @@ interface ProductCarouselProps extends CarouselProps {
   title?: string;
   images: string[];
   maxWidth?: string;
-  imageAspectRatio?: string;
 }
 
 const Carousel: FC<ProductCarouselProps> = ({
   title,
   images,
   autoPlay = false,
-  imageAspectRatio = "2/2",
   sx,
   ...props
 }) => (
@@ -24,13 +22,9 @@ const Carousel: FC<ProductCarouselProps> = ({
         // eslint-disable-next-line react/no-array-index-key
         key={i}
         elevation={3}
-        sx={{ display: "flex", justifyContent: "center" }}
+        sx={{ display: "flex", justifyContent: "center", maxWidth: "100%" }}
       >
-        <img
-          src={image}
-          alt={title}
-          style={{ aspectRatio: imageAspectRatio, width: "100%" }}
-        />
+        <img src={image} alt={title} style={{ width: "100%" }} />
       </Paper>
     ))}
   </MuiCarousel>

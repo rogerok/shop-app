@@ -9,16 +9,14 @@ export const StyledSuccesIcon = styled(DoneIcon)(({ theme }) => ({
 
 const StatusSuccess = () => (
   <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
+    display="flex"
+    flexDirection="column"
+    justifyContent="center"
+    alignItems="center"
   >
     <StyledSuccesIcon />
     <Typography variant="h6" paragraph>
-      The window will closs automatically
+      The window will close automatically
     </Typography>
   </Box>
 );

@@ -7,26 +7,26 @@ import { useAppSelector } from "../../../hooks/redux";
 import { selectCartItems } from "../../../redux/cart/cartSlice";
 import CartListItem from "./CartListItem";
 
+type CartListProps = {
+  cartItems: CartProduct[];
+};
+
 const EmptyCart = () => (
   <Typography variant="h6" paragraph>
     Your cart is empty
   </Typography>
 );
 
-const CartList = () => {
-  const products = useAppSelector(selectCartItems);
-
-  return (
-    <Box mt={4} display="flex" flexDirection="column">
-      {products.length ? (
-        products.map((product: CartProduct) => (
-          <CartListItem product={product} key={product.id} />
-        ))
-      ) : (
-        <EmptyCart />
-      )}
-    </Box>
-  );
-};
+const CartList: React.FC<CartListProps> = ({ cartItems }) => (
+  <Box mt={4} display="flex" flexDirection="column">
+    {cartItems.length ? (
+      cartItems.map((product: CartProduct) => (
+        <CartListItem product={product} key={product.id} />
+      ))
+    ) : (
+      <EmptyCart />
+    )}
+  </Box>
+);
 
 export default CartList;

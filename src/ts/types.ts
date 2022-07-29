@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { To } from "react-router-dom";
 
 export type Product = {
@@ -25,6 +26,7 @@ export interface AddedProduct extends Product {
 export type LinkProps = {
   component?: React.ElementType;
   to: To;
+  children?: ReactNode;
 };
 
 export type StatusType = {

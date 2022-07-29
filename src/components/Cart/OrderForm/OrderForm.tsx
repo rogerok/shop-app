@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
+import {
+  useForm,
+  Controller,
+  UseFormReturn,
+  UseFormProps,
+} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Paper, Typography } from "@mui/material";
 
@@ -12,6 +17,7 @@ import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
 import { StyledTextField } from "./OrderForm.styles";
+import { CartProduct, Products } from "../../../ts/types";
 
 type FormInputTypes = {
   firstName: string;
@@ -20,11 +26,14 @@ type FormInputTypes = {
   email: string;
 };
 
-const OrderForm = () => {
+type OrderFormProps = {
+  cartItems: CartProduct[];
+};
+
+const OrderForm: React.FC<OrderFormProps> = ({ cartItems }) => {
+  const dispatch = useAppDispatch();
   const [addUserOrder, { isError, isLoading, isSuccess }] =
     useAddUserOrderMutation();
-  const cartItems = useAppSelector(selectCartItems);
-  const dispatch = useAppDispatch();
 
   const {
     control,
@@ -41,13 +50,12 @@ const OrderForm = () => {
     resolver: yupResolver(orderSchema),
   });
 
-  const formData = getValues();
+  const isCartEmpty = !cartItems.length;
 
   const onSubmit = async (e: React.SyntheticEvent) => {
-    // here i select added items to cart,  to avoid rerendering by inreasing item quantity in cart
     e.preventDefault();
+    const formData = getValues();
     await addUserOrder({ cartItems, formData });
-    reset();
   };
 
   useEffect(() => {
@@ -135,13 +143,25 @@ const OrderForm = () => {
               />
             )}
           />
+          {isCartEmpty && (
+            <Typography
+              component="span"
+              variant="h6"
+              color="error"
+              sx={{ display: "block", mb: 2 }}
+              gutterBottom
+            >
+              Please add products for order
+            </Typography>
+          )}
           <Button
             type="submit"
             sx={{
               width: "25%",
               display: "flex",
-              marginLeft: "auto",
+              mx: "left",
             }}
+            disabled={isCartEmpty}
           >
             Order
           </Button>

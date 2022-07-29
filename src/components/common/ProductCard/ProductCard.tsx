@@ -12,14 +12,14 @@ import {
 } from "@mui/material";
 
 import { Link as RouterLink } from "react-router-dom";
-import { Product } from "../../ts/types";
-import { addToCart } from "../../redux/cart/cartSlice";
+import { Product } from "../../../ts/types";
+import { addToCart } from "../../../redux/cart/cartSlice";
 
-import { useAppDispatch } from "../../hooks/redux";
-import useSnackbar from "../../hooks/useSnackbar";
+import { useAppDispatch } from "../../../hooks/redux";
+import useSnackbar from "../../../hooks/useSnackbar";
 
-import Snackbar from "../common/Snackbar/Snackbar";
-import Button from "../common/Button/Button";
+import Snackbar from "../Snackbar/Snackbar";
+import Button from "../Button/Button";
 
 import { DiscountLabel } from "./ProductCard.styles";
 
@@ -62,7 +62,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         </CardContent>
         <CardActions>
           <Button size="large" fullWidth onClick={handleButtonClick}>
-            Добавить в корзину
+            Add to cart
           </Button>
         </CardActions>
       </Card>

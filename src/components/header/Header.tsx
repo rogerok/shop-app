@@ -19,7 +19,7 @@ import {
   Logo,
 } from "./Header.styles";
 
-import SearchInput from "./search/SearchInput/SearchInput";
+import SearchInput from "../Search/SearchInput/SearchInput";
 import IconLink from "./IconLink/IconLink";
 import CartIcon from "./CartIcon/CartIcon";
 

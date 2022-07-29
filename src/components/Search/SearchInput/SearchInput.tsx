@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 import { Box, InputAdornment, ClickAwayListener } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useParams, useSearchParams } from "react-router-dom";
 import { StyledTextField } from "./SearchInput.styles";
 
-import useDebounce from "../../../../hooks/useDebounce";
+import useDebounce from "../../../hooks/useDebounce";
 import SearchCatalog from "../SearchCatalog/SearchCatalog";
 
 const SearchInput = () => {
@@ -32,7 +33,7 @@ const SearchInput = () => {
           value={searchTerm}
           onChange={handleChange}
           onFocus={() => setIsFocused(true)}
-          placeholder="Я ищу..."
+          placeholder="Search"
           variant="outlined"
           fullWidth
           InputProps={{
@@ -45,7 +46,7 @@ const SearchInput = () => {
         />
         {isActive && (
           <SearchCatalog
-            onClick={handleClearInput}
+            handleClearInput={handleClearInput}
             searchTerm={debouncedSearchTerm}
           />
         )}

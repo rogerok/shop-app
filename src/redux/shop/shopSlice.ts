@@ -9,16 +9,22 @@ import { Products, Product } from "../../ts/types";
 import { ProductsRespone, shopApi } from "../../services/shopServices/shopApi";
 import { SHOP_API as API } from "../../utils/API";
 
-const shopAdapter = createEntityAdapter<Products>();
+interface ShopState extends EntityState<Product> {
+  entities: {};
+}
 
-const initialState = shopAdapter.getInitialState({});
+const shopAdapter = createEntityAdapter<Product>({
+  sortComparer: (a, b) => a.id.localeCompare(b.id),
+});
+
+const initialState = shopAdapter.getInitialState();
 
 export const extendedShopSlice = shopApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProductsByCategory: builder.query<Products, string>({
+    getProductsByCategory: builder.query<EntityState<Product>, string>({
       query: (category) => `${API.PRODUCTS}/${API.CATEGORY}/${category}`,
       transformResponse: (responseData: ProductsRespone) =>
-        responseData.products,
+        shopAdapter.addMany(initialState, responseData.products),
     }),
   }),
 });
