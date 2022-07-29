@@ -10,6 +10,10 @@ const CollectionPage = () => {
   const { category } = useParams();
   const { data, isLoading } = useGetProductsByCategoryQuery(category!);
 
-  return isLoading ? <Backdrop /> : <ProductsCollection data={data!} />;
+  return isLoading ? (
+    <Backdrop />
+  ) : (
+    <ProductsCollection data={data!} title={category!} />
+  );
 };
 export default CollectionPage;

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import Backdrop from "../../components/common/Backdrop/Backdrop";
@@ -10,7 +11,13 @@ const SearchResultPage = () => {
 
   const { data, isLoading } = useSearchProductsQuery(searchTerm!);
 
-  return isLoading ? <Backdrop /> : <ProductsCollection data={data!} />;
+  return isLoading ? (
+    <Backdrop />
+  ) : (
+    <>
+      <ProductsCollection data={data!} title="Search results" />;
+    </>
+  );
 };
 
 export default SearchResultPage;
