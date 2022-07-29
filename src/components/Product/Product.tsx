@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Grid, Typography, Box, Rating, Link } from "@mui/material";
 
 import { useParams, Link as RouterLink } from "react-router-dom";
@@ -59,7 +59,7 @@ const Product = () => {
       </Typography>
       <Grid container spacing={4} mt={4} justifyContent="space-between">
         <Grid item xs={4}>
-          <Carousel images={images} title={title} />
+          <Carousel images={images} title={title} aspectRatio="1/1" />
         </Grid>
         <Grid
           item

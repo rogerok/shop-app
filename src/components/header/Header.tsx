@@ -36,8 +36,8 @@ const Header = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <Grid item xs={12}>
-      <StyledAppBar position="static">
+    <Grid item xs={12} position="relative">
+      <StyledAppBar position="static" elevation={0}>
         <StyledToolbar>
           <StyledIconButton
             color="inherit"

@@ -4,7 +4,7 @@ import { Grid, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Product, Products } from "../../ts/types";
 
-import ProductCard from "../common/ProductCard/ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 
 type ProductsCollectionProps = {
   data: Products;

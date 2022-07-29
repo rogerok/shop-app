@@ -19,10 +19,6 @@ export type Product = {
 export type CartProduct = Omit<Product, "images" | "rating" | "description">;
 export type Products = Product[];
 
-export interface AddedProduct extends Product {
-  quantity: number;
-}
-
 export type LinkProps = {
   component?: React.ElementType;
   to?: To;
@@ -30,8 +26,19 @@ export type LinkProps = {
   onClick?: () => void;
 };
 
+export type ImgProps = {
+  src: string;
+  alt: string;
+  aspectRatio?: string;
+  width?: string;
+};
+
 export type StatusType = {
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
 };
+
+export interface AddedProduct extends Product {
+  quantity: number;
+}

@@ -12,14 +12,14 @@ import {
 } from "@mui/material";
 
 import { Link as RouterLink } from "react-router-dom";
-import { Product } from "../../../ts/types";
+import { Product } from "../../ts/types";
 
-import { addToCart } from "../../../redux/cart/cartSlice";
-import { useAppDispatch } from "../../../hooks/redux";
+import { addToCart } from "../../redux/cart/cartSlice";
+import { useAppDispatch } from "../../hooks/redux";
 
-import useSnackbar from "../../../hooks/useSnackbar";
-import Snackbar from "../Snackbar/Snackbar";
-import Button from "../Button/Button";
+import useSnackbar from "../../hooks/useSnackbar";
+import Snackbar from "../common/Snackbar/Snackbar";
+import Button from "../common/Button/Button";
 
 import { DiscountLabel } from "./ProductCard.styles";
 

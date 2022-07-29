@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import {

@@ -9,6 +9,17 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   )`,
   padding: theme.spacing(4),
   borderRadius: "0 0 -20% 0",
+  "&::after": {
+    content: "''",
+    display: "block",
+    width: "100%",
+    height: "24px",
+    borderRadius: "24px 24px 0 0",
+    background: theme.palette.primary.light,
+    position: "absolute",
+    bottom: "-1px",
+    left: "0",
+  },
 }));
 
 export const StyledToolbar = styled(Toolbar)`

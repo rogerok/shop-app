@@ -8,6 +8,7 @@ export const StyledLink = styled(Link)<LinkProps>(({ theme }) => ({
   fontWeight: theme.typography.fontWeightBold,
   color: theme.palette.text.secondary,
   textTransform: "uppercase",
+  borderRadius: theme.shape.borderRadius,
   "&: hover": {
     backgroundColor: theme.palette.secondary.dark,
   },

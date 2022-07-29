@@ -11,10 +11,11 @@ import image4 from "../../assets/home-page-carousel/4.jpg";
 import image5 from "../../assets/home-page-carousel/5.jpg";
 
 import Backdrop from "../common/Backdrop/Backdrop";
-import ProductCard from "../common/ProductCard/ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import Label from "./Label/Ladel";
 import Carousel from "../common/Carousel/Carousel";
 import Button from "../common/Button/Button";
+import Img from "../common/Img/Img";
 
 const carouselImages = [image1, image2, image3, image4, image5];
 

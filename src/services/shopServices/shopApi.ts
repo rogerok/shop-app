@@ -26,10 +26,15 @@ export const shopApi = createApi({
       query: (limit) => `${SHOP_API.PRODUCTS}?limit=${limit}`,
       transformResponse: (result: ProductsRespone) => result.products,
     }),
-    searchProducts: builder.query<Products, string>({
+    searchProductsForPreview: builder.query<Products, string>({
       query: (searchQuery) =>
         searchQuery &&
         `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchQuery}&select=title,price,thumbnail`,
+      transformResponse: (result: ProductsRespone) => result.products,
+    }),
+    searchProducts: builder.query<Products, string>({
+      query: (searchQuery) =>
+        searchQuery && `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchQuery}`,
       transformResponse: (result: ProductsRespone) => result.products,
     }),
     addUserOrder: builder.mutation({
@@ -46,6 +51,7 @@ export const {
   useGetProductsByCategoryQuery,
   useGetProductByIdQuery,
   useGetProductsForHomePageQuery,
+  useSearchProductsForPreviewQuery,
   useSearchProductsQuery,
   useAddUserOrderMutation,
 } = shopApi;

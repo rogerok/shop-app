@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid, Paper } from "@mui/material";
 
 import { useParams } from "react-router-dom";
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";

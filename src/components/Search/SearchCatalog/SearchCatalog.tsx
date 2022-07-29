@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 import { Typography } from "@mui/material";
 
 import { Product, Products } from "../../../ts/types";
-import { useSearchProductsQuery } from "../../../services/shopServices/shopApi";
+import { useSearchProductsForPreviewQuery } from "../../../services/shopServices/shopApi";
 
 import SearchProductPreview from "../ProductPreview/ProductPreview";
 import Spinner from "../../common/Spinner/Spinner";
@@ -18,7 +18,8 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
   handleClearInput,
   searchTerm,
 }) => {
-  const { data, isLoading, refetch } = useSearchProductsQuery(searchTerm) ?? [];
+  const { data, isLoading, refetch } =
+    useSearchProductsForPreviewQuery(searchTerm) ?? [];
 
   useEffect(() => {
     refetch();
