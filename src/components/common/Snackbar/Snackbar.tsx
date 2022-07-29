@@ -12,7 +12,7 @@ const Snackbar: FC<SnackbarProps> = ({ isOpen, handleClose, message }) => {
   const action = (
     <>
       <Button onClick={handleClose} size="medium" color="secondary">
-        ЗАКРЫТЬ
+        CLOSE
       </Button>
       <IconButton onClick={handleClose} size="medium" color="inherit">
         <CloseIcon fontSize="small" />

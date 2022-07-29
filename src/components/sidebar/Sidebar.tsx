@@ -1,7 +1,6 @@
 import React from "react";
 import { Drawer, Box } from "@mui/material";
 
-import SidebarItem from "./SidebarItem/SidebarItem";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   selectIsSideBarOpen,
@@ -10,6 +9,7 @@ import {
 
 import { PRODUCTS_CATEGORIES } from "../../utils/constants/PRODUCTS_CATEGORIES";
 
+import SidebarItem from "./SidebarItem/SidebarItem";
 import { StyledList } from "./Sidebar.styles";
 
 const Sidebar = () => {

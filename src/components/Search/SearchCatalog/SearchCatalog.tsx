@@ -1,11 +1,13 @@
-import React, { FC, ReactNode, useEffect } from "react";
-import { List, Paper, Typography } from "@mui/material";
-import SearchProductPreview from "../ProductPreview/ProductPreview";
+import React, { FC, useEffect } from "react";
+import { Typography } from "@mui/material";
+
 import { Product, Products } from "../../../ts/types";
-import { StyledList, StyledPaper } from "./SearchCatalog.styles";
 import { useSearchProductsQuery } from "../../../services/shopServices/shopApi";
+
+import SearchProductPreview from "../ProductPreview/ProductPreview";
 import Spinner from "../../common/Spinner/Spinner";
 import Link from "../../common/Link/Link";
+import { StyledList, StyledPaper } from "./SearchCatalog.styles";
 
 type SearchCatalogProps = {
   handleClearInput: () => void;
@@ -24,6 +26,7 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
 
   const renderListItems = (products: Products) => {
     let content;
+
     if (products.length && products.length < 4) {
       content = products!.map((item: Product) => (
         <SearchProductPreview key={item.id} {...item} />
@@ -36,6 +39,7 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
           {products!.slice(0, 4).map((item: Product) => (
             <SearchProductPreview key={item.id} {...item} />
           ))}
+
           <Link to={`search/${searchTerm}`}>Show more</Link>
         </>
       );

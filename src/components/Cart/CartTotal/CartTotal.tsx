@@ -1,6 +1,6 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 
-import { Grid, Box, Paper, Typography, Divider } from "@mui/material";
+import { Box, Paper, Typography, Divider } from "@mui/material";
 
 import useGetTotal from "../../../hooks/useGetTotal";
 

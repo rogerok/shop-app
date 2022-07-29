@@ -6,7 +6,7 @@ import { useGetProductByIdQuery } from "../../services/shopServices/shopApi";
 import { useAppDispatch } from "../../hooks/redux";
 import useSnackbar from "../../hooks/useSnackbar";
 import { addToCart } from "../../redux/cart/cartSlice";
-import { ROUTES_PATHS } from "../../router/routes";
+import { RoutesNames } from "../../router/routes";
 
 import Carousel from "../common/Carousel/Carousel";
 import Snackbar from "../common/Snackbar/Snackbar";
@@ -52,7 +52,7 @@ const Product = () => {
       <Typography variant="h5" component="p">
         <Link
           component={RouterLink}
-          to={`/${ROUTES_PATHS.COLLECTION}/${category}`}
+          to={`/${RoutesNames.COLLECTION}/${category}`}
         >
           {category.toUpperCase()}
         </Link>

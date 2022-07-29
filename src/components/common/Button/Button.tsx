@@ -1,5 +1,5 @@
-import { SxProps, ButtonProps } from "@mui/material";
 import React, { FC } from "react";
+import { SxProps, ButtonProps } from "@mui/material";
 import { StyledButton } from "./Button.styles";
 
 interface CustomButtonProps extends ButtonProps {

@@ -1,10 +1,9 @@
 import React, { FC } from "react";
-import { NavLink } from "react-router-dom";
-
 import { Typography } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 
+import { NavLink } from "react-router-dom";
 import { StyledIconLink } from "./IconLink.styles";
 
 type IconLinkProps = {

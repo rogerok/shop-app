@@ -1,49 +1,15 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Grid, Container, Box } from "@mui/material";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+
+import { useAppSelector } from "../../hooks/redux";
+import { selectCartItems } from "../../redux/cart/cartSlice";
+
 import Accordion from "../common/Accordion/Accordion";
 import CartList from "./CartList/CartList";
 import CartTotal from "./CartTotal/CartTotal";
 import OrderForm from "./OrderForm/OrderForm";
-import { useAppSelector, useAppDispatch } from "../../hooks/redux";
-import { selectCartItems } from "../../redux/cart/cartSlice";
-import { useAddUserOrderMutation } from "../../services/shopServices/shopApi";
-import { orderSchema } from "../../utils/validations/schema";
-
-type FormInputTypes = {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  email: string;
-};
 
 const Cart = () => {
-  /*   const [addUserOrder, { isError, isLoading, isSuccess }] =
-    useAddUserOrderMutation();
-  const cartItems = useAppSelector(selectCartItems);
-  const dispatch = useAppDispatch();
-
-  const { control, formState, getValues, reset } = useForm<FormInputTypes>({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-    },
-    resolver: yupResolver(orderSchema),
-  });
-
-  const formData = getValues();
-
-  const onSubmit = useCallback(
-    async (e: React.SyntheticEvent) => {
-      e.preventDefault();
-      await addUserOrder({ cartItems, formData });
-      reset();
-    },
-    [formData]
-  ); */
   const cartItems = useAppSelector(selectCartItems);
 
   return (

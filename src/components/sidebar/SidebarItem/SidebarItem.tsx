@@ -5,7 +5,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/redux";
 import { setSidebarOpen } from "../../../redux/sidebar/sidebarSlice";
-import { ROUTES_PATHS } from "../../../router/routes";
+import { RoutesNames } from "../../../router/routes";
 
 type SidebarProps = {
   category: string;
@@ -17,7 +17,7 @@ const SidebarItem: React.FC<SidebarProps> = ({ category }) => {
   const upperCased = category[0].toUpperCase() + category.slice(1);
 
   const handleClick = () => {
-    navigate(`${ROUTES_PATHS.COLLECTION}/${category}`);
+    navigate(`${RoutesNames.COLLECTION}/${category}`);
     dispatch(setSidebarOpen(false));
   };
 

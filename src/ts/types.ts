@@ -25,8 +25,9 @@ export interface AddedProduct extends Product {
 
 export type LinkProps = {
   component?: React.ElementType;
-  to: To;
+  to?: To;
   children?: ReactNode;
+  onClick?: () => void;
 };
 
 export type StatusType = {

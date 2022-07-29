@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardActions,
-  CardMedia,
-  CardProps,
-  Link,
-  styled,
-} from "@mui/material";
-import { LinkProps } from "../../../ts/types";
+import { Card, CardActions, CardMedia, CardProps, styled } from "@mui/material";
 
 export const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
   display: "flex",

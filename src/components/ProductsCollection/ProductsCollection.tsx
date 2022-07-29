@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import React, { FC } from "react";
+import { Grid, Typography } from "@mui/material";
 
 import { useParams } from "react-router-dom";
 import { Product, Products } from "../../ts/types";

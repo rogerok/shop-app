@@ -1,23 +1,18 @@
 import React, { useEffect } from "react";
-import {
-  useForm,
-  Controller,
-  UseFormReturn,
-  UseFormProps,
-} from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Paper, Typography } from "@mui/material";
 
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { orderSchema } from "../../../utils/validations/schema";
 
+import { CartProduct } from "../../../ts/types";
 import { useAddUserOrderMutation } from "../../../services/shopServices/shopApi";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
+import { useAppDispatch } from "../../../hooks/redux";
+import { clearCart } from "../../../redux/cart/cartSlice";
 
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
 import { StyledTextField } from "./OrderForm.styles";
-import { CartProduct, Products } from "../../../ts/types";
 
 type FormInputTypes = {
   firstName: string;

@@ -1,6 +1,4 @@
-import { CircularProgress, Container, styled } from "@mui/material";
-import ErrorIcon from "@mui/icons-material/Error";
-import DoneIcon from "@mui/icons-material/Done";
+import { Container, styled } from "@mui/material";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   position: "absolute",

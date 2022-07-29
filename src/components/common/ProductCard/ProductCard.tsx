@@ -13,11 +13,11 @@ import {
 
 import { Link as RouterLink } from "react-router-dom";
 import { Product } from "../../../ts/types";
+
 import { addToCart } from "../../../redux/cart/cartSlice";
-
 import { useAppDispatch } from "../../../hooks/redux";
-import useSnackbar from "../../../hooks/useSnackbar";
 
+import useSnackbar from "../../../hooks/useSnackbar";
 import Snackbar from "../Snackbar/Snackbar";
 import Button from "../Button/Button";
 

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 import { Box, InputAdornment, ClickAwayListener } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useParams, useSearchParams } from "react-router-dom";
-import { StyledTextField } from "./SearchInput.styles";
 
 import useDebounce from "../../../hooks/useDebounce";
+
 import SearchCatalog from "../SearchCatalog/SearchCatalog";
+
+import { StyledTextField } from "./SearchInput.styles";
 
 const SearchInput = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");

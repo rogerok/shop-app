@@ -9,24 +9,26 @@ import CollectionPage from "../pages/Collection/CollectionPage";
 import HomePage from "../pages/Home/HomePage";
 import AccountPage from "../pages/Account/AccountPage";
 import ProductPage from "../pages/Product/ProductPage";
-import { ROUTES_PATHS } from "./routes";
+import { RoutesNames } from "./routes";
+import SearchResultPage from "../pages/SearchResult/SearchResultPage";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 
 export const routes: RouteObject[] = [
   {
-    path: ROUTES_PATHS.HOME,
+    path: RoutesNames.HOME,
     element: <Layout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: ROUTES_PATHS.ADRESS, element: <AdressPage /> },
+      { path: RoutesNames.ADRESS, element: <AdressPage /> },
       {
-        path: ROUTES_PATHS.COLLECTION_CATEGORY,
+        path: RoutesNames.COLLECTION_PAGE,
         element: <CollectionPage />,
       },
-      { path: ROUTES_PATHS.PRODUCT_PAGE, element: <ProductPage /> },
-      { path: ROUTES_PATHS.CART, element: <CartPage /> },
-      { path: ROUTES_PATHS.ACCOUNT, element: <AccountPage /> },
+      { path: RoutesNames.PRODUCT_PAGE, element: <ProductPage /> },
+      { path: RoutesNames.CART, element: <CartPage /> },
+      { path: RoutesNames.ACCOUNT, element: <AccountPage /> },
+      { path: RoutesNames.SEARCH_RESULT_PAGE, element: <SearchResultPage /> },
     ],
   },
 ];

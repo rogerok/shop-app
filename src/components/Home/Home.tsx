@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Grid, Paper } from "@mui/material";
 
-import { QueryStatus } from "@reduxjs/toolkit/dist/query";
 import { useGetProductsForHomePageQuery } from "../../services/shopServices/shopApi";
-import Backdrop from "../common/Backdrop/Backdrop";
 import { Product } from "../../ts/types";
-import ProductCard from "../common/ProductCard/ProductCard";
 
 import image1 from "../../assets/home-page-carousel/1.jpg";
 import image2 from "../../assets/home-page-carousel/2.jpg";
@@ -13,10 +10,11 @@ import image3 from "../../assets/home-page-carousel/3.jpg";
 import image4 from "../../assets/home-page-carousel/4.jpg";
 import image5 from "../../assets/home-page-carousel/5.jpg";
 
+import Backdrop from "../common/Backdrop/Backdrop";
+import ProductCard from "../common/ProductCard/ProductCard";
 import Label from "./Label/Ladel";
 import Carousel from "../common/Carousel/Carousel";
 import Button from "../common/Button/Button";
-import { useAppSelector } from "../../hooks/redux";
 
 const carouselImages = [image1, image2, image3, image4, image5];
 

@@ -3,7 +3,7 @@ import { ListItem, Card, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../../../ts/types";
 
-import { ROUTES_PATHS } from "../../../router/routes";
+import { RoutesNames } from "../../../router/routes";
 
 const SearchProductPreview = (product: Product) => {
   const { thumbnail, title, price, id } = product;
@@ -13,7 +13,7 @@ const SearchProductPreview = (product: Product) => {
     <ListItem
       key={id}
       sx={{ width: "100%" }}
-      onClick={() => navigate(`/${ROUTES_PATHS.PRODUCT}/${id}`)}
+      onClick={() => navigate(`/${RoutesNames.PRODUCT}/${id}`)}
     >
       <Card
         sx={{

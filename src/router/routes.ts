@@ -1,10 +1,11 @@
-export const ROUTES_PATHS = {
-  HOME: "/",
-  ADRESS: "addresses",
-  ACCOUNT: "account",
-  CART: "cart",
-  COLLECTION: "collection",
-  COLLECTION_CATEGORY: "collection/:category",
-  PRODUCT: "product",
-  PRODUCT_PAGE: "product/:productId",
-} as const;
+export enum RoutesNames {
+  HOME = "/",
+  ADRESS = "addresses",
+  ACCOUNT = "account",
+  CART = "cart",
+  COLLECTION = "collection",
+  COLLECTION_PAGE = "collection/:category",
+  PRODUCT = "product",
+  PRODUCT_PAGE = "product/:productId",
+  SEARCH_RESULT_PAGE = "search/:searchTerm",
+}

@@ -1,27 +1,23 @@
-import React, { FC, useEffect } from "react";
+import React from "react";
 
-import { Typography, Grid, Badge } from "@mui/material";
-
-import { NavLink } from "react-router-dom";
-
+import { Typography, Grid } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
+import { NavLink } from "react-router-dom";
 
 import { useAppDispatch } from "../../hooks/redux";
-
 import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
 
+import SearchInput from "../Search/SearchInput/SearchInput";
+import IconLink from "./IconLink/IconLink";
+import CartIcon from "./CartIcon/CartIcon";
 import {
   StyledAppBar,
   StyledIconButton,
   StyledToolbar,
   Logo,
 } from "./Header.styles";
-
-import SearchInput from "../Search/SearchInput/SearchInput";
-import IconLink from "./IconLink/IconLink";
-import CartIcon from "./CartIcon/CartIcon";
 
 const iconLinksData = [
   {

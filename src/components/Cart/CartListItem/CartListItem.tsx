@@ -1,8 +1,12 @@
 import React from "react";
+
 import { Box, Typography, IconButton, Link } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+
 import { Link as RouterLink } from "react-router-dom";
+import { RoutesNames } from "../../../router/routes";
+
 import { CartProduct } from "../../../ts/types";
 import { useAppDispatch } from "../../../hooks/redux";
 import { removeFromCart, addToCart } from "../../../redux/cart/cartSlice";
@@ -12,7 +16,6 @@ import {
   StyledCardMedia,
   StyledCardActions,
 } from "./CartListItem.styles";
-import { ROUTES_PATHS } from "../../../router/routes";
 
 const CartListItem = ({ product }: { product: CartProduct }) => {
   const dispatch = useAppDispatch();
@@ -22,7 +25,7 @@ const CartListItem = ({ product }: { product: CartProduct }) => {
     <StyledCard key={id}>
       <Box display="flex" alignItems="center" width="30%">
         <Link
-          to={`${ROUTES_PATHS.PRODUCT}/${id}`}
+          to={`${RoutesNames.PRODUCT}/${id}`}
           component={RouterLink}
           display="flex"
           justifyContent="center"
