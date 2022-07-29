@@ -69,7 +69,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
       <Snackbar
         isOpen={isOpen}
         handleClose={handleClose}
-        message="ДОБАВЛЕНО В КОРЗИНУ"
+        message="ADDED TO CART"
       />
     </Grid>
   );

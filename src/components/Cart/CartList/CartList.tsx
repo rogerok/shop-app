@@ -1,11 +1,10 @@
-import React, { FC } from "react";
+import React from "react";
 
 import { Box, Typography } from "@mui/material";
 
-import { CartProduct, Product } from "../../../ts/types";
-import { useAppSelector } from "../../../hooks/redux";
-import { selectCartItems } from "../../../redux/cart/cartSlice";
-import CartListItem from "./CartListItem";
+import { CartProduct } from "../../../ts/types";
+
+import CartListItem from "../CartListItem/CartListItem";
 
 type CartListProps = {
   cartItems: CartProduct[];
