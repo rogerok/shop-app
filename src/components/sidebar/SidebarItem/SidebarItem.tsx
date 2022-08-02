@@ -4,7 +4,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/redux";
-import { setSidebarOpen } from "../../../redux/sidebar/sidebarSlice";
+import { setSidebarOpen } from "../../../redux/ui/uiSlice";
 import { RoutesNames } from "../../../router/routes";
 
 type SidebarProps = {

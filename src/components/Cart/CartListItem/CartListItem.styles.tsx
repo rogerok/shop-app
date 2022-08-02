@@ -4,16 +4,16 @@ import { Card, CardActions, CardMedia, CardProps, styled } from "@mui/material";
 export const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
   padding: theme.spacing(4),
   marginBottom: theme.spacing(2),
 }));
 
 export const StyledCardActions = styled(CardActions)(({ theme }) => ({
-  margin: "0 auto",
-  display: "inline-flex",
+  display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  width: "120px",
 }));
 
 export const StyledCardMedia = styled(CardMedia)<{

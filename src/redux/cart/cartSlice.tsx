@@ -3,47 +3,14 @@ import {
   PayloadAction,
   current,
   createSelector,
-  createEntityAdapter,
 } from "@reduxjs/toolkit";
 import { Product, CartProduct } from "../../ts/types";
-import { shopApi } from "../../services/shopServices/shopApi";
 
 type CartState = {
   cartItems: CartProduct[];
   cartTotalSum: number;
   cartQuantity: number;
 };
-
-/* const isCartProduct = (product: CartProduct | Product): product is CartProduct => {
-  return 
-}
- */
-/* const cartAdapter = createEntityAdapter<Product>({
-  sortComparer: (a, b) => Number(a.price) - Number(b.price),
-}); */
-
-/* const initialState: CartState = cartAdapter.getInitialState({
-  cartItems: [],
-  cartTotalSum: 0,
-  cartQuantity: 0,
-});
- */
-
-/* const extendedShopApi = shopApi.injectEndpoints({
-  endpoints: (builder) => ({
-    addUserOrder: builder.mutation({
-      query: (orderData) => ({
-        url: `${SHOP_API.USERS}/add`,
-        method: "POST",
-        body: {orderData, initialState.},
-      }),
-    }),
-  }),
-}); */
-
-const isCartProduct = (
-  product: CartProduct | Product
-): product is CartProduct => typeof product.quantity !== undefined;
 
 const initialState: CartState = {
   cartItems: [],

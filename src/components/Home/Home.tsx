@@ -1,7 +1,13 @@
-import React, { useState } from "react";
-import { Grid, Paper } from "@mui/material";
+import React, {
+  forwardRef,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { Box, Grid, Paper } from "@mui/material";
 
-import { useGetProductsForHomePageQuery } from "../../services/shopServices/shopApi";
+import { useGetProductsQuery } from "../../services/shopServices/shopApi";
 import { Product } from "../../ts/types";
 
 import image1 from "../../assets/home-page-carousel/1.jpg";
@@ -14,23 +20,26 @@ import Backdrop from "../common/Backdrop/Backdrop";
 import ProductCard from "../ProductCard/ProductCard";
 import Label from "./Label/Ladel";
 import Carousel from "../common/Carousel/Carousel";
-import Button from "../common/Button/Button";
-import Img from "../common/Img/Img";
+
+import Pagination from "../common/Pagination/Pagination";
+import { useAppSelector } from "../../hooks/redux";
+import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";
+import Spinner from "../common/Spinner/Spinner";
+import ProductsGrid from "./ProductsGrid/ProductsGrid";
 
 const carouselImages = [image1, image2, image3, image4, image5];
 
 const Home = () => {
-  const [productsPerPage, setProductsPerPage] = useState(15);
-  const { data, isLoading } = useGetProductsForHomePageQuery(productsPerPage);
-
-  return isLoading ? (
-    <Backdrop />
-  ) : (
+  /*   const skippedProducts = useAppSelector(selectSkippedProducts);
+  const { data, isLoading, isFetching } = useGetProductsQuery(skippedProducts); */
+  const num = 0;
+  const carouselRef = useRef<any>();
+  return (
     <Grid container pt={10} pb={10} spacing={6} justifyContent="center">
       <Grid item xs={10}>
         <Label />
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={10} ref={carouselRef}>
         <Carousel images={carouselImages} height={370} />
       </Grid>
 
@@ -46,20 +55,11 @@ const Home = () => {
           <Paper>filter</Paper>
         </Grid>
 
-        <Grid container item xs={9} spacing={4}>
-          {data?.map((product: Product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-          <Grid item xs={3} mx="auto">
-            <Button
-              onClick={() => setProductsPerPage((prev) => prev + 6)}
-              sx={{ width: "100%", margin: "0 auto" }}
-            >
-              Load more
-            </Button>
-          </Grid>
-        </Grid>
+        <ProductsGrid carouselRef={carouselRef} />
       </Grid>
+      {/*       <Grid item xs={12} display="flex" justifyContent="center">
+        <Pagination />
+      </Grid> */}
     </Grid>
   );
 };

@@ -9,13 +9,13 @@ import { useSearchProductsQuery } from "../../services/shopServices/shopApi";
 const SearchResultPage = () => {
   const { searchTerm } = useParams();
 
-  const { data, isLoading } = useSearchProductsQuery(searchTerm!);
+  const { data, isLoading, isFetching } = useSearchProductsQuery(searchTerm!);
 
   return isLoading ? (
     <Backdrop />
   ) : (
     <>
-      <ProductsCollection data={data!} title="Search results" />;
+      <ProductsCollection data={data!} title="Search results" isFetching />;
     </>
   );
 };

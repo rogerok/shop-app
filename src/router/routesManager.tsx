@@ -1,18 +1,21 @@
 import React, { FC } from "react";
 import { RouteObject } from "react-router-dom";
 
-// eslint-disable-next-line import/no-cycle
 import Layout from "../components/Layout/Layout";
-import AdressPage from "../pages/Adressess/AdressPage";
-import CartPage from "../pages/Cart/CartPage";
-import CollectionPage from "../pages/Collection/CollectionPage";
-import HomePage from "../pages/Home/HomePage";
-import AccountPage from "../pages/Account/AccountPage";
-import ProductPage from "../pages/Product/ProductPage";
 import { RoutesNames } from "./routes";
-import SearchResultPage from "../pages/SearchResult/SearchResultPage";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+const AccountPage = React.lazy(() => import("../pages/Account/AccountPage"));
+const AdressPage = React.lazy(() => import("../pages/Adressess/AdressPage"));
+const CartPage = React.lazy(() => import("../pages/Cart/CartPage"));
+const CollectionPage = React.lazy(
+  () => import("../pages/Collection/CollectionPage")
+);
+const HomePage = React.lazy(() => import("../pages/Home/HomePage"));
+
+const ProductPage = React.lazy(() => import("../pages/Product/ProductPage"));
+const SearchResultPage = React.lazy(
+  () => import("../pages/SearchResult/SearchResultPage")
+);
 
 export const routes: RouteObject[] = [
   {

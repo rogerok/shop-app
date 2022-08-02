@@ -2,10 +2,7 @@ import React from "react";
 import { Drawer, Box } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import {
-  selectIsSideBarOpen,
-  setSidebarOpen,
-} from "../../redux/sidebar/sidebarSlice";
+import { selectIsSideBarOpen, setSidebarOpen } from "../../redux/ui/uiSlice";
 
 import { PRODUCTS_CATEGORIES } from "../../utils/constants/PRODUCTS_CATEGORIES";
 

@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Product, Products } from "../../ts/types";
 import { SHOP_API } from "../../utils/API";
+import { PAGINATION_LIMIT } from "../../utils/constants/PAGINATION_LIMIT";
 
 export type ProductsRespone = {
   limit: number;
@@ -14,17 +15,18 @@ export const shopApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: SHOP_API.URL }),
 
   endpoints: (builder) => ({
-    getProductsByCategory: builder.query<Products, string>({
+    getProductsByCategory: builder.query<ProductsRespone, string>({
       query: (category) =>
         `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}`,
-      transformResponse: (result: ProductsRespone) => result.products,
+      /*       transformResponse: (result: ProductsRespone) => result.products, */
     }),
     getProductById: builder.query<Product, string | number>({
       query: (id) => `${SHOP_API.PRODUCTS}/${id}`,
     }),
-    getProductsForHomePage: builder.query<Products, number>({
-      query: (limit) => `${SHOP_API.PRODUCTS}?limit=${limit}`,
-      transformResponse: (result: ProductsRespone) => result.products,
+    getProducts: builder.query<ProductsRespone, number>({
+      query: (skip) =>
+        `${SHOP_API.PRODUCTS}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+      /*       transformResponse: (result: ProductsRespone) => result.products, */
     }),
     searchProductsForPreview: builder.query<Products, string>({
       query: (searchQuery) =>
@@ -50,7 +52,7 @@ export const shopApi = createApi({
 export const {
   useGetProductsByCategoryQuery,
   useGetProductByIdQuery,
-  useGetProductsForHomePageQuery,
+  useGetProductsQuery,
   useSearchProductsForPreviewQuery,
   useSearchProductsQuery,
   useAddUserOrderMutation,

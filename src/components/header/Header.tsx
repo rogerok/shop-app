@@ -7,7 +7,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { NavLink } from "react-router-dom";
 
 import { useAppDispatch } from "../../hooks/redux";
-import { setSidebarOpen } from "../../redux/sidebar/sidebarSlice";
+import { setSidebarOpen } from "../../redux/ui/uiSlice";
 
 import SearchInput from "../Search/SearchInput/SearchInput";
 import IconLink from "./IconLink/IconLink";

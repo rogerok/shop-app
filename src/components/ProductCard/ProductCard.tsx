@@ -9,12 +9,16 @@ import {
   Rating,
   CardActions,
   Link,
+  IconButton,
 } from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { Link as RouterLink } from "react-router-dom";
 import { Product } from "../../ts/types";
 
 import { addToCart } from "../../redux/cart/cartSlice";
+import { toggleFavorite } from "../../redux/favorite/favoriteSlice";
 import { useAppDispatch } from "../../hooks/redux";
 
 import useSnackbar from "../../hooks/useSnackbar";
@@ -31,6 +35,11 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { isOpen, handleOpen, handleClose } = useSnackbar();
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
+
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(id));
+  };
+
   const handleButtonClick = () => {
     dispatch(addToCart(product));
     handleOpen();
@@ -61,9 +70,12 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Rating readOnly value={rating} precision={0.1} />
         </CardContent>
         <CardActions>
-          <Button size="large" fullWidth onClick={handleButtonClick}>
+          <Button size="medium" fullWidth onClick={handleButtonClick}>
             Add to cart
           </Button>
+          <IconButton color="secondary" onClick={handleToggleFavorite}>
+            <FavoriteBorderIcon />
+          </IconButton>
         </CardActions>
       </Card>
       <Snackbar

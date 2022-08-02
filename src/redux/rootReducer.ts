@@ -2,17 +2,20 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// eslint-disable-next-line import/no-cycle
 import cartReducer from "./cart/cartSlice";
-import sidebarReducer from "./sidebar/sidebarSlice";
+import uiReducer from "./ui/uiSlice";
 import shopReducer from "./shop/shopSlice";
+import favoriteReducer from "./favorite/favoriteSlice";
+import paginationReducer from "./pagination/paginationSlice";
 import { shopApi } from "../services/shopServices/shopApi";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   [shopApi.reducerPath]: shopApi.reducer,
-  sidebar: sidebarReducer,
+  ui: uiReducer,
   shop: shopReducer,
+  favorite: favoriteReducer,
+  pagination: paginationReducer,
 });
 const persistConfig = {
   key: "root",
