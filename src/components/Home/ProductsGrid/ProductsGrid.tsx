@@ -12,24 +12,6 @@ const ProductsGrid = ({ carouselRef }: { carouselRef: any }) => {
   const skippedProducts = useAppSelector(selectSkippedProducts);
   const { data, isLoading, isFetching } = useGetProductsQuery(skippedProducts);
   const targetRef = useRef<any>(null);
-  const firstRender = useRef(true);
-  console.log(firstRender.current);
-  useEffect(() => {
-    if (firstRender.current) firstRender.current = false;
-
-    /*     if (!firstRender.current) {
-      targetRef.current.scrollIntoView({ behavior: "smooth" });
-      console.log("scroll");
-    } */
-  }, [isFetching]);
-  if (!firstRender.current)
-    carouselRef.current.scrollIntoView({ behavior: "smooth" });
-  /*   useEffect(() => {
-    if (!firstRender.current) {
-      console.log("scroll");
-      targetRef.current.scrollIntoView();
-    }
-  }, []); */
 
   return (
     <Grid container item xs={9} spacing={4} ref={targetRef}>
@@ -48,7 +30,7 @@ const ProductsGrid = ({ carouselRef }: { carouselRef: any }) => {
         ))
       )}
       <Grid item xs={9} display="flex" justifyContent="center" mx="auto">
-        <Pagination />
+        <Pagination scrollToRef={targetRef} />
       </Grid>
     </Grid>
   );

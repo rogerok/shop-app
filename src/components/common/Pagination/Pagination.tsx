@@ -7,7 +7,7 @@ import {
   selectProductsPerPage,
 } from "../../../redux/pagination/paginationSlice";
 
-const Pagination = () => {
+const Pagination = ({ scrollToRef }: { scrollToRef?: any }) => {
   const dispatch = useAppDispatch();
   const totalPages = useAppSelector(selectTotalPages);
   const productsPerPage = useAppSelector(selectProductsPerPage);
@@ -17,6 +17,7 @@ const Pagination = () => {
     value: number
   ) => {
     dispatch(setSkippedProducts(value * productsPerPage));
+    scrollToRef.current.scrollIntoView();
   };
 
   return (
