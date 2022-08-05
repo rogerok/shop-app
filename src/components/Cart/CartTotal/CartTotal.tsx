@@ -13,7 +13,7 @@ interface CountProps extends TotalType {
 }
 
 const Total: FC<CountProps> = ({ description, total, type }) => (
-  <Box component="p" sx={{ display: "flex", justifyContent: "space-between" }}>
+  <Box component="p" display="flex" justifyContent="space-between">
     <Typography variant="h6" component="span" gutterBottom>
       {description}
     </Typography>

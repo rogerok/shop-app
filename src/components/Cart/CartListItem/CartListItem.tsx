@@ -19,18 +19,26 @@ const CartListItem: React.FC<CartListItemProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { id, thumbnail, title, quantity, price } = product;
 
+  const handleIncreaseQuantity = () => {
+    dispatch(addToCart(product));
+  };
+
+  const handleDecreaseQuantity = () => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <StyledCard key={id}>
       <ListItemContent id={id} title={title} thumbnail={thumbnail} />
 
       <StyledCardActions>
-        <IconButton size="medium" onClick={() => dispatch(removeFromCart(id))}>
+        <IconButton size="medium" onClick={handleDecreaseQuantity}>
           <RemoveCircleOutlineIcon />
         </IconButton>
         <Typography variant="h5" component="span">
           {quantity}
         </Typography>
-        <IconButton size="medium" onClick={() => dispatch(addToCart(product))}>
+        <IconButton size="medium" onClick={handleIncreaseQuantity}>
           <AddCircleOutlineIcon />
         </IconButton>
       </StyledCardActions>

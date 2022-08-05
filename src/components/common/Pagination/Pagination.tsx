@@ -17,7 +17,7 @@ const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
 
   const totalPages = Math.round(Number(total!) / productsPerPage);
 
-  /*   const handlePaginationChange = (
+  const handlePaginationChange = (
     event: ChangeEvent<unknown>,
     value: number
   ) => {
@@ -28,20 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
     dispatch(setSkippedProducts((value - 1) * productsPerPage));
     if (scrollToRef)
       scrollToRef.current.scrollIntoView({ behaviour: "smooth" });
-  }; */
-
-  const handlePaginationChange = useCallback(
-    (event: ChangeEvent<unknown>, value: number) => {
-      if (value === 1) {
-        dispatch(setSkippedProducts(0));
-        return;
-      }
-      dispatch(setSkippedProducts((value - 1) * productsPerPage));
-      if (scrollToRef)
-        scrollToRef.current.scrollIntoView({ behaviour: "smooth" });
-    },
-    [total]
-  );
+  };
 
   useEffect(() => {
     dispatch(setSkippedProducts(0));
