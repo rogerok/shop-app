@@ -1,24 +1,51 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useCallback, useEffect } from "react";
 import { Pagination as MuiPagination } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import {
-  setSkippedProducts,
-  selectTotalPages,
   selectProductsPerPage,
+  setSkippedProducts,
 } from "../../../redux/pagination/paginationSlice";
 
-const Pagination = ({ scrollToRef }: { scrollToRef?: any }) => {
+type PaginationProps = {
+  scrollToRef?: any;
+  total?: number | string;
+};
+
+const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
   const dispatch = useAppDispatch();
-  const totalPages = useAppSelector(selectTotalPages);
   const productsPerPage = useAppSelector(selectProductsPerPage);
 
-  const handlePaginationChange = (
+  const totalPages = Math.round(Number(total!) / productsPerPage);
+
+  /*   const handlePaginationChange = (
     event: ChangeEvent<unknown>,
     value: number
   ) => {
-    dispatch(setSkippedProducts(value * productsPerPage));
-    scrollToRef.current.scrollIntoView();
-  };
+    if (value === 1) {
+      dispatch(setSkippedProducts(0));
+      return;
+    }
+    dispatch(setSkippedProducts((value - 1) * productsPerPage));
+    if (scrollToRef)
+      scrollToRef.current.scrollIntoView({ behaviour: "smooth" });
+  }; */
+
+  const handlePaginationChange = useCallback(
+    (event: ChangeEvent<unknown>, value: number) => {
+      if (value === 1) {
+        dispatch(setSkippedProducts(0));
+        return;
+      }
+      dispatch(setSkippedProducts((value - 1) * productsPerPage));
+      if (scrollToRef)
+        scrollToRef.current.scrollIntoView({ behaviour: "smooth" });
+    },
+    [total]
+  );
+
+  useEffect(() => {
+    dispatch(setSkippedProducts(0));
+  }, [totalPages]);
 
   return (
     <MuiPagination

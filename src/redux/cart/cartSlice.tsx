@@ -4,10 +4,10 @@ import {
   current,
   createSelector,
 } from "@reduxjs/toolkit";
-import { Product, CartProduct } from "../../ts/types";
+import { ProductType, CartProductType } from "../../ts/types";
 
 type CartState = {
-  cartItems: CartProduct[];
+  cartItems: CartProductType[];
   cartTotalSum: number;
   cartQuantity: number;
 };
@@ -23,7 +23,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: {
-      reducer(state: CartState, action: PayloadAction<CartProduct>) {
+      reducer(state: CartState, action: PayloadAction<CartProductType>) {
         const productIndex = state.cartItems.findIndex(
           (product) => product.id === action.payload.id
         );
@@ -43,7 +43,7 @@ const cartSlice = createSlice({
         stock,
         thumbnail,
         quantity,
-      }: Product | CartProduct): { payload: CartProduct } {
+      }: ProductType | CartProductType): { payload: CartProductType } {
         return {
           payload: {
             id,
@@ -98,14 +98,17 @@ export const selectTotalQuantity = createSelector(
   (cart) => cart.cartQuantity
 );
 
-export const selectCartItems = (state: { cart: CartState }): CartProduct[] =>
-  state.cart.cartItems;
+/* export const selectCartItems = (state: { cart: CartState }): CartProduct[] =>
+  state.cart.cartItems; */
 
 export const selectTotalSum = createSelector(
   [selectCart],
   (cart) => cart.cartTotalSum
 );
-
+export const selectCartItems = createSelector(
+  [selectCart],
+  (cart) => cart.cartItems
+);
 export const {
   addToCart,
   removeFromCart,

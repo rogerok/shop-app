@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { Typography } from "@mui/material";
 
-import { Product, Products } from "../../../ts/types";
+import { ProductType, ProductsType } from "../../../ts/types";
 import { useSearchProductsForPreviewQuery } from "../../../services/shopServices/shopApi";
 
 import SearchProductPreview from "../ProductPreview/ProductPreview";
@@ -25,11 +25,11 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
     refetch();
   }, [searchTerm]);
 
-  const renderListItems = (products: Products) => {
+  const renderListItems = (products: ProductsType) => {
     let content;
 
     if (products.length && products.length < 4) {
-      content = products!.map((item: Product) => (
+      content = products!.map((item: ProductType) => (
         <SearchProductPreview key={item.id} {...item} />
       ));
     }
@@ -37,7 +37,7 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
     if (products.length && products.length > 4) {
       content = (
         <>
-          {products!.slice(0, 4).map((item: Product) => (
+          {products!.slice(0, 4).map((item: ProductType) => (
             <SearchProductPreview key={item.id} {...item} />
           ))}
 
@@ -55,9 +55,6 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
       ) : (
         <StyledList>
           {data!.length ? (
-            /*      data!.map((item: Product) => (
-              <SearchProductPreview key={item.id} {...item} />
-            )) */
             renderListItems(data!)
           ) : (
             <Typography variant="h6" align="center">

@@ -2,13 +2,11 @@ import React from "react";
 
 import { Box, Typography } from "@mui/material";
 
-import { CartProduct } from "../../../ts/types";
+import { CartProductType } from "../../../ts/types";
 
 import CartListItem from "../CartListItem/CartListItem";
-
-type CartListProps = {
-  cartItems: CartProduct[];
-};
+import { useAppSelector } from "../../../hooks/redux";
+import { selectCartItems } from "../../../redux/cart/cartSlice";
 
 const EmptyCart = () => (
   <Typography variant="h6" paragraph>
@@ -16,16 +14,20 @@ const EmptyCart = () => (
   </Typography>
 );
 
-const CartList: React.FC<CartListProps> = ({ cartItems }) => (
-  <Box mt={4} display="flex" flexDirection="column">
-    {cartItems.length ? (
-      cartItems.map((product: CartProduct) => (
-        <CartListItem product={product} key={product.id} />
-      ))
-    ) : (
-      <EmptyCart />
-    )}
-  </Box>
-);
+const CartList = () => {
+  const cartItems = useAppSelector(selectCartItems);
+
+  return (
+    <Box mt={4} display="flex" flexDirection="column">
+      {cartItems.length ? (
+        cartItems.map((product: CartProductType) => (
+          <CartListItem product={product} key={product.id} />
+        ))
+      ) : (
+        <EmptyCart />
+      )}
+    </Box>
+  );
+};
 
 export default CartList;

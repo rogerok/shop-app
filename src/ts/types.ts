@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { To } from "react-router-dom";
 
-export type Product = {
+export interface ProductType {
   id: string;
   title: string;
   description: string;
@@ -14,10 +14,14 @@ export type Product = {
   thumbnail: string;
   images: string[];
   quantity?: any;
-};
+}
 
-export type CartProduct = Omit<Product, "images" | "rating" | "description">;
-export type Products = Product[];
+export type CartProductType = Omit<
+  ProductType,
+  "images" | "rating" | "description"
+>;
+export type CartProductsType = CartProductType[];
+export type ProductsType = ProductType[];
 
 export type LinkProps = {
   component?: React.ElementType;
@@ -39,6 +43,13 @@ export type StatusType = {
   isSuccess: boolean;
 };
 
-export interface AddedProduct extends Product {
+export type AddedProductType = ProductType & {
   quantity: number;
-}
+};
+
+export type FormDataType = {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+};

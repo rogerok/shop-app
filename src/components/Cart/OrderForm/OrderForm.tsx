@@ -5,28 +5,20 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { orderSchema } from "../../../utils/validations/schema";
 
-import { CartProduct } from "../../../ts/types";
+import { FormDataType } from "../../../ts/types";
 import { useAddUserOrderMutation } from "../../../services/shopServices/shopApi";
-import { useAppDispatch } from "../../../hooks/redux";
-import { clearCart } from "../../../redux/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
 import { StyledTextField } from "./OrderForm.styles";
 
-type FormInputTypes = {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  email: string;
-};
-
-type OrderFormProps = {
-  cartItems: CartProduct[];
-};
-
-const OrderForm: React.FC<OrderFormProps> = ({ cartItems }) => {
+const OrderForm = () => {
   const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(selectCartItems);
+  const isCartEmpty = !cartItems.length;
+
   const [addUserOrder, { isError, isLoading, isSuccess }] =
     useAddUserOrderMutation();
 
@@ -35,7 +27,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ cartItems }) => {
     formState: { errors },
     getValues,
     reset,
-  } = useForm<FormInputTypes>({
+  } = useForm<FormDataType>({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -44,8 +36,6 @@ const OrderForm: React.FC<OrderFormProps> = ({ cartItems }) => {
     },
     resolver: yupResolver(orderSchema),
   });
-
-  const isCartEmpty = !cartItems.length;
 
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();

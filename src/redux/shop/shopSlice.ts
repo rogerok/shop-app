@@ -4,16 +4,16 @@ import {
   EntityState,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { Products, Product } from "../../ts/types";
+import { ProductsType, ProductType } from "../../ts/types";
 
 import { ProductsRespone, shopApi } from "../../services/shopServices/shopApi";
 import { SHOP_API as API } from "../../utils/API";
 
-interface ShopState extends EntityState<Product> {
+interface ShopState extends EntityState<ProductType> {
   entities: {};
 }
 
-const shopAdapter = createEntityAdapter<Product>({
+const shopAdapter = createEntityAdapter<ProductType>({
   sortComparer: (a, b) => a.id.localeCompare(b.id),
 });
 
@@ -21,7 +21,7 @@ const initialState = shopAdapter.getInitialState();
 
 export const extendedShopSlice = shopApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProductsByCategory: builder.query<EntityState<Product>, string>({
+    getProductsByCategory: builder.query<EntityState<ProductType>, string>({
       query: (category) => `${API.PRODUCTS}/${API.CATEGORY}/${category}`,
       transformResponse: (responseData: ProductsRespone) =>
         shopAdapter.addMany(initialState, responseData.products),

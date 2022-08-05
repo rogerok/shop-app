@@ -25,7 +25,7 @@ const SearchInput = () => {
 
   return (
     <ClickAwayListener onClickAway={handleClearInput}>
-      <Box sx={{ width: "40%", position: "relative" }}>
+      <Box width="40%" position="relative">
         <StyledTextField
           name="search"
           type="text"

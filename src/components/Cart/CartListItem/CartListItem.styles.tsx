@@ -1,5 +1,4 @@
-import React from "react";
-import { Card, CardActions, CardMedia, CardProps, styled } from "@mui/material";
+import { Card, CardActions, CardProps, styled } from "@mui/material";
 
 export const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
   display: "flex",
@@ -14,12 +13,4 @@ export const StyledCardActions = styled(CardActions)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   width: "120px",
-}));
-
-export const StyledCardMedia = styled(CardMedia)<{
-  component?: React.ElementType;
-}>(({ theme }) => ({
-  width: "80px",
-  height: "100px",
-  aspectRatio: "1/1",
 }));

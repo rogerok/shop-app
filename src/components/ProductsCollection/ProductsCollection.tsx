@@ -1,13 +1,11 @@
 import React, { FC } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 
-import { Product, Products } from "../../ts/types";
-import Pagination from "../common/Pagination/Pagination";
+import { ProductType, ProductsType } from "../../ts/types";
 import ProductCard from "../ProductCard/ProductCard";
-import Spinner from "../common/Spinner/Spinner";
 
 type ProductsCollectionProps = {
-  data: Products;
+  data: ProductsType;
   title: string;
   isFetching: boolean;
 };
@@ -32,7 +30,7 @@ const ProductsCollection: FC<ProductsCollectionProps> = ({
           component="ul"
           sx={{ listStyleType: "none" }}
         >
-          {data?.map((product: Product) => (
+          {data?.map((product: ProductType) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </Grid>

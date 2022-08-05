@@ -1,11 +1,11 @@
 import React from "react";
 import { ListItem, Card, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Product } from "../../../ts/types";
+import { ProductType } from "../../../ts/types";
 
 import { RoutesNames } from "../../../router/routes";
 
-const SearchProductPreview = (product: Product) => {
+const SearchProductPreview = (product: ProductType) => {
   const { thumbnail, title, price, id } = product;
   const navigate = useNavigate();
 

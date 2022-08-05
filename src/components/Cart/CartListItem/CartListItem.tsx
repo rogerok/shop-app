@@ -1,42 +1,27 @@
 import React from "react";
 
-import { Box, Typography, IconButton, Link } from "@mui/material";
+import { Typography, IconButton } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-import { Link as RouterLink } from "react-router-dom";
-import { RoutesNames } from "../../../router/routes";
-
-import { CartProduct } from "../../../ts/types";
+import { CartProductType } from "../../../ts/types";
 import { useAppDispatch } from "../../../hooks/redux";
 import { removeFromCart, addToCart } from "../../../redux/cart/cartSlice";
 
-import {
-  StyledCard,
-  StyledCardMedia,
-  StyledCardActions,
-} from "./CartListItem.styles";
+import { StyledCard, StyledCardActions } from "./CartListItem.styles";
+import ListItemContent from "../ListItemContent/ListItemContent";
 
-const CartListItem = ({ product }: { product: CartProduct }) => {
+type CartListItemProps = {
+  product: CartProductType;
+};
+
+const CartListItem: React.FC<CartListItemProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { id, thumbnail, title, quantity, price } = product;
 
   return (
     <StyledCard key={id}>
-      <Box display="flex" alignItems="center" width="30%">
-        <Link
-          to={`${RoutesNames.PRODUCT}/${id}`}
-          component={RouterLink}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <StyledCardMedia component="img" image={thumbnail} />
-          <Typography variant="h6" ml={2}>
-            {title}
-          </Typography>
-        </Link>
-      </Box>
+      <ListItemContent id={id} title={title} thumbnail={thumbnail} />
 
       <StyledCardActions>
         <IconButton size="medium" onClick={() => dispatch(removeFromCart(id))}>

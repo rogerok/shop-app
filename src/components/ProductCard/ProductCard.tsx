@@ -4,9 +4,6 @@ import {
   Grid,
   Card,
   CardMedia,
-  CardContent,
-  Typography,
-  Rating,
   CardActions,
   Link,
   IconButton,
@@ -15,7 +12,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { Link as RouterLink } from "react-router-dom";
-import { Product } from "../../ts/types";
+import { ProductType } from "../../ts/types";
 
 import { addToCart } from "../../redux/cart/cartSlice";
 import { toggleFavorite } from "../../redux/favorite/favoriteSlice";
@@ -25,11 +22,16 @@ import useSnackbar from "../../hooks/useSnackbar";
 import Snackbar from "../common/Snackbar/Snackbar";
 import Button from "../common/Button/Button";
 
-import { DiscountLabel } from "./ProductCard.styles";
+import CardContent from "./CardContent/CardContent";
 
 type ProductCardProps = {
-  product: Product;
+  product: ProductType;
 };
+
+type CardContentProps = Pick<
+  ProductCardProps["product"],
+  "title" | "discountPercentage" | "price" | "rating"
+>;
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
@@ -57,18 +59,12 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           />
         </Link>
 
-        <CardContent sx={{ position: "relative" }}>
-          <Typography variant="h6" component="h6" gutterBottom>
-            {title.length > 15 ? `${title.slice(0, 15)}...` : title}
-          </Typography>
-          <DiscountLabel variant="h5" paragraph gutterBottom>
-            -{discountPercentage}%
-          </DiscountLabel>
-          <Typography variant="h5" paragraph gutterBottom>
-            ${price}
-          </Typography>
-          <Rating readOnly value={rating} precision={0.1} />
-        </CardContent>
+        <CardContent
+          title={title}
+          discountPercentage={discountPercentage}
+          rating={rating}
+          price={price}
+        />
         <CardActions>
           <Button size="medium" fullWidth onClick={handleButtonClick}>
             Add to cart
@@ -86,4 +82,4 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
     </Grid>
   );
 };
-export default ProductCard;
+export default React.memo(ProductCard);

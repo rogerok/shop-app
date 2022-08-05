@@ -1,22 +1,35 @@
-import { Typography } from "@mui/material";
 import React from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { Box, Container, Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
 import Backdrop from "../../components/common/Backdrop/Backdrop";
-
+import Pagination from "../../components/common/Pagination/Pagination";
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
+import { useAppSelector } from "../../hooks/redux";
+import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";
 import { useSearchProductsQuery } from "../../services/shopServices/shopApi";
 
 const SearchResultPage = () => {
   const { searchTerm } = useParams();
+  const skippedProducts = useAppSelector(selectSkippedProducts);
 
-  const { data, isLoading, isFetching } = useSearchProductsQuery(searchTerm!);
+  const { data, isLoading } = useSearchProductsQuery({
+    searchTerm: searchTerm!,
+    skip: skippedProducts,
+  });
 
   return isLoading ? (
     <Backdrop />
   ) : (
-    <>
-      <ProductsCollection data={data!} title="Search results" isFetching />;
-    </>
+    <Container>
+      <ProductsCollection
+        data={data!.products}
+        title="Search results"
+        isFetching
+      />
+      <Box display="flex" justifyContent="center" mt={4}>
+        <Pagination total={data?.total} />
+      </Box>
+    </Container>
   );
 };
 

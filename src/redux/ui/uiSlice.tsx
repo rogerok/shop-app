@@ -21,7 +21,7 @@ const uiSlice = createSlice({
 export const { setSidebarOpen } = uiSlice.actions;
 
 export const selectUiState = ({ ui }: { ui: UiState }) => ui;
-export const selectIsSideBarOpen = ({ ui }: { ui: UiState }) =>
+export const selectIsSidebarOpen = ({ ui }: { ui: UiState }) =>
   ui.isSidebarOpen;
 
 export default uiSlice.reducer;

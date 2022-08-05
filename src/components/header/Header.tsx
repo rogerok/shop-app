@@ -6,8 +6,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import { NavLink } from "react-router-dom";
 
-import { useAppDispatch } from "../../hooks/redux";
-import { setSidebarOpen } from "../../redux/ui/uiSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { selectIsSidebarOpen, setSidebarOpen } from "../../redux/ui/uiSlice";
 
 import SearchInput from "../Search/SearchInput/SearchInput";
 import IconLink from "./IconLink/IconLink";
@@ -34,6 +34,9 @@ const iconLinksData = [
 
 const Header = () => {
   const dispatch = useAppDispatch();
+  const isSidebarOpen = useAppSelector(selectIsSidebarOpen);
+  const handleSidebarOpen = () => dispatch(setSidebarOpen(true));
+  console.log(isSidebarOpen);
 
   return (
     <Grid item xs={12} position="relative">
@@ -42,9 +45,7 @@ const Header = () => {
           <StyledIconButton
             color="inherit"
             size="large"
-            onClick={() => {
-              dispatch(setSidebarOpen(true));
-            }}
+            onClick={handleSidebarOpen}
           >
             <MenuIcon />
           </StyledIconButton>
