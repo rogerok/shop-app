@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ChangeEventHandler, useEffect } from "react";
 import { Box, Paper, Typography } from "@mui/material";
 
 import { useForm, Controller } from "react-hook-form";
@@ -13,6 +13,8 @@ import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
 import { StyledTextField } from "./OrderForm.styles";
+import TextField from "../../common/TextField/TextField";
+import { formatPhoneNumber } from "../../../utils/helpers/formatPhoneNumber";
 
 const OrderForm = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +36,7 @@ const OrderForm = () => {
       email: "",
       phoneNumber: "",
     },
+    mode: "onBlur",
     resolver: yupResolver(orderSchema),
   });
 
@@ -55,59 +58,58 @@ const OrderForm = () => {
         <Typography variant="h3" gutterBottom>
           Checkout
         </Typography>
-        <form onSubmit={onSubmit}>
-          <Box display="flex" justifyContent="space-between">
-            <Controller
-              name="firstName"
-              control={control}
-              render={({ field }) => (
-                <StyledTextField
-                  {...field}
-                  type="text"
-                  label="Your name"
-                  error={!!errors.firstName}
-                  helperText={errors.firstName ? errors.firstName?.message : ""}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                  sx={{ width: "45%" }}
-                />
-              )}
-            />
-            <Controller
-              name="lastName"
-              control={control}
-              render={({ field }) => (
-                <StyledTextField
-                  {...field}
-                  type="text"
-                  label="Your lastname"
-                  error={!!errors.lastName}
-                  helperText={errors.lastName ? errors.lastName?.message : ""}
-                  required
-                  margin="normal"
-                  variant="outlined"
-                  sx={{ width: "45%" }}
-                />
-              )}
-            />
-          </Box>
+        <form onSubmit={onSubmit} noValidate>
+          <Controller
+            name="firstName"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                type="text"
+                label="Your first name"
+                required
+                error={!!errors.firstName}
+                helperText={errors?.firstName?.message}
+                margin="normal"
+                fullWidth
+                variant="outlined"
+              />
+            )}
+          />
+          <Controller
+            name="lastName"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                type="text"
+                label="Your last name"
+                required
+                error={!!errors.lastName}
+                helperText={errors?.lastName?.message}
+                margin="normal"
+                fullWidth
+                variant="outlined"
+              />
+            )}
+          />
           <Controller
             name="phoneNumber"
             control={control}
             render={({ field }) => (
-              <StyledTextField
+              <TextField
                 {...field}
                 type="tel"
                 label="Your phone number"
+                required
                 error={!!errors.phoneNumber}
                 helperText={
                   errors.phoneNumber ? errors.phoneNumber?.message : ""
                 }
-                required
+                margin="normal"
                 fullWidth
                 variant="outlined"
-                margin="normal"
+                value=""
               />
             )}
           />
@@ -115,16 +117,16 @@ const OrderForm = () => {
             name="email"
             control={control}
             render={({ field }) => (
-              <StyledTextField
+              <TextField
                 {...field}
                 type="email"
                 label="Your email"
+                required
                 error={!!errors.email}
                 helperText={errors.email ? errors.email?.message : ""}
-                variant="outlined"
-                margin="normal"
                 fullWidth
-                required
+                margin="normal"
+                variant="outlined"
               />
             )}
           />

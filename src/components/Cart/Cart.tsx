@@ -1,9 +1,6 @@
 import React from "react";
 import { Grid, Container, Box } from "@mui/material";
 
-import { useAppSelector } from "../../hooks/redux";
-import { selectCartItems } from "../../redux/cart/cartSlice";
-
 import Accordion from "../common/Accordion/Accordion";
 import CartList from "./CartList/CartList";
 import CartTotal from "./CartTotal/CartTotal";

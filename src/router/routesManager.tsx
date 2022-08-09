@@ -4,17 +4,27 @@ import { RouteObject } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import { RoutesNames } from "./routes";
 
-const AccountPage = React.lazy(() => import("../pages/Account/AccountPage"));
-const AdressPage = React.lazy(() => import("../pages/Adressess/AdressPage"));
-const CartPage = React.lazy(() => import("../pages/Cart/CartPage"));
-const CollectionPage = React.lazy(
-  () => import("../pages/Collection/CollectionPage")
+const AccountPage = React.lazy(
+  () => import("../pages/AccountPage/AccountPage")
 );
-const HomePage = React.lazy(() => import("../pages/Home/HomePage"));
+const AdressPage = React.lazy(
+  () => import("../pages/AdressessPages/AdressPage")
+);
+const CartPage = React.lazy(() => import("../pages/CartPage/CartPage"));
+const CollectionPage = React.lazy(
+  () => import("../pages/CollectionPage/CollectionPage")
+);
+const HomePage = React.lazy(() => import("../pages/HomePage/HomePage"));
 
-const ProductPage = React.lazy(() => import("../pages/Product/ProductPage"));
+const ProductPage = React.lazy(
+  () => import("../pages/ProductPage/ProductPage")
+);
 const SearchResultPage = React.lazy(
-  () => import("../pages/SearchResult/SearchResultPage")
+  () => import("../pages/SearchResultPage/SearchResultPage")
+);
+
+const RegisterPage = React.lazy(
+  () => import("../pages/RegisterPage/RegisterPage")
 );
 
 export const routes: RouteObject[] = [
@@ -32,6 +42,7 @@ export const routes: RouteObject[] = [
       { path: RoutesNames.CART, element: <CartPage /> },
       { path: RoutesNames.ACCOUNT, element: <AccountPage /> },
       { path: RoutesNames.SEARCH_RESULT_PAGE, element: <SearchResultPage /> },
+      { path: RoutesNames.REGISTER_PAGE, element: <RegisterPage /> },
     ],
   },
 ];

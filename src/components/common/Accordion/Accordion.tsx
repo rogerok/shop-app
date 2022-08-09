@@ -7,6 +7,7 @@ import {
   AccordionDetails,
   Accordion as MuiAccordion,
   AccordionProps as MuiAccordionProps,
+  Box,
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -16,8 +17,8 @@ type AccordionProps = MuiAccordionProps & {
 };
 
 const Accordion: React.FC<AccordionProps> = ({ children, title }) => (
-  <MuiAccordion defaultExpanded>
-    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+  <MuiAccordion defaultExpanded elevation={3}>
+    <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ pl: 4 }}>
       <Typography variant="h4" mb={4}>
         {title}
       </Typography>
