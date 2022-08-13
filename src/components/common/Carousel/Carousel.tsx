@@ -1,18 +1,18 @@
-import React, { FC } from "react";
+import React from "react";
 import { Paper } from "@mui/material";
 import MuiCarousel from "react-material-ui-carousel";
-import { CarouselProps } from "react-material-ui-carousel/dist/components/types";
+import { CarouselProps as MuiCarouselProps } from "react-material-ui-carousel/dist/components/types";
 import Img from "../Img/Img";
 
-interface ProductCarouselProps extends CarouselProps {
+type CarouselProps = {
   title?: string;
   images: string[];
   maxWidth?: string;
   aspectRatio?: string;
   imageWidth?: string;
-}
+} & MuiCarouselProps;
 
-const Carousel: FC<ProductCarouselProps> = ({
+const Carousel: React.FC<CarouselProps> = ({
   title,
   images,
   autoPlay = false,

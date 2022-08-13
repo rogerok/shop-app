@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 
 import {
   Grid,
@@ -28,7 +28,7 @@ type ProductCardProps = {
   product: ProductType;
 };
 
-const ProductCard: FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { isOpen, handleOpen, handleClose } = useSnackbar();
   const { title, thumbnail, discountPercentage, rating, price, id } = product;

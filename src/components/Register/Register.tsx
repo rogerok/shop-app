@@ -8,7 +8,7 @@ import { validationSchema } from "../../utils/validations/validationSchema";
 import { RadioOptionsType, RegisterFormDataType } from "../../ts/types";
 
 import TextField from "../common/TextField/TextField";
-import RadioGroup from "./RadioGroup/RadioGroup";
+import RadioGroup from "../common/RadioGroup/RadioGroup";
 import Button from "../common/Button/Button";
 
 const genderOptions: RadioOptionsType = [

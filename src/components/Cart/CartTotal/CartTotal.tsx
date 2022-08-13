@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 
 import { Box, Paper, Typography, Divider } from "@mui/material";
 
@@ -12,7 +12,7 @@ type TotalData = {
 
 const totalOptions = ["sum", "quantity"];
 
-const Total: FC<TotalData> = ({ description, total, type }) => (
+const Total: React.FC<TotalData> = ({ description, total, type }) => (
   <Box component="p" display="flex" justifyContent="space-between">
     <Typography variant="h6" component="span" gutterBottom>
       {description}

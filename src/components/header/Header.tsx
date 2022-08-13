@@ -36,7 +36,6 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const isSidebarOpen = useAppSelector(selectIsSidebarOpen);
   const handleSidebarOpen = () => dispatch(setSidebarOpen(true));
-  console.log(isSidebarOpen);
 
   return (
     <Grid item xs={12} position="relative">

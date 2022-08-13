@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 
 import { ProductType, ProductsType } from "../../ts/types";
@@ -9,7 +9,10 @@ type ProductsCollectionProps = {
   title: string;
 };
 
-const ProductsCollection: FC<ProductsCollectionProps> = ({ data, title }) => (
+const ProductsCollection: React.FC<ProductsCollectionProps> = ({
+  data,
+  title,
+}) => (
   <Container>
     <Grid container spacing={4} component="section">
       <Grid item xs={12}>

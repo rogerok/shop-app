@@ -5,7 +5,7 @@ import { ProductType } from "../../../ts/types";
 
 import { RoutesNames } from "../../../router/routes";
 
-const SearchProductPreview = (product: ProductType) => {
+const SearchProductPreview: React.FC<ProductType> = (product) => {
   const { thumbnail, title, price, id } = product;
   const navigate = useNavigate();
 

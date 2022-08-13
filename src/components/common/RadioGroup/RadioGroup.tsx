@@ -7,7 +7,7 @@ import {
   FormControl,
 } from "@mui/material";
 import { Controller } from "react-hook-form";
-import Radio from "../../common/Radio/Radio";
+import Radio from "../Radio/Radio";
 import {
   FormInputType,
   RadioOptionsType,

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Button, IconButton, Snackbar as MuiSnackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -8,7 +8,11 @@ type SnackbarProps = {
   message: string;
 };
 
-const Snackbar: FC<SnackbarProps> = ({ isOpen, handleClose, message }) => {
+const Snackbar: React.FC<SnackbarProps> = ({
+  isOpen,
+  handleClose,
+  message,
+}) => {
   const action = (
     <>
       <Button onClick={handleClose} size="medium" color="secondary">

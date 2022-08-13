@@ -1,7 +1,13 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-const ProductDescription = ({ description }: { description: string }) => (
+type ProductDescriptionProps = {
+  description: string;
+};
+
+const ProductDescription: React.FC<ProductDescriptionProps> = ({
+  description,
+}) => (
   <Box sx={{ marginBottom: "auto" }}>
     <Typography variant="h4" fontWeight={600} gutterBottom>
       Description:

@@ -18,6 +18,7 @@ import ProductDescription from "./ProductDescription/ProductDescription";
 const Product = () => {
   const { productId } = useParams();
   const { data, isLoading } = useGetProductByIdQuery(productId!) ?? [];
+
   const {
     title,
     brand,
@@ -37,8 +38,12 @@ const Product = () => {
     handleOpen();
   };
 
+  const details = {
+    brand,
+    category,
+    stock,
+  };
   if (isLoading || !data) return <Backdrop />;
-
   return (
     <Box component="section" p={4}>
       <Typography variant="h3" align="left" gutterBottom>
@@ -70,7 +75,7 @@ const Product = () => {
           flexDirection="column"
         >
           <ProductDescription description={description} />
-          <ProductDetails brand={brand} category={category} stock={stock} />
+          <ProductDetails details={details} />
         </Grid>
         <Grid item xs={3}>
           <ProductPriceBlock

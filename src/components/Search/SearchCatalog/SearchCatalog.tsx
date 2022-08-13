@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
 
 import { ProductType, ProductsType } from "../../../ts/types";
@@ -14,7 +14,7 @@ type SearchCatalogProps = {
   searchTerm: string;
 };
 
-const SearchCatalog: FC<SearchCatalogProps> = ({
+const SearchCatalog: React.FC<SearchCatalogProps> = ({
   handleClearInput,
   searchTerm,
 }) => {

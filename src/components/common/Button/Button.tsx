@@ -1,14 +1,10 @@
-import React, { FC } from "react";
-import { SxProps, ButtonProps } from "@mui/material";
+import React from "react";
+import { ButtonProps as MuiButtonProps } from "@mui/material";
 import { StyledButton } from "./Button.styles";
 
-interface CustomButtonProps extends ButtonProps {
-  children: React.ReactNode;
-  // eslint-disable-next-line react/require-default-props
-  sx?: SxProps;
-}
+type ButtonProps = MuiButtonProps;
 
-const Button: FC<CustomButtonProps> = ({ children, ...props }) => (
+const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
   <StyledButton {...props}>{children}</StyledButton>
 );
 

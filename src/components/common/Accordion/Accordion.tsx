@@ -7,7 +7,6 @@ import {
   AccordionDetails,
   Accordion as MuiAccordion,
   AccordionProps as MuiAccordionProps,
-  Box,
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
