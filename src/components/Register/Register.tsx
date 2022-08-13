@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Typography, Grid } from "@mui/material";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { validationSchema } from "../../utils/validations/validationSchema";
 
 import { RadioOptionsType, RegisterFormDataType } from "../../ts/types";
@@ -35,12 +35,7 @@ const defaultValues = {
 };
 
 const Register = () => {
-  const {
-    control,
-    formState: { errors },
-    getValues,
-    reset,
-  } = useForm<RegisterFormDataType>({
+  const { control, getValues, reset } = useForm<RegisterFormDataType>({
     defaultValues,
     mode: "onBlur",
     resolver: yupResolver(validationSchema),

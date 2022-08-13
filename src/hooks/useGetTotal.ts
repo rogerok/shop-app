@@ -6,34 +6,28 @@ import {
 } from "../redux/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "./redux";
 
-type TotalType = {
-  type: "sum" | "quantity";
+type TotalData = {
+  type: string;
   total: number;
-};
+  description: string;
+}[];
 
-const useGetTotal = () => {
+const useGetTotal = (options: string[]): TotalData => {
   const dispatch = useAppDispatch();
   const totalSum = useAppSelector(selectTotalSum);
   const totalQuantity = useAppSelector(selectTotalQuantity);
 
-  const data: TotalType[] = [
-    {
-      type: "sum",
-      total: totalSum,
-    },
-    { type: "quantity", total: totalQuantity },
-  ];
-
-  const getDescription = (unit: TotalType) => {
-    if (unit.type === "sum") return "Amount:";
-    return "Products:";
-  };
+  const data = options.map((option) => ({
+    type: option,
+    total: option === "sum" ? totalSum : totalQuantity,
+    description: option === "sum" ? "Amount" : "Products",
+  }));
 
   useEffect(() => {
     dispatch(getTotalSum());
   }, [totalQuantity]);
 
-  return { data, getDescription };
+  return data;
 };
 
 export default useGetTotal;

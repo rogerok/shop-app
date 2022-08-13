@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Box, Paper, Typography } from "@mui/material";
 
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchema } from "../../../utils/validations/validationSchema";
 
@@ -14,6 +14,13 @@ import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
 import TextField from "../../common/TextField/TextField";
 
+const defaultValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+};
+
 const OrderForm = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(selectCartItems);
@@ -22,18 +29,8 @@ const OrderForm = () => {
   const [addUserOrder, { isError, isLoading, isSuccess }] =
     useAddUserOrderMutation();
 
-  const {
-    control,
-    formState: { errors },
-    getValues,
-    reset,
-  } = useForm<FormDataType>({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-    },
+  const { control, getValues, reset } = useForm<FormDataType>({
+    defaultValues,
     mode: "onBlur",
     resolver: yupResolver(validationSchema),
   });
@@ -57,77 +54,47 @@ const OrderForm = () => {
           Checkout
         </Typography>
         <form onSubmit={onSubmit} noValidate>
-          <Controller
+          <TextField
+            control={control}
             name="firstName"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                type="text"
-                label="Your first name"
-                required
-                error={!!errors.firstName}
-                helperText={errors?.firstName?.message}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-              />
-            )}
+            type="text"
+            label="Your first name"
+            required
+            margin="normal"
+            fullWidth
+            variant="outlined"
           />
-          <Controller
+          <TextField
+            control={control}
             name="lastName"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                type="text"
-                label="Your last name"
-                required
-                error={!!errors.lastName}
-                helperText={errors?.lastName?.message}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-              />
-            )}
+            type="text"
+            label="Your last name"
+            required
+            margin="normal"
+            fullWidth
+            variant="outlined"
           />
-          <Controller
+          <TextField
+            control={control}
             name="phoneNumber"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                type="tel"
-                label="Your phone number"
-                required
-                error={!!errors.phoneNumber}
-                helperText={
-                  errors.phoneNumber ? errors.phoneNumber?.message : ""
-                }
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                value=""
-              />
-            )}
+            type="text"
+            label="Your phone number"
+            required
+            margin="normal"
+            fullWidth
+            variant="outlined"
           />
-          <Controller
+          <TextField
+            control={control}
             name="email"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                type="email"
-                label="Your email"
-                required
-                error={!!errors.email}
-                helperText={errors.email ? errors.email?.message : ""}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-              />
-            )}
+            type="email"
+            label="Your email"
+            required
+            margin="normal"
+            fullWidth
+            variant="outlined"
           />
+
           {isCartEmpty && (
             <Typography
               component="span"

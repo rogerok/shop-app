@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
       return;
     }
     dispatch(setSkippedProducts((value - 1) * productsPerPage));
-    if (scrollToRef)
+    if (scrollToRef.current)
       scrollToRef.current.scrollIntoView({ behaviour: "smooth" });
   };
 

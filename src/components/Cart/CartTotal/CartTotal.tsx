@@ -4,15 +4,15 @@ import { Box, Paper, Typography, Divider } from "@mui/material";
 
 import useGetTotal from "../../../hooks/useGetTotal";
 
-type TotalType = {
-  type: "sum" | "quantity";
+type TotalData = {
+  type: string;
   total: number;
-};
-interface CountProps extends TotalType {
   description: string;
-}
+};
 
-const Total: FC<CountProps> = ({ description, total, type }) => (
+const totalOptions = ["sum", "quantity"];
+
+const Total: FC<TotalData> = ({ description, total, type }) => (
   <Box component="p" display="flex" justifyContent="space-between">
     <Typography variant="h6" component="span" gutterBottom>
       {description}
@@ -25,8 +25,7 @@ const Total: FC<CountProps> = ({ description, total, type }) => (
 );
 
 const CartTotal = () => {
-  const { data, getDescription } = useGetTotal();
-
+  const data: TotalData[] = useGetTotal(totalOptions);
   return (
     <Box display="flex" flexDirection="column">
       <Paper elevation={3} sx={{ p: 2 }}>
@@ -35,17 +34,14 @@ const CartTotal = () => {
         </Typography>
         <Divider />
 
-        {data.map((unit) => {
-          const description = getDescription(unit);
-          return (
-            <Total
-              key={unit.type}
-              description={description}
-              total={unit.total}
-              type={unit.type}
-            />
-          );
-        })}
+        {data.map((unit) => (
+          <Total
+            key={unit.type}
+            description={unit.description}
+            total={unit.total}
+            type={unit.type}
+          />
+        ))}
       </Paper>
     </Box>
   );
