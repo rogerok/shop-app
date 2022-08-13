@@ -21,11 +21,7 @@ const SearchResultPage = () => {
     <Backdrop />
   ) : (
     <Container>
-      <ProductsCollection
-        data={data!.products}
-        title="Search results"
-        isFetching
-      />
+      <ProductsCollection data={data!.products} title="Search results" />
       <Box display="flex" justifyContent="center" mt={4}>
         <Pagination total={data?.total} />
       </Box>

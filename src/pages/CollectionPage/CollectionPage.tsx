@@ -13,8 +13,8 @@ import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";
 const CollectionPage = () => {
   const { category } = useParams();
   const skippedProducts = useAppSelector(selectSkippedProducts);
-  const { data, isLoading, isFetching } = useGetProductsByCategoryQuery({
-    category: category!,
+  const { data, isLoading } = useGetProductsByCategoryQuery({
+    category: category || "",
     skip: skippedProducts,
   });
 
@@ -22,7 +22,7 @@ const CollectionPage = () => {
     <Backdrop />
   ) : (
     <Container>
-      <ProductsCollection data={data!.products} title={category!} isFetching />
+      {data && <ProductsCollection data={data?.products} title={category!} />}
       <Box display="flex" justifyContent="center" mt={4}>
         <Pagination total={data?.total} />
       </Box>

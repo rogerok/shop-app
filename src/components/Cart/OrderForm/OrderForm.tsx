@@ -1,9 +1,9 @@
-import React, { ChangeEventHandler, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Box, Paper, Typography } from "@mui/material";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { orderSchema } from "../../../utils/validations/schema";
+import { validationSchema } from "../../../utils/validations/validationSchema";
 
 import { FormDataType } from "../../../ts/types";
 import { useAddUserOrderMutation } from "../../../services/shopServices/shopApi";
@@ -12,9 +12,7 @@ import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
-import { StyledTextField } from "./OrderForm.styles";
 import TextField from "../../common/TextField/TextField";
-import { formatPhoneNumber } from "../../../utils/helpers/formatPhoneNumber";
 
 const OrderForm = () => {
   const dispatch = useAppDispatch();
@@ -37,7 +35,7 @@ const OrderForm = () => {
       phoneNumber: "",
     },
     mode: "onBlur",
-    resolver: yupResolver(orderSchema),
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = async (e: React.SyntheticEvent) => {

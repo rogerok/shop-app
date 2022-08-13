@@ -7,14 +7,9 @@ import ProductCard from "../ProductCard/ProductCard";
 type ProductsCollectionProps = {
   data: ProductsType;
   title: string;
-  isFetching: boolean;
 };
 
-const ProductsCollection: FC<ProductsCollectionProps> = ({
-  data,
-  title,
-  isFetching,
-}) => {
+const ProductsCollection: FC<ProductsCollectionProps> = ({ data, title }) => {
   const num = 0;
   return (
     <Container>

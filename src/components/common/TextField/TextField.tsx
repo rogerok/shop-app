@@ -1,34 +1,46 @@
 import React from "react";
 import { TextFieldProps as MuiTextFieldProps } from "@mui/material";
-import { FieldErrors } from "react-hook-form";
-import { FormDataType } from "../../../ts/types";
+import { Controller, FieldErrors } from "react-hook-form";
+import { FormDataType, FormInputType } from "../../../ts/types";
 import { StyledTextField } from "./TextField.styles";
 
-type TextFieldProps = {
-  type: string;
-  label: string;
-  error: FieldErrors<FormDataType>;
-  helperText: React.ReactNode;
-  required?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-} & MuiTextFieldProps;
+type TextFieldProps = {} & MuiTextFieldProps & FormInputType;
 
 const TextField: React.FC<TextFieldProps> = ({
   type,
   label,
-  error,
+  /*   error, */
   helperText,
   required,
+  name,
+  control,
   ...props
 }) => (
-  <StyledTextField
-    type={type}
-    label={label}
-    error={error}
-    helperText={helperText}
-    required
-    {...props}
-  />
+  <>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState: { error } }) => (
+        <StyledTextField
+          type={type}
+          label={label}
+          required
+          error={!!error}
+          helperText={error?.message}
+          {...props}
+          {...field}
+        />
+      )}
+    />
+    {/*     <StyledTextField
+      type={type}
+      label={label}
+      error={error}
+      helperText={helperText}
+      required
+      {...props}
+    /> */}
+  </>
 );
 
 export default TextField;

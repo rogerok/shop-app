@@ -15,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
   const dispatch = useAppDispatch();
   const productsPerPage = useAppSelector(selectProductsPerPage);
 
-  const totalPages = Math.round(Number(total!) / productsPerPage);
+  const totalPages = Math.round(Number(total) / productsPerPage);
 
   const handlePaginationChange = (
     event: ChangeEvent<unknown>,

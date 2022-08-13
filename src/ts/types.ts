@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLInputTypeAttribute, InputHTMLAttributes, ReactNode } from "react";
 import { To } from "react-router-dom";
 
 export interface ProductType {
@@ -52,4 +52,25 @@ export type FormDataType = {
   lastName: string;
   phoneNumber: string;
   email: string;
+};
+
+export type RegisterFormDataType = {
+  password: string;
+  confirmPassword: string;
+  bornDate: string;
+  country: string;
+  gender: string;
+} & FormDataType;
+
+export type RadioOptionType = {
+  label: string;
+  value: string;
+};
+
+export type RadioOptionsType = RadioOptionType[];
+
+export type FormInputType = {
+  control?: any;
+  name: string;
+  label: string;
 };
