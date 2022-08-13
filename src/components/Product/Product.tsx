@@ -36,9 +36,10 @@ const Product = () => {
     dispatch(addToCart(data!));
     handleOpen();
   };
-  return isLoading ? (
-    <Backdrop />
-  ) : (
+
+  if (isLoading || !data) return <Backdrop />;
+
+  return (
     <Box component="section" p={4}>
       <Typography variant="h3" align="left" gutterBottom>
         {title.toUpperCase()}

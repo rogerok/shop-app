@@ -28,11 +28,6 @@ type ProductCardProps = {
   product: ProductType;
 };
 
-type CardContentProps = Pick<
-  ProductCardProps["product"],
-  "title" | "discountPercentage" | "price" | "rating"
->;
-
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { isOpen, handleOpen, handleClose } = useSnackbar();

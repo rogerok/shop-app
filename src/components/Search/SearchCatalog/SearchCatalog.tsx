@@ -29,7 +29,7 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
     let content;
 
     if (products.length && products.length < 4) {
-      content = products!.map((item: ProductType) => (
+      content = products.map((item: ProductType) => (
         <SearchProductPreview key={item.id} {...item} />
       ));
     }
@@ -37,7 +37,7 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
     if (products.length && products.length > 4) {
       content = (
         <>
-          {products!.slice(0, 4).map((item: ProductType) => (
+          {products.slice(0, 4).map((item: ProductType) => (
             <SearchProductPreview key={item.id} {...item} />
           ))}
 
@@ -50,12 +50,12 @@ const SearchCatalog: FC<SearchCatalogProps> = ({
 
   return (
     <StyledPaper elevation={3} onClick={handleClearInput}>
-      {isLoading ? (
+      {isLoading || !data ? (
         <Spinner />
       ) : (
         <StyledList>
-          {data!.length ? (
-            renderListItems(data!)
+          {data.length ? (
+            renderListItems(data)
           ) : (
             <Typography variant="h6" align="center">
               Not founded

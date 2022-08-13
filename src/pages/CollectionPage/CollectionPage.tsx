@@ -18,7 +18,19 @@ const CollectionPage = () => {
     skip: skippedProducts,
   });
 
-  return isLoading ? (
+  if (isLoading || !data) return <Backdrop />;
+
+  return (
+    <Container>
+      <ProductsCollection data={data?.products} title={category!} />
+      <Box display="flex" justifyContent="center" mt={4}>
+        <Pagination total={data?.total} />
+      </Box>
+    </Container>
+  );
+};
+export default CollectionPage;
+/*  return isLoading ? (
     <Backdrop />
   ) : (
     <Container>
@@ -27,6 +39,4 @@ const CollectionPage = () => {
         <Pagination total={data?.total} />
       </Box>
     </Container>
-  );
-};
-export default CollectionPage;
+  ); */

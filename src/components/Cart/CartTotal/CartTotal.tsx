@@ -24,14 +24,19 @@ const Total: FC<TotalData> = ({ description, total, type }) => (
   </Box>
 );
 
+const TotalTitle = React.memo(() => (
+  <Typography variant="h4" gutterBottom>
+    Total:
+  </Typography>
+));
+
 const CartTotal = () => {
   const data: TotalData[] = useGetTotal(totalOptions);
+
   return (
     <Box display="flex" flexDirection="column">
       <Paper elevation={3} sx={{ p: 2 }}>
-        <Typography variant="h4" gutterBottom>
-          Total:
-        </Typography>
+        <TotalTitle />
         <Divider />
 
         {data.map((unit) => (
@@ -46,4 +51,4 @@ const CartTotal = () => {
     </Box>
   );
 };
-export default React.memo(CartTotal);
+export default CartTotal;

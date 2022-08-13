@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Backdrop from "../../components/common/Backdrop/Backdrop";
 import Pagination from "../../components/common/Pagination/Pagination";
@@ -13,15 +13,15 @@ const SearchResultPage = () => {
   const skippedProducts = useAppSelector(selectSkippedProducts);
 
   const { data, isLoading } = useSearchProductsQuery({
-    searchTerm: searchTerm!,
+    searchTerm: searchTerm || "",
     skip: skippedProducts,
   });
 
-  return isLoading ? (
-    <Backdrop />
-  ) : (
+  if (isLoading || !data) return <Backdrop />;
+
+  return (
     <Container>
-      <ProductsCollection data={data!.products} title="Search results" />
+      <ProductsCollection data={data.products} title="Search results" />
       <Box display="flex" justifyContent="center" mt={4}>
         <Pagination total={data?.total} />
       </Box>
@@ -30,3 +30,14 @@ const SearchResultPage = () => {
 };
 
 export default SearchResultPage;
+
+/*   return isLoading ? (
+    <Backdrop />
+  ) : (
+    <Container>
+      <ProductsCollection data={data!.products} title="Search results" />
+      <Box display="flex" justifyContent="center" mt={4}>
+        <Pagination total={data?.total} />
+      </Box>
+    </Container>
+  ); */
