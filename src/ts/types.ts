@@ -70,7 +70,12 @@ export type RadioOptionType = {
 export type RadioOptionsType = RadioOptionType[];
 
 export type FormInputType = {
-  control?: any;
+  control: any;
   name: string;
   label: string;
+};
+
+export const CountryType = {
+  label: "string",
+  code: "string",
 };

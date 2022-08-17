@@ -98,9 +98,6 @@ export const selectTotalQuantity = createSelector(
   (cart) => cart.cartQuantity
 );
 
-/* export const selectCartItems = (state: { cart: CartState }): CartProduct[] =>
-  state.cart.cartItems; */
-
 export const selectTotalSum = createSelector(
   [selectCart],
   (cart) => cart.cartTotalSum

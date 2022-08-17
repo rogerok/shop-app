@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { CartProductsType, ProductType, ProductsType } from "../../ts/types";
 
-import { SHOP_API } from "../../utils/API";
+import { SHOP_API } from "../../utils/constants/API";
 import { PAGINATION_LIMIT } from "../../utils/constants/PAGINATION_LIMIT";
 
 export type ProductsRespone = {

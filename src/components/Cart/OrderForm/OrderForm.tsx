@@ -12,7 +12,7 @@ import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
-import TextField from "../../common/TextField/TextField";
+import TextInput from "../../common/TextInput/TextInput";
 
 const defaultValues = {
   firstName: "",
@@ -54,7 +54,7 @@ const OrderForm = () => {
           Checkout
         </Typography>
         <form onSubmit={onSubmit} noValidate>
-          <TextField
+          <TextInput
             control={control}
             name="firstName"
             type="text"
@@ -64,7 +64,7 @@ const OrderForm = () => {
             fullWidth
             variant="outlined"
           />
-          <TextField
+          <TextInput
             control={control}
             name="lastName"
             type="text"
@@ -74,7 +74,7 @@ const OrderForm = () => {
             fullWidth
             variant="outlined"
           />
-          <TextField
+          <TextInput
             control={control}
             name="phoneNumber"
             type="text"
@@ -84,7 +84,7 @@ const OrderForm = () => {
             fullWidth
             variant="outlined"
           />
-          <TextField
+          <TextInput
             control={control}
             name="email"
             type="email"

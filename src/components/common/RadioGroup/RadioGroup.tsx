@@ -7,12 +7,12 @@ import {
   FormControl,
 } from "@mui/material";
 import { Controller } from "react-hook-form";
-import Radio from "../Radio/Radio";
 import {
   FormInputType,
   RadioOptionsType,
   RadioOptionType,
 } from "../../../ts/types";
+import Radio from "../Radio/Radio";
 
 type RadioGroupProps = {
   options: RadioOptionsType;
@@ -27,7 +27,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
   ...props
 }) => (
   <FormControl component="fieldset">
-    <FormLabel component="legend" sx={{ color: "primary.dark" }}>
+    <FormLabel component="legend" sx={{ color: "primary.dark", mb: 1 }}>
       {label}
     </FormLabel>
     <Controller

@@ -2,12 +2,11 @@ import {
   createEntityAdapter,
   createSlice,
   EntityState,
-  PayloadAction,
 } from "@reduxjs/toolkit";
 import { ProductsType, ProductType } from "../../ts/types";
 
 import { ProductsRespone, shopApi } from "../../services/shopServices/shopApi";
-import { SHOP_API as API } from "../../utils/API";
+import { SHOP_API as API } from "../../utils/constants/API";
 
 interface ShopState extends EntityState<ProductType> {
   entities: {};

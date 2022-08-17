@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Grid } from "@mui/material";
+import { Container, Typography, Grid, Box } from "@mui/material";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -7,9 +7,12 @@ import { validationSchema } from "../../utils/validations/validationSchema";
 
 import { RadioOptionsType, RegisterFormDataType } from "../../ts/types";
 
-import TextField from "../common/TextField/TextField";
+import TextInput from "../common/TextInput/TextInput";
 import RadioGroup from "../common/RadioGroup/RadioGroup";
 import Button from "../common/Button/Button";
+import DatePicker from "../common/DatePicker/DatePicker";
+import Autocomplete from "../common/Autocomplete/Autocomplete";
+import { COUNTRIES_LIST } from "../../utils/constants/COUNTRIES_LIST";
 
 const genderOptions: RadioOptionsType = [
   {
@@ -46,35 +49,34 @@ const Register = () => {
     console.log(getValues());
   };
 
+  const handleReset = () => reset();
+
   return (
-    <Container
-      maxWidth="xl"
-      sx={{ border: "2px solid black" }}
-      component="section"
-    >
+    <Container maxWidth="xl" component="section">
       <Grid
         container
-        sx={{ border: "2px solid red" }}
         mb={10}
         display="flex"
         flexDirection="column"
         alignItems="center"
+        justifyContent="space-between"
       >
         <Typography variant="h2">Registration</Typography>
         <Grid item xs={12}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} noValidate>
             <Grid
               container
               spacing={4}
               display="flex"
               justifyContent="space-between"
+              mb={2}
             >
               <Grid item xs={6}>
-                <TextField
+                <TextInput
                   control={control}
                   name="firstName"
                   type="text"
-                  label="Your first name"
+                  label="First name"
                   required
                   margin="normal"
                   fullWidth
@@ -82,11 +84,11 @@ const Register = () => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <TextField
+                <TextInput
                   control={control}
                   name="lastName"
                   type="text"
-                  label="Your last name"
+                  label="Last name"
                   required
                   margin="normal"
                   fullWidth
@@ -97,22 +99,40 @@ const Register = () => {
             <RadioGroup
               control={control}
               name="gender"
-              label="Enter your gender"
+              label="Gender"
               options={genderOptions}
               row
             />
-
-            <TextField
+            <Box component="p">
+              <DatePicker control={control} name="bornDate" label="Born date" />
+            </Box>
+            <Autocomplete
+              control={control}
+              name="country"
+              label="Country"
+              options={COUNTRIES_LIST}
+            />
+            <TextInput
               control={control}
               name="password"
               type="password"
-              label="Enter your password"
+              label="Password"
               required
               margin="normal"
               fullWidth
               variant="outlined"
             />
-            <TextField
+            <TextInput
+              control={control}
+              name="confirmPassword"
+              type="password"
+              label="Confirm password"
+              required
+              margin="normal"
+              fullWidth
+              variant="outlined"
+            />
+            <TextInput
               control={control}
               name="phoneNumber"
               type="tel"
@@ -122,7 +142,7 @@ const Register = () => {
               fullWidth
               variant="outlined"
             />
-            <TextField
+            <TextInput
               control={control}
               name="email"
               type="email"
@@ -132,7 +152,24 @@ const Register = () => {
               fullWidth
               variant="outlined"
             />
-            <Button type="submit">Submit</Button>
+            <Grid
+              container
+              mt={2}
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Grid item xs={4}>
+                <Button onClick={handleReset} fullWidth>
+                  clear
+                </Button>
+              </Grid>
+              <Grid item xs={4}>
+                <Button type="submit" fullWidth>
+                  submit
+                </Button>
+              </Grid>
+            </Grid>
           </form>
         </Grid>
       </Grid>
@@ -140,106 +177,3 @@ const Register = () => {
   );
 };
 export default Register;
-
-/* <form onSubmit={handleSubmit}>
-  <Grid container spacing={4} display="flex" justifyContent="space-between">
-    <Grid item xs={6}>
-      <Controller
-        name="firstName"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            {...field}
-            type="text"
-            label="Your first name"
-            required
-            error={!!errors.firstName}
-            helperText={errors?.firstName?.message}
-            margin="normal"
-            fullWidth
-            variant="outlined"
-          />
-        )}
-      />
-    </Grid>
-    <Grid item xs={6}>
-      <Controller
-        name="lastName"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            {...field}
-            type="text"
-            label="Your last name"
-            required
-            error={!!errors.lastName}
-            helperText={errors?.lastName?.message}
-            margin="normal"
-            fullWidth
-            variant="outlined"
-          />
-        )}
-      />
-    </Grid>
-  </Grid>
-  <RadioGroup
-    control={control}
-    name="gender"
-    label="Enter your gender"
-    options={genderOptions}
-    row
-  />
-  <Controller
-    name="password"
-    control={control}
-    render={({ field }) => (
-      <TextField
-        {...field}
-        type="tel"
-        label="Your phone number"
-        required
-        error={!!errors.phoneNumber}
-        helperText={errors?.phoneNumber?.message}
-        margin="normal"
-        fullWidth
-        variant="outlined"
-      />
-    )}
-  />
-  <Controller
-    name="phoneNumber"
-    control={control}
-    render={({ field }) => (
-      <TextField
-        {...field}
-        type="tel"
-        label="Your phone number"
-        required
-        error={!!errors.phoneNumber}
-        helperText={errors?.phoneNumber?.message}
-        margin="normal"
-        fullWidth
-        variant="outlined"
-      />
-    )}
-  />
-  <Controller
-    name="email"
-    control={control}
-    render={({ field }) => (
-      <TextField
-        {...field}
-        type="email"
-        label="Your email"
-        required
-        error={!!errors.email}
-        helperText={errors?.phoneNumber?.message}
-        fullWidth
-        margin="normal"
-        variant="outlined"
-      />
-    )}
-  />
-  <Button type="submit">Submit</Button>
-</form>;
- */

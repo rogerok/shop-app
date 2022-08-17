@@ -1,12 +1,11 @@
 import React from "react";
-import { TextFieldProps as MuiTextFieldProps } from "@mui/material";
+import { TextFieldProps as MuiTextFieldProps, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { FormInputType } from "../../../ts/types";
-import { StyledTextField } from "./TextField.styles";
 
-type TextFieldProps = {} & MuiTextFieldProps & FormInputType;
+type TextInputrops = {} & MuiTextFieldProps & FormInputType;
 
-const TextField: React.FC<TextFieldProps> = ({
+const TextInput: React.FC<TextInputrops> = ({
   type,
   label,
   helperText,
@@ -19,7 +18,7 @@ const TextField: React.FC<TextFieldProps> = ({
     name={name}
     control={control}
     render={({ field, fieldState: { error } }) => (
-      <StyledTextField
+      <TextField
         type={type}
         label={label}
         required
@@ -32,4 +31,4 @@ const TextField: React.FC<TextFieldProps> = ({
   />
 );
 
-export default TextField;
+export default TextInput;

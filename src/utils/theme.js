@@ -31,6 +31,26 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      variants: [
+        {
+          props: { variant: "outlined" },
+          style: {
+            "& .MuiOutlinedInput-root": {
+              "&:hover fieldset": {
+                borderColor: "#e313bf",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#cb11ab",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: "#000000",
+            },
+          },
+        },
+      ],
+    },
   },
 
   spacing: 8,
