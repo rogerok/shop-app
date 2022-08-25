@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CartProductsType, ProductType, ProductsType } from "../../ts/types";
+import { CartProductsType, ProductType, ProductsType } from "../ts/types";
 
-import { SHOP_API } from "../../utils/constants/API";
-import { PAGINATION_LIMIT } from "../../utils/constants/PAGINATION_LIMIT";
+import { API_ENDPOINTS } from "../utils/constants/API";
+import { PAGINATION_LIMIT } from "../utils/constants/PAGINATION_LIMIT";
 
 export type ProductsRespone = {
   limit: number;
@@ -25,34 +25,34 @@ type UserOrderData = {
 };
 
 export const shopApi = createApi({
-  reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: SHOP_API.URL }),
+  reducerPath: "shopApi",
+  baseQuery: fetchBaseQuery({ baseUrl: API_ENDPOINTS.URL }),
 
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<ProductsRespone, FetchArgs>({
       query: ({ category, skip }) =>
-        `${SHOP_API.PRODUCTS}/${SHOP_API.CATEGORY}/${category}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+        `${API_ENDPOINTS.PRODUCTS}/${API_ENDPOINTS.CATEGORY}/${category}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
     }),
     getProductById: builder.query<ProductType, string | number>({
-      query: (id) => `${SHOP_API.PRODUCTS}/${id}`,
+      query: (id) => `${API_ENDPOINTS.PRODUCTS}/${id}`,
     }),
     getProducts: builder.query<ProductsRespone, number>({
       query: (skip) =>
-        `${SHOP_API.PRODUCTS}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+        `${API_ENDPOINTS.PRODUCTS}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
     }),
     searchProductsForPreview: builder.query<ProductsType, string>({
       query: (searchQuery) =>
         searchQuery &&
-        `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchQuery}&select=title,price,thumbnail`,
+        `${API_ENDPOINTS.PRODUCTS}${API_ENDPOINTS.SEARCH}${searchQuery}&select=title,price,thumbnail`,
       transformResponse: (result: ProductsRespone) => result.products,
     }),
     searchProducts: builder.query<ProductsRespone, FetchArgs>({
       query: ({ searchTerm, skip }) =>
-        `${SHOP_API.PRODUCTS}${SHOP_API.SEARCH}${searchTerm}&limit=${PAGINATION_LIMIT}&skip=${skip}`,
+        `${API_ENDPOINTS.PRODUCTS}${API_ENDPOINTS.SEARCH}${searchTerm}&limit=${PAGINATION_LIMIT}&skip=${skip}`,
     }),
     addUserOrder: builder.mutation({
       query: (orderData: UserOrderData) => ({
-        url: `${SHOP_API.USERS}/add`,
+        url: `${API_ENDPOINTS.USERS}/add`,
         method: "POST",
         body: orderData,
       }),

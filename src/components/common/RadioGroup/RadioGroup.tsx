@@ -40,6 +40,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
               value={item.value}
               control={<Radio />}
               label={item.label}
+              key={item.value}
             />
           ))}
         </MuiRadioGroup>

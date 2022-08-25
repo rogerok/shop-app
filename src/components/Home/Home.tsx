@@ -22,7 +22,7 @@ const Home = () => {
         <Label />
       </Grid> */}
       <Grid item xs={10} ref={scrollTo}>
-        <Carousel images={carouselImages} height={370} />
+        <Carousel images={carouselImages} height={370} indicators={false} />
       </Grid>
 
       <Grid

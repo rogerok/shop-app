@@ -27,6 +27,8 @@ const RegisterPage = React.lazy(
   () => import("../pages/RegisterPage/RegisterPage")
 );
 
+const SignInPage = React.lazy(() => import("../pages/SignInPage/SignInPage"));
+
 export const routes: RouteObject[] = [
   {
     path: RoutesNames.HOME,
@@ -43,6 +45,7 @@ export const routes: RouteObject[] = [
       { path: RoutesNames.ACCOUNT, element: <AccountPage /> },
       { path: RoutesNames.SEARCH_RESULT_PAGE, element: <SearchResultPage /> },
       { path: RoutesNames.REGISTER_PAGE, element: <RegisterPage /> },
+      { path: RoutesNames.SIGN_IN_PAGE, element: <SignInPage /> },
     ],
   },
 ];

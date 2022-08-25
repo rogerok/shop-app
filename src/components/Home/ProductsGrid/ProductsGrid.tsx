@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Box } from "@mui/material";
 import { useAppSelector } from "../../../hooks/redux";
 import { selectSkippedProducts } from "../../../redux/pagination/paginationSlice";
-import { useGetProductsQuery } from "../../../services/shopServices/shopApi";
+import { useGetProductsQuery } from "../../../services/shopApi";
 import { ProductType } from "../../../ts/types";
 import Spinner from "../../common/Spinner/Spinner";
 import ProductCard from "../../ProductCard/ProductCard";

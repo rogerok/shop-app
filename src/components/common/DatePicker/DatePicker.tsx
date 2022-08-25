@@ -19,13 +19,9 @@ const DatePicker: React.FC<FormInputType> = ({ name, label, control }) => (
           onChange={onChange}
           value={value || null}
           disableFuture
+          label={label}
           renderInput={(params) => (
-            <TextField
-              name={name}
-              label={label}
-              variant="outlined"
-              {...params}
-            />
+            <TextField fullWidth name={name} variant="outlined" {...params} />
           )}
         />
       )}

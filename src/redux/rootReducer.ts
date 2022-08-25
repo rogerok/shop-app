@@ -1,21 +1,25 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { authApi } from "../services/authApi";
 
 import cartReducer from "./cart/cartSlice";
 import uiReducer from "./ui/uiSlice";
 import shopReducer from "./shop/shopSlice";
 import favoriteReducer from "./favorite/favoriteSlice";
 import paginationReducer from "./pagination/paginationSlice";
-import { shopApi } from "../services/shopServices/shopApi";
+import userReducer from "./user/userSlice";
+import { shopApi } from "../services/shopApi";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   [shopApi.reducerPath]: shopApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
   ui: uiReducer,
   shop: shopReducer,
   favorite: favoriteReducer,
   pagination: paginationReducer,
+  user: userReducer,
 });
 const persistConfig = {
   key: "root",

@@ -2,14 +2,18 @@ import React from "react";
 
 import { Modal as MuiModal } from "@mui/material";
 
-import { StyledContainer } from "./Modal.styles";
+import { StyledContainer } from "./RequestStatus.styles";
 import { StatusType } from "../../../ts/types";
-import useModal from "../../../hooks/useModal";
+import useRequestStatus from "../../../hooks/useRequestStatus";
 
 type ModalProps = StatusType;
 
-const Modal: React.FC<ModalProps> = ({ isLoading, isSuccess, isError }) => {
-  const { handleClose, open, content } = useModal({
+const RequestStatus: React.FC<ModalProps> = ({
+  isLoading,
+  isSuccess,
+  isError,
+}) => {
+  const { handleClose, open, content } = useRequestStatus({
     isLoading,
     isSuccess,
     isError,
@@ -22,4 +26,4 @@ const Modal: React.FC<ModalProps> = ({ isLoading, isSuccess, isError }) => {
   );
 };
 
-export default Modal;
+export default RequestStatus;

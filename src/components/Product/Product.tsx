@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Typography, Box, Rating, Link } from "@mui/material";
 
 import { useParams, Link as RouterLink } from "react-router-dom";
-import { useGetProductByIdQuery } from "../../services/shopServices/shopApi";
+import { useGetProductByIdQuery } from "../../services/shopApi";
 import { useAppDispatch } from "../../hooks/redux";
 import useSnackbar from "../../hooks/useSnackbar";
 import { addToCart } from "../../redux/cart/cartSlice";

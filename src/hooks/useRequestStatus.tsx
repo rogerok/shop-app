@@ -11,7 +11,7 @@ const getContent = ({ isLoading, isSuccess, isError }: StatusType) => {
   return null;
 };
 
-const useModal = ({ isSuccess, isLoading, isError }: StatusType) => {
+const useRequestStatus = ({ isSuccess, isLoading, isError }: StatusType) => {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -37,4 +37,4 @@ const useModal = ({ isSuccess, isLoading, isError }: StatusType) => {
   };
 };
 
-export default useModal;
+export default useRequestStatus;

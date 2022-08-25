@@ -15,7 +15,7 @@ const StatusSuccess = () => (
     alignItems="center"
   >
     <StyledSuccesIcon />
-    <Typography variant="h6" paragraph>
+    <Typography variant="h6" paragraph textAlign="center">
       The window will close automatically
     </Typography>
   </Box>

@@ -1,6 +1,6 @@
 import { CountryType } from "../../ts/types";
 
-export const COUNTRIES_LIST: typeof CountryType[] = [
+export const COUNTRIES_LIST: CountryType[] = [
   { label: "Afghanistan", code: "AF" },
   { label: "Åland Islands", code: "AX" },
   { label: "Albania", code: "AL" },

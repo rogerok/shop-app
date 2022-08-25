@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
 
 import { ProductType, ProductsType } from "../../../ts/types";
-import { useSearchProductsForPreviewQuery } from "../../../services/shopServices/shopApi";
+import { useSearchProductsForPreviewQuery } from "../../../services/shopApi";
 
 import SearchProductPreview from "../ProductPreview/ProductPreview";
 import Spinner from "../../common/Spinner/Spinner";

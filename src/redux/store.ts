@@ -9,8 +9,9 @@ import {
   REGISTER,
 } from "redux-persist";
 import logger from "redux-logger";
+import { authApi } from "../services/authApi";
 
-import { shopApi } from "../services/shopServices/shopApi";
+import { shopApi } from "../services/shopApi";
 import { persistedReducer } from "./rootReducer";
 
 export const store = configureStore({
@@ -20,7 +21,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([logger, shopApi.middleware]),
+    }).concat([logger, shopApi.middleware, authApi.middleware]),
 });
 
 export const persistor = persistStore(store);

@@ -5,7 +5,7 @@ import { Box, Container } from "@mui/material";
 import Pagination from "../../components/common/Pagination/Pagination";
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
 
-import { useGetProductsByCategoryQuery } from "../../services/shopServices/shopApi";
+import { useGetProductsByCategoryQuery } from "../../services/shopApi";
 import Backdrop from "../../components/common/Backdrop/Backdrop";
 import { useAppSelector } from "../../hooks/redux";
 import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";

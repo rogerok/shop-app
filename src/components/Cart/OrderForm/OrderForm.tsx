@@ -3,14 +3,14 @@ import { Box, Paper, Typography } from "@mui/material";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validationSchema } from "../../../utils/validations/validationSchema";
+import { orderSchema } from "../../../utils/validations/validationSchema";
 
 import { FormDataType } from "../../../ts/types";
-import { useAddUserOrderMutation } from "../../../services/shopServices/shopApi";
+import { useAddUserOrderMutation } from "../../../services/shopApi";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 
-import Modal from "../../common/Modal/Modal";
+import RequestStatus from "../../common/RequestStatus/RequestStatus";
 import Button from "../../common/Button/Button";
 import TextInput from "../../common/TextInput/TextInput";
 
@@ -26,18 +26,29 @@ const OrderForm = () => {
   const cartItems = useAppSelector(selectCartItems);
   const isCartEmpty = !cartItems.length;
 
-  const [addUserOrder, { isError, isLoading, isSuccess }] =
+  const [addUserOrder, { isLoading, isSuccess, isError }] =
     useAddUserOrderMutation();
 
-  const { control, getValues, reset } = useForm<FormDataType>({
+  const {
+    control,
+    getValues,
+    reset,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = useForm<FormDataType>({
     defaultValues,
     mode: "onBlur",
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(orderSchema),
   });
 
-  const onSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    const formData = getValues();
+  const onSubmit = async (
+    /* e: React.SyntheticEvent */ formData: FormDataType
+    /*  event: React.SyntheticEvent */
+  ) => {
+    /*     e.preventDefault(); */
+    /*     const formData = getValues(); */
+    console.log(formData);
+    console.log("click");
     await addUserOrder({ cartItems, formData });
   };
 
@@ -47,13 +58,22 @@ const OrderForm = () => {
     reset();
   }, [isSuccess]);
 
+  if (isLoading || isSuccess || isError)
+    return (
+      <RequestStatus
+        isLoading={isLoading}
+        isSuccess={isSuccess}
+        isError={isError}
+      />
+    );
+
   return (
     <Box>
       <Paper elevation={3} sx={{ p: 4 }}>
         <Typography variant="h3" gutterBottom>
           Checkout
         </Typography>
-        <form onSubmit={onSubmit} noValidate>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <TextInput
             control={control}
             name="firstName"
@@ -113,13 +133,12 @@ const OrderForm = () => {
               display: "flex",
               mx: "left",
             }}
-            disabled={isCartEmpty}
+            disabled={isValid && isCartEmpty}
           >
             Order
           </Button>
         </form>
       </Paper>
-      <Modal isLoading={isLoading} isSuccess={isSuccess} isError={isError} />
     </Box>
   );
 };

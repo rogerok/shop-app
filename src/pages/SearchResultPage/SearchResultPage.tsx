@@ -6,7 +6,7 @@ import Pagination from "../../components/common/Pagination/Pagination";
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
 import { useAppSelector } from "../../hooks/redux";
 import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";
-import { useSearchProductsQuery } from "../../services/shopServices/shopApi";
+import { useSearchProductsQuery } from "../../services/shopApi";
 
 const SearchResultPage = () => {
   const { searchTerm } = useParams();

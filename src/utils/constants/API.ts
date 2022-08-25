@@ -1,4 +1,4 @@
-export const SHOP_API = {
+export const API_ENDPOINTS = {
   URL: "https://dummyjson.com",
   PRODUCTS: "/products",
   CATEGORY: "/category",

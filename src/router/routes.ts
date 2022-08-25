@@ -9,4 +9,5 @@ export enum RoutesNames {
   PRODUCT_PAGE = "product/:productId",
   SEARCH_RESULT_PAGE = "search/:searchTerm",
   REGISTER_PAGE = "register",
+  SIGN_IN_PAGE = "sign-in",
 }
