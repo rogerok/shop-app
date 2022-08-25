@@ -3,6 +3,7 @@ import { Box, Paper, Typography } from "@mui/material";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import { orderSchema } from "../../../utils/validations/validationSchema";
 
 import { FormDataType } from "../../../ts/types";
@@ -25,7 +26,7 @@ const OrderForm = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(selectCartItems);
   const isCartEmpty = !cartItems.length;
-
+  const navigate = useNavigate();
   const [addUserOrder, { isLoading, isSuccess, isError }] =
     useAddUserOrderMutation();
 
@@ -56,6 +57,8 @@ const OrderForm = () => {
     if (!isSuccess) return;
     dispatch(clearCart());
     reset();
+    /*     const timer = setTimeout(() => navigate("/"), 3000);
+    return () => clearTimeout(timer); */
   }, [isSuccess]);
 
   if (isLoading || isSuccess || isError)
@@ -64,6 +67,7 @@ const OrderForm = () => {
         isLoading={isLoading}
         isSuccess={isSuccess}
         isError={isError}
+        navigateTo="/"
       />
     );
 

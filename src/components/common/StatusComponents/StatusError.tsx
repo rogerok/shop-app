@@ -7,11 +7,15 @@ export const StyledErrorIcon = styled(ErrorIcon)(({ theme }) => ({
   fontSize: theme.typography.pxToRem(100),
 }));
 
-const StatusError = () => (
+type StatusErrorProps = {
+  message?: string;
+};
+
+const StatusError: React.FC<StatusErrorProps> = ({ message }) => (
   <Box>
     <StyledErrorIcon />
     <Typography variant="h6" paragraph>
-      Something went wrong...
+      {message || "Something went wrong..."}
     </Typography>
   </Box>
 );

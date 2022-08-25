@@ -56,7 +56,6 @@ const Register = () => {
 
   const [registerUser, { isError, isLoading, isSuccess }] =
     useRegisterUserMutation();
-  const [login] = useLoginMutation();
 
   const handleReset = () => reset();
 
@@ -70,6 +69,8 @@ const Register = () => {
         isLoading={isLoading}
         isSuccess={isSuccess}
         isError={isError}
+        succesMessage="You will be redirected to main page"
+        navigateTo="/"
       />
     );
   return (
