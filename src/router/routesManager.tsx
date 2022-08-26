@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { RouteObject } from "react-router-dom";
+import { Route, RouteObject, Routes } from "react-router-dom";
 
 import Layout from "../components/Layout/Layout";
 import { RoutesNames } from "./routes";
@@ -29,12 +29,19 @@ const RegisterPage = React.lazy(
 
 const SignInPage = React.lazy(() => import("../pages/SignInPage/SignInPage"));
 
+const MissPage = React.lazy(() => import("../pages/MissPage/MissPage"));
+
+const RequireAuth = React.lazy(
+  () => import("../components/RequireAuth/RequireAuth")
+);
+
 export const routes: RouteObject[] = [
   {
     path: RoutesNames.HOME,
     element: <Layout />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: "*", element: <MissPage /> },
       { path: RoutesNames.ADRESS, element: <AdressPage /> },
       {
         path: RoutesNames.COLLECTION_PAGE,
@@ -42,10 +49,37 @@ export const routes: RouteObject[] = [
       },
       { path: RoutesNames.PRODUCT_PAGE, element: <ProductPage /> },
       { path: RoutesNames.CART, element: <CartPage /> },
-      { path: RoutesNames.ACCOUNT, element: <AccountPage /> },
+
+      {
+        path: RoutesNames.ACCOUNT,
+        element: <AccountPage />,
+      },
       { path: RoutesNames.SEARCH_RESULT_PAGE, element: <SearchResultPage /> },
       { path: RoutesNames.REGISTER_PAGE, element: <RegisterPage /> },
       { path: RoutesNames.SIGN_IN_PAGE, element: <SignInPage /> },
     ],
   },
 ];
+
+export const AppRouter = () => (
+  <Routes>
+    <Route path={RoutesNames.HOME} element={<Layout />}>
+      <Route index element={<HomePage />} />
+      <Route path={RoutesNames.ADRESS} element={<AdressPage />} />
+      <Route path={RoutesNames.COLLECTION_PAGE} element={<CollectionPage />} />
+      <Route path={RoutesNames.PRODUCT_PAGE} element={<ProductPage />} />
+      <Route path={RoutesNames.CART} element={<CartPage />} />
+      <Route
+        path={RoutesNames.SEARCH_RESULT_PAGE}
+        element={<SearchResultPage />}
+      />
+      <Route path={RoutesNames.REGISTER_PAGE} element={<RegisterPage />} />
+      <Route path={RoutesNames.SIGN_IN_PAGE} element={<SignInPage />} />
+
+      {/* protected routes */}
+      <Route element={<RequireAuth />}>
+        <Route path={RoutesNames.ACCOUNT} element={<AccountPage />} />
+      </Route>
+    </Route>
+  </Routes>
+);

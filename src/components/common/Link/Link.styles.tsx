@@ -1,5 +1,5 @@
 import { styled, Link } from "@mui/material";
-import { LinkProps } from "../../../ts/types";
+import { LinkProps } from "../../../ts/ComponentsTypes";
 
 export const StyledLink = styled(Link)<LinkProps>(({ theme }) => ({
   padding: theme.spacing(2),

@@ -4,7 +4,7 @@ import {
   Typography,
   Rating,
 } from "@mui/material";
-import { ProductType } from "../../../ts/types";
+import { ProductType } from "../../../ts/ProductsTypes";
 import { DiscountLabel } from "./CardContent.styles";
 
 type CardContentProps = Pick<

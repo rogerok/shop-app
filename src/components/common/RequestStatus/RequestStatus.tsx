@@ -2,12 +2,14 @@ import React from "react";
 
 import { Modal as MuiModal } from "@mui/material";
 
+import { NavigateOptions } from "react-router-dom";
 import { StyledContainer } from "./RequestStatus.styles";
-import { StatusType } from "../../../ts/types";
+import { StatusType } from "../../../ts/ComponentsTypes";
 import useRequestStatus from "../../../hooks/useRequestStatus";
 
 type ModalProps = {
   navigateTo?: string;
+  navigateOptions?: NavigateOptions;
   succesMessage?: string;
   errorMessage?: string;
 } & StatusType;
@@ -19,6 +21,7 @@ const RequestStatus: React.FC<ModalProps> = ({
   succesMessage,
   errorMessage,
   navigateTo,
+  navigateOptions,
 }) => {
   const { handleClose, open, content } = useRequestStatus({
     isLoading,
@@ -27,8 +30,9 @@ const RequestStatus: React.FC<ModalProps> = ({
     succesMessage,
     errorMessage,
     navigateTo,
+    navigateOptions,
   });
-
+  console.log(navigateOptions);
   return (
     <MuiModal open={open} onClose={handleClose}>
       <StyledContainer>{content}</StyledContainer>

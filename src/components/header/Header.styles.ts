@@ -1,5 +1,5 @@
 import { styled, AppBar, Toolbar, IconButton, Link } from "@mui/material";
-import { LinkProps } from "../../ts/types";
+import { LinkProps } from "../../ts/ComponentsTypes";
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundImage: `linear-gradient(

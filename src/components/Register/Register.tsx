@@ -5,11 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../../utils/validations/validationSchema";
 
-import {
-  CountryType,
-  RadioOptionsType,
-  RegisterDataType,
-} from "../../ts/types";
+import { CountryType, RegisterDataType } from "../../ts/types";
+import { RadioOptionsType } from "../../ts/ComponentsTypes";
 
 import {
   useLoginMutation,

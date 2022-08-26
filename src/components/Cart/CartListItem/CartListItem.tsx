@@ -4,7 +4,7 @@ import { Typography, IconButton } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-import { CartProductType } from "../../../ts/types";
+import { CartProductType } from "../../../ts/ProductsTypes";
 import { useAppDispatch } from "../../../hooks/redux";
 import { removeFromCart, addToCart } from "../../../redux/cart/cartSlice";
 

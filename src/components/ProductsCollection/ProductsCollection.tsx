@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 
-import { ProductType, ProductsType } from "../../ts/types";
+import { ProductType, ProductsType } from "../../ts/ProductsTypes";
 import ProductCard from "../ProductCard/ProductCard";
 
 type ProductsCollectionProps = {

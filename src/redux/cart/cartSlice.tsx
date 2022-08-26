@@ -4,7 +4,7 @@ import {
   current,
   createSelector,
 } from "@reduxjs/toolkit";
-import { ProductType, CartProductType } from "../../ts/types";
+import { ProductType, CartProductType } from "../../ts/ProductsTypes";
 
 type CartState = {
   cartItems: CartProductType[];

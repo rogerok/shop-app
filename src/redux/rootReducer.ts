@@ -1,6 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+// eslint-disable-next-line import/no-cycle
+import { userApi } from "../services/userApi";
 import { authApi } from "../services/authApi";
 
 import cartReducer from "./cart/cartSlice";
@@ -15,6 +17,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   [shopApi.reducerPath]: shopApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   ui: uiReducer,
   shop: shopReducer,
   favorite: favoriteReducer,

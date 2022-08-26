@@ -11,7 +11,10 @@ import {
 import logger from "redux-logger";
 import { authApi } from "../services/authApi";
 
+// eslint-disable-next-line import/no-cycle
+import { userApi } from "../services/userApi";
 import { shopApi } from "../services/shopApi";
+// eslint-disable-next-line import/no-cycle
 import { persistedReducer } from "./rootReducer";
 
 export const store = configureStore({
@@ -21,7 +24,12 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([logger, shopApi.middleware, authApi.middleware]),
+    }).concat([
+      logger,
+      shopApi.middleware,
+      authApi.middleware,
+      userApi.middleware,
+    ]),
 });
 
 export const persistor = persistStore(store);

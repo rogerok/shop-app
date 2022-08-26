@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Typography } from "@mui/material";
 
-import { CartProductType } from "../../../ts/types";
+import { CartProductType } from "../../../ts/ProductsTypes";
 
 import CartListItem from "../CartListItem/CartListItem";
 import { useAppSelector } from "../../../hooks/redux";

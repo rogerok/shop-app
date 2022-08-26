@@ -3,7 +3,7 @@ import {
   createSlice,
   EntityState,
 } from "@reduxjs/toolkit";
-import { ProductsType, ProductType } from "../../ts/types";
+import { ProductsType, ProductType } from "../../ts/ProductsTypes";
 
 import { ProductsRespone, shopApi } from "../../services/shopApi";
 import { API_ENDPOINTS as API } from "../../utils/constants/API";

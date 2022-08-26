@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavigateOptions, To, useNavigate } from "react-router-dom";
 import StatusError from "../components/common/StatusComponents/StatusError";
 import Spinner from "../components/common/Spinner/Spinner";
 import StatusSuccess from "../components/common/StatusComponents/StatusSuccess";
-import { StatusType } from "../ts/types";
+import { StatusType } from "../ts/ComponentsTypes";
 
 const getContent = ({
   isLoading,
@@ -19,7 +19,8 @@ const getContent = ({
 };
 
 type RequestStatusType = {
-  navigateTo?: string;
+  navigateTo?: To;
+  navigateOptions?: NavigateOptions;
   succesMessage?: string;
   errorMessage?: string;
 } & StatusType;
@@ -31,6 +32,7 @@ const useRequestStatus = ({
   succesMessage,
   errorMessage,
   navigateTo,
+  navigateOptions,
 }: RequestStatusType) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -52,7 +54,8 @@ const useRequestStatus = ({
 
     const timer = setTimeout(() => {
       if (isSuccess) handleClose();
-      if (navigateTo && isSuccess) navigate(navigateTo);
+      if (navigateTo && isSuccess)
+        navigate(navigateTo, navigateOptions ?? undefined);
     }, 3000);
 
     return () => clearTimeout(timer);

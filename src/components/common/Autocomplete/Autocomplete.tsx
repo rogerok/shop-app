@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller } from "react-hook-form";
 import { Autocomplete as MuiAutocomplete, TextField, Box } from "@mui/material";
-import { FormInputType } from "../../../ts/types";
+import { FormInputType } from "../../../ts/ComponentsTypes";
 
 type Base = {
   label: string;

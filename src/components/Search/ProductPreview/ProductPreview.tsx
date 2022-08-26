@@ -1,7 +1,7 @@
 import React from "react";
 import { ListItem, Card, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ProductType } from "../../../ts/types";
+import { ProductType } from "../../../ts/ProductsTypes";
 
 import { RoutesNames } from "../../../router/routes";
 

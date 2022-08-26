@@ -11,7 +11,7 @@ import {
   FormInputType,
   RadioOptionsType,
   RadioOptionType,
-} from "../../../ts/types";
+} from "../../../ts/ComponentsTypes";
 import Radio from "../Radio/Radio";
 
 type RadioGroupProps = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextFieldProps as MuiTextFieldProps, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { FormInputType } from "../../../ts/types";
+import { FormInputType } from "../../../ts/ComponentsTypes";
 
 type TextInputrops = {} & MuiTextFieldProps & FormInputType;
 

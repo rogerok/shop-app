@@ -12,7 +12,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { Link as RouterLink } from "react-router-dom";
-import { ProductType } from "../../ts/types";
+import { ProductType } from "../../ts/ProductsTypes";
 
 import { addToCart } from "../../redux/cart/cartSlice";
 import { toggleFavorite } from "../../redux/favorite/favoriteSlice";

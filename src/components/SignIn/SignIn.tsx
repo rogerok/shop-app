@@ -6,7 +6,7 @@ import {
   Container,
   Link as MuiLink,
 } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,6 +18,13 @@ import RequestStatus from "../common/RequestStatus/RequestStatus";
 import TextInput from "../common/TextInput/TextInput";
 import Button from "../common/Button/Button";
 import { LoginDataType } from "../../ts/types";
+import { LocationParamsType } from "../../ts/LocationParamsType";
+
+type LocationState = {
+  from: {
+    pathname: string;
+  };
+};
 
 const defaultValues = {
   name: "",
@@ -25,11 +32,14 @@ const defaultValues = {
 };
 
 const SignIn = () => {
-  const { control, getValues, reset, handleSubmit } = useForm({
+  const { control, reset, handleSubmit } = useForm({
     defaultValues,
     mode: "onBlur",
     resolver: yupResolver(loginSchema),
   });
+
+  const location = useLocation() as LocationParamsType<LocationState>;
+  const from = location.state.from.pathname || "";
 
   const [login, { isError, isLoading, isSuccess }] = useLoginMutation();
 
@@ -48,15 +58,11 @@ const SignIn = () => {
         isLoading={isLoading}
         isSuccess={isSuccess}
         isError={isError}
+        navigateTo={from}
+        navigateOptions={{ replace: true }}
       />
     );
-  /* isLoading || isSuccess || isError ? (
-    <RequestStatus
-      isLoading={isLoading}
-      isSuccess={isSuccess}
-      isError={isError}
-    />
-  ) :  */
+
   return (
     <Container maxWidth="xl" component="section">
       <Box

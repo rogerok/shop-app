@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CartProductsType, ProductType, ProductsType } from "../ts/types";
+import {
+  CartProductsType,
+  ProductType,
+  ProductsType,
+} from "../ts/ProductsTypes";
 
 import { API_ENDPOINTS } from "../utils/constants/API";
 import { PAGINATION_LIMIT } from "../utils/constants/PAGINATION_LIMIT";

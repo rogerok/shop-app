@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { RoutesNames } from "../../../router/routes";
-import { ProductType } from "../../../ts/types";
+import { ProductType } from "../../../ts/ProductsTypes";
 import { StyledCardMedia, StyledCardContent } from "./ListItemContent.styles";
 
 type ListItemContentProps = Pick<ProductType, "id" | "thumbnail" | "title">;
