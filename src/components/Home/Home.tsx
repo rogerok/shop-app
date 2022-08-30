@@ -7,10 +7,12 @@ import image3 from "../../assets/home-page-carousel/3.jpg";
 import image4 from "../../assets/home-page-carousel/4.jpg";
 import image5 from "../../assets/home-page-carousel/5.jpg";
 
-import Carousel from "../common/Carousel/Carousel";
+/* import Carousel from "../common/Carousel/Carousel"; */
 import Label from "./Label/Ladel";
 
 import ProductsGrid from "./ProductsGrid/ProductsGrid";
+
+const Carousel = React.lazy(() => import("../common/Carousel/Carousel"));
 
 const carouselImages = [image1, image2, image3, image4, image5];
 

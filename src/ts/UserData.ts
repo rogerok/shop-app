@@ -24,21 +24,8 @@ export interface Bank {
   iban: string;
 }
 
-export interface Coordinates2 {
-  lat: number;
-  lng: number;
-}
-
-export interface Address2 {
-  address: string;
-  city: string;
-  coordinates: Coordinates2;
-  postalCode: string;
-  state: string;
-}
-
 export interface Company {
-  address: Address2;
+  address: Address;
   department: string;
   name: string;
   title: string;

@@ -2,13 +2,18 @@ import React from "react";
 
 import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
-import Pagination from "../../components/common/Pagination/Pagination";
-import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
 
 import { useGetProductsByCategoryQuery } from "../../services/shopApi";
-import Backdrop from "../../components/common/Backdrop/Backdrop";
 import { useAppSelector } from "../../hooks/redux";
 import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";
+
+// import Pagination from "../../components/common/Pagination/Pagination";
+import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
+import Backdrop from "../../components/common/Backdrop/Backdrop";
+
+const Pagination = React.lazy(
+  () => import("../../components/common/Pagination/Pagination")
+);
 
 const CollectionPage = () => {
   const { category } = useParams();

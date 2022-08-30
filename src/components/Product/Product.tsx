@@ -8,12 +8,14 @@ import useSnackbar from "../../hooks/useSnackbar";
 import { addToCart } from "../../redux/cart/cartSlice";
 import { RoutesNames } from "../../router/routes";
 
-import Carousel from "../common/Carousel/Carousel";
+/* import Carousel from "../common/Carousel/Carousel"; */
 import Snackbar from "../common/Snackbar/Snackbar";
 import Backdrop from "../common/Backdrop/Backdrop";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductPriceBlock from "./ProductPriceblock/ProductPriceBlock";
 import ProductDescription from "./ProductDescription/ProductDescription";
+
+const Carousel = React.lazy(() => import("../common/Carousel/Carousel"));
 
 const Product = () => {
   const { productId } = useParams();

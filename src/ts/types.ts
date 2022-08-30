@@ -28,6 +28,22 @@ export type CredentialsType = {
   token: string | null;
 };
 
+export type IPType = {
+  ip: string;
+};
+
+export type GeoType = {
+  lat: number | null;
+  lng: number | null;
+};
+
+export type UserGeoType = {
+  city: string;
+  country: string;
+  region: string;
+  state: string;
+};
+
 /* export type UserType = {
   id: number;
   username: string;

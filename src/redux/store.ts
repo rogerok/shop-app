@@ -9,11 +9,13 @@ import {
   REGISTER,
 } from "redux-persist";
 import logger from "redux-logger";
+// eslint-disable-next-line import/no-cycle
 import { authApi } from "../services/authApi";
 
 // eslint-disable-next-line import/no-cycle
 import { userApi } from "../services/userApi";
 import { shopApi } from "../services/shopApi";
+import { personalSafetyApi } from "../services/personalSafetyApi";
 // eslint-disable-next-line import/no-cycle
 import { persistedReducer } from "./rootReducer";
 
@@ -29,6 +31,7 @@ export const store = configureStore({
       shopApi.middleware,
       authApi.middleware,
       userApi.middleware,
+      personalSafetyApi.middleware,
     ]),
 });
 

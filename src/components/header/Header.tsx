@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { selectIsSidebarOpen, setSidebarOpen } from "../../redux/ui/uiSlice";
 
-import SearchInput from "../Search/SearchInput/SearchInput";
+import SearchInput from "../Search/SearchInput";
 import IconLink from "./IconLink/IconLink";
 import CartIcon from "./CartIcon/CartIcon";
 import {

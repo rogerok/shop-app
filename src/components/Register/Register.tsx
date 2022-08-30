@@ -16,10 +16,12 @@ import {
 import TextInput from "../common/TextInput/TextInput";
 import RadioGroup from "../common/RadioGroup/RadioGroup";
 import Button from "../common/Button/Button";
-import DatePicker from "../common/DatePicker/DatePicker";
+// import DatePicker from "../common/DatePicker/DatePicker";
 import Autocomplete from "../common/Autocomplete/Autocomplete";
 import RequestStatus from "../common/RequestStatus/RequestStatus";
 import { COUNTRIES_LIST } from "../../utils/constants/COUNTRIES_LIST";
+
+const DatePicker = React.lazy(() => import("../common/DatePicker/DatePicker"));
 
 const genderOptions: RadioOptionsType = [
   {

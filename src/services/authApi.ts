@@ -1,7 +1,8 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
-import { LoginDataType, RegisterDataType } from "../ts/types";
+import { personalSafetyApi } from "./personalSafetyApi";
+import { IPType, LoginDataType, RegisterDataType } from "../ts/types";
 
-import { logout, setCredentials } from "../redux/user/userSlice";
+import { logout, setCredentials, setUserIP } from "../redux/user/userSlice";
 // eslint-disable-next-line import/no-cycle
 import { userApi } from "./userApi";
 
@@ -26,30 +27,26 @@ type LoginReponse = {
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dummyjson.com/",
+    baseUrl: "https://",
   }),
   endpoints: (builder) => ({
     registerUser: builder.mutation<ResponseType, RegisterDataType>({
       query(data) {
         return {
-          url: "http/200",
+          url: "dummyjson.com/http/200",
           method: "POST",
-          body: {
-            username: "kminchelle",
-            password: "0lelplR",
-            userData: data,
-          },
+          body: data,
         };
       },
     }),
     login: builder.mutation<LoginReponse, LoginDataType>({
       query(data) {
         return {
-          url: "auth/login",
+          url: "dummyjson.com/auth/login",
           method: "POST",
           body: {
-            username: "dpierrof",
-            password: "Vru55Y4tufI4",
+            username: "jtreleven5",
+            password: "zY1nE46Zm",
             userData: {
               data,
             },
@@ -61,6 +58,7 @@ export const authApi = createApi({
           const { data } = await queryFulfilled;
           dispatch(setCredentials(data.token));
           await dispatch(userApi.endpoints.getUserData.initiate(data.id));
+          await dispatch(personalSafetyApi.endpoints.getUserIP.initiate());
         } catch (err) {
           console.log(err);
         }
@@ -69,7 +67,7 @@ export const authApi = createApi({
     logout: builder.mutation<void, void>({
       query() {
         return {
-          url: "http/200",
+          url: "dummyjson.com/http/200",
         };
       },
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
@@ -81,8 +79,27 @@ export const authApi = createApi({
         }
       },
     }),
+    getUserIP: builder.query<IPType, void>({
+      query() {
+        return {
+          url: "api.ipify.org?format=json",
+        };
+      },
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUserIP(data));
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    }),
   }),
 });
 
-export const { useRegisterUserMutation, useLoginMutation, useLogoutMutation } =
-  authApi;
+export const {
+  useRegisterUserMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useGetUserIPQuery,
+} = authApi;

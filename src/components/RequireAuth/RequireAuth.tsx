@@ -5,7 +5,6 @@ import { selectUserToken } from "../../redux/user/userSlice";
 
 const RequireAuth = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const auth = useAppSelector(selectUserToken);
 
   return auth ? (

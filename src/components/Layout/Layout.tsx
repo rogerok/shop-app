@@ -4,7 +4,8 @@ import { Grid } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 import Header from "../Header/Header";
-import Sidebar from "../Sidebar/Sidebar";
+// import Sidebar from "../Sidebar/Sidebar";
+const Sidebar = React.lazy(() => import("../Sidebar/Sidebar"));
 
 const Layout = () => (
   <Grid container>

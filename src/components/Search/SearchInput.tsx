@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { Box, InputAdornment, ClickAwayListener } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-import useDebounce from "../../../hooks/useDebounce";
+import useDebounce from "../../hooks/useDebounce";
 
-import SearchCatalog from "../SearchCatalog/SearchCatalog";
+import SearchCatalog from "./SearchCatalog/SearchCatalog";
 import { StyledTextField } from "./SearchInput.styles";
 
 const SearchInput = () => {
