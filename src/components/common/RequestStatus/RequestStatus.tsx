@@ -34,7 +34,7 @@ const RequestStatus: React.FC<ModalProps> = ({
   });
   console.log(navigateOptions);
   return (
-    <MuiModal open={open} onClose={handleClose}>
+    <MuiModal open={open} onClose={handleClose} closeAfterTransition>
       <StyledContainer>{content}</StyledContainer>
     </MuiModal>
   );

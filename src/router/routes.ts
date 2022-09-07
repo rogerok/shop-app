@@ -2,6 +2,8 @@ export enum RoutesNames {
   HOME = "/",
   ADRESS = "addresses",
   ACCOUNT = "account",
+  ACCOUNT_DETAILS = "account/details",
+  ACCOUNT_FAVORITES = "account/favorites",
   CART = "cart",
   COLLECTION = "collection",
   COLLECTION_PAGE = "collection/:category",

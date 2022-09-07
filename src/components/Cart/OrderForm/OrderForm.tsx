@@ -42,14 +42,7 @@ const OrderForm = () => {
     resolver: yupResolver(orderSchema),
   });
 
-  const onSubmit = async (
-    /* e: React.SyntheticEvent */ formData: FormDataType
-    /*  event: React.SyntheticEvent */
-  ) => {
-    /*     e.preventDefault(); */
-    /*     const formData = getValues(); */
-    console.log(formData);
-    console.log("click");
+  const onSubmit = async (formData: FormDataType) => {
     await addUserOrder({ cartItems, formData });
   };
 
@@ -57,8 +50,6 @@ const OrderForm = () => {
     if (!isSuccess) return;
     dispatch(clearCart());
     reset();
-    /*     const timer = setTimeout(() => navigate("/"), 3000);
-    return () => clearTimeout(timer); */
   }, [isSuccess]);
 
   if (isLoading || isSuccess || isError)

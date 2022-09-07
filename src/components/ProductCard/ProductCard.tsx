@@ -15,26 +15,27 @@ import { Link as RouterLink } from "react-router-dom";
 import { ProductType } from "../../ts/ProductsTypes";
 
 import { addToCart } from "../../redux/cart/cartSlice";
-import { toggleFavorite } from "../../redux/favorite/favoriteSlice";
+import { toggleFavorite } from "../../redux/user/userSlice";
 import { useAppDispatch } from "../../hooks/redux";
 
 import useSnackbar from "../../hooks/useSnackbar";
+
 import Snackbar from "../common/Snackbar/Snackbar";
 import Button from "../common/Button/Button";
-
 import CardContent from "./CardContent/CardContent";
 
 type ProductCardProps = {
   product: ProductType;
+  isFavorite: boolean;
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   const dispatch = useAppDispatch();
   const { isOpen, handleOpen, handleClose } = useSnackbar();
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
-
   const handleToggleFavorite = () => {
-    dispatch(toggleFavorite(id));
+    dispatch(toggleFavorite({ id, thumbnail }));
+    /*     dispatch(toggleFavorite(id)); */
   };
 
   const handleButtonClick = () => {
@@ -65,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             Add to cart
           </Button>
           <IconButton color="secondary" onClick={handleToggleFavorite}>
-            <FavoriteBorderIcon />
+            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
         </CardActions>
       </Card>

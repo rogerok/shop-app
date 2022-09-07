@@ -1,9 +1,13 @@
 import React from "react";
 import { Grid, Box } from "@mui/material";
+
 import { useAppSelector } from "../../../hooks/redux";
 import { selectSkippedProducts } from "../../../redux/pagination/paginationSlice";
+import { selectFavorites } from "../../../redux/user/userSlice";
 import { useGetProductsQuery } from "../../../services/shopApi";
+
 import { ProductType } from "../../../ts/ProductsTypes";
+
 import Spinner from "../../common/Spinner/Spinner";
 import ProductCard from "../../ProductCard/ProductCard";
 import Pagination from "../../common/Pagination/Pagination";
@@ -11,6 +15,7 @@ import Pagination from "../../common/Pagination/Pagination";
 const ProductsGrid = ({ carouselRef }: { carouselRef: any }) => {
   const skippedProducts = useAppSelector(selectSkippedProducts);
   const { data, isLoading, isFetching } = useGetProductsQuery(skippedProducts);
+  const favorites = useAppSelector(selectFavorites);
 
   return (
     <Grid container item xs={9} spacing={4}>
@@ -25,7 +30,11 @@ const ProductsGrid = ({ carouselRef }: { carouselRef: any }) => {
         </Box>
       ) : (
         data?.products.map((product: ProductType) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard
+            product={product}
+            key={product.id}
+            isFavorite={product.id in favorites}
+          />
         ))
       )}
       <Grid

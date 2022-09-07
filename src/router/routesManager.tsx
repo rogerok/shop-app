@@ -34,6 +34,12 @@ const MissPage = React.lazy(() => import("../pages/MissPage/MissPage"));
 const RequireAuth = React.lazy(
   () => import("../components/RequireAuth/RequireAuth")
 );
+const AccountDetails = React.lazy(
+  () => import("../components/Account/AccountDetails/AccountDetails")
+);
+const AccountFavorites = React.lazy(
+  () => import("../components/Account/AccountFavorites/AccountFavorites")
+);
 
 export const routes: RouteObject[] = [
   {
@@ -79,6 +85,18 @@ export const AppRouter = () => (
       {/* protected routes */}
       <Route element={<RequireAuth />}>
         <Route path={RoutesNames.ACCOUNT} element={<AccountPage />} />
+      </Route>
+      <Route element={<RequireAuth />}>
+        <Route
+          path={RoutesNames.ACCOUNT_DETAILS}
+          element={<AccountDetails />}
+        />
+      </Route>
+      <Route element={<RequireAuth />}>
+        <Route
+          path={RoutesNames.ACCOUNT_FAVORITES}
+          element={<AccountFavorites />}
+        />
       </Route>
     </Route>
   </Routes>

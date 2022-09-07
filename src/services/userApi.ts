@@ -2,11 +2,9 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
 // eslint-disable-next-line import/no-cycle
 import { RootState } from "../redux/rootReducer";
-import { setUser, setUserIP } from "../redux/user/userSlice";
+import { setUser } from "../redux/user/userSlice";
 import { UserData } from "../ts/UserData";
 import { API_ENDPOINTS } from "../utils/constants/API";
-
-import { IPType } from "../ts/types";
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -28,7 +26,6 @@ export const userApi = createApi({
           url: `/users/${id}`,
         };
       },
-
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -38,7 +35,15 @@ export const userApi = createApi({
         }
       },
     }),
+
+    getProductThumbnail: builder.query<string | number, string>({
+      query(id) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}/${id}?select=thumbnail`,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetUserDataQuery } = userApi;
+export const { useGetUserDataQuery, useGetProductThumbnailQuery } = userApi;

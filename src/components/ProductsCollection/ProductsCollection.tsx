@@ -3,15 +3,18 @@ import { Container, Grid, Typography } from "@mui/material";
 
 import { ProductType, ProductsType } from "../../ts/ProductsTypes";
 import ProductCard from "../ProductCard/ProductCard";
+import { FavoritesType } from "../../ts/types";
 
 type ProductsCollectionProps = {
   data: ProductsType;
   title: string;
+  favorites: FavoritesType;
 };
 
 const ProductsCollection: React.FC<ProductsCollectionProps> = ({
   data,
   title,
+  favorites,
 }) => (
   <Container>
     <Grid container spacing={4} component="section">
@@ -22,7 +25,11 @@ const ProductsCollection: React.FC<ProductsCollectionProps> = ({
       </Grid>
       <Grid container spacing={4} component="ul" sx={{ listStyleType: "none" }}>
         {data?.map((product: ProductType) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard
+            product={product}
+            key={product.id}
+            isFavorite={!!favorites[product.id]}
+          />
         ))}
       </Grid>
     </Grid>

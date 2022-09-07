@@ -23,7 +23,7 @@ const SidebarItem: React.FC<SidebarProps> = ({ category }) => {
 
   const handleClick = () => {
     /*  dispatch(setSidebarOpen(false)); */
-    navigate(`${RoutesNames.COLLECTION}/${category}`);
+    navigate(`/${RoutesNames.COLLECTION}/${category}`);
   };
 
   return (

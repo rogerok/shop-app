@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import { ProductType, ProductsType } from "../../../ts/ProductsTypes";
 import { useSearchProductsForPreviewQuery } from "../../../services/shopApi";
 
-import SearchProductPreview from "../ProductPreview/ProductPreview";
+import ProductPreview from "../ProductPreview/ProductPreview";
 import Spinner from "../../common/Spinner/Spinner";
 import Link from "../../common/Link/Link";
 import { StyledList, StyledPaper } from "./SearchCatalog.styles";
@@ -30,7 +30,7 @@ const SearchCatalog: React.FC<SearchCatalogProps> = ({
 
     if (products.length && products.length < 4) {
       content = products.map((item: ProductType) => (
-        <SearchProductPreview key={item.id} {...item} />
+        <ProductPreview key={item.id} {...item} />
       ));
     }
 
@@ -38,7 +38,7 @@ const SearchCatalog: React.FC<SearchCatalogProps> = ({
       content = (
         <>
           {products.slice(0, 4).map((item: ProductType) => (
-            <SearchProductPreview key={item.id} {...item} />
+            <ProductPreview key={item.id} {...item} />
           ))}
 
           <Link to={`search/${searchTerm}`}>Show more</Link>

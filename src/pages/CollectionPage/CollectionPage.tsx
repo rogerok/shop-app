@@ -3,11 +3,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 
-import { useGetProductsByCategoryQuery } from "../../services/shopApi";
 import { useAppSelector } from "../../hooks/redux";
 import { selectSkippedProducts } from "../../redux/pagination/paginationSlice";
+import { selectFavorites } from "../../redux/user/userSlice";
+import { useGetProductsByCategoryQuery } from "../../services/shopApi";
 
-// import Pagination from "../../components/common/Pagination/Pagination";
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
 import Backdrop from "../../components/common/Backdrop/Backdrop";
 
@@ -23,11 +23,17 @@ const CollectionPage = () => {
     skip: skippedProducts,
   });
 
+  const favorites = useAppSelector(selectFavorites);
+
   if (isLoading || !data) return <Backdrop />;
 
   return (
     <Container>
-      <ProductsCollection data={data?.products} title={category!} />
+      <ProductsCollection
+        data={data?.products}
+        title={category!}
+        favorites={favorites}
+      />
       <Box display="flex" justifyContent="center" mt={4}>
         <Pagination total={data?.total} />
       </Box>
@@ -35,13 +41,3 @@ const CollectionPage = () => {
   );
 };
 export default CollectionPage;
-/*  return isLoading ? (
-    <Backdrop />
-  ) : (
-    <Container>
-      {data && <ProductsCollection data={data?.products} title={category!} />}
-      <Box display="flex" justifyContent="center" mt={4}>
-        <Pagination total={data?.total} />
-      </Box>
-    </Container>
-  ); */

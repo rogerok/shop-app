@@ -39,6 +39,7 @@ export const authApi = createApi({
         };
       },
     }),
+
     login: builder.mutation<LoginReponse, LoginDataType>({
       query(data) {
         return {
@@ -56,14 +57,15 @@ export const authApi = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setCredentials(data.token));
           await dispatch(userApi.endpoints.getUserData.initiate(data.id));
           await dispatch(personalSafetyApi.endpoints.getUserIP.initiate());
+          dispatch(setCredentials(data.token));
         } catch (err) {
           console.log(err);
         }
       },
     }),
+
     logout: builder.mutation<void, void>({
       query() {
         return {
@@ -73,12 +75,14 @@ export const authApi = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
-          dispatch(logout);
+          dispatch(userApi.util.resetApiState());
+          dispatch(logout());
         } catch (err) {
           console.log(err);
         }
       },
     }),
+
     getUserIP: builder.query<IPType, void>({
       query() {
         return {

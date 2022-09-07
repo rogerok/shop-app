@@ -34,32 +34,62 @@ export const shopApi = createApi({
 
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<ProductsRespone, FetchArgs>({
-      query: ({ category, skip }) =>
-        `${API_ENDPOINTS.PRODUCTS}/${API_ENDPOINTS.CATEGORY}/${category}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+      query({ category, skip }) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}/${API_ENDPOINTS.CATEGORY}/${category}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+        };
+      },
     }),
+
     getProductById: builder.query<ProductType, string | number>({
-      query: (id) => `${API_ENDPOINTS.PRODUCTS}/${id}`,
+      query(id) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}/${id}`,
+        };
+      },
     }),
+
+    getProductForPreview: builder.query<ProductType, string | number>({
+      query(id) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}/${id}?select=thumbnail,price, title`,
+        };
+      },
+    }),
+
     getProducts: builder.query<ProductsRespone, number>({
-      query: (skip) =>
-        `${API_ENDPOINTS.PRODUCTS}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+      query(skip) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}?limit=${PAGINATION_LIMIT}&skip=${skip}`,
+        };
+      },
     }),
+
     searchProductsForPreview: builder.query<ProductsType, string>({
-      query: (searchQuery) =>
-        searchQuery &&
-        `${API_ENDPOINTS.PRODUCTS}${API_ENDPOINTS.SEARCH}${searchQuery}&select=title,price,thumbnail`,
+      query(searchQuery) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}${API_ENDPOINTS.SEARCH}${searchQuery}&select=title,price,thumbnail`,
+        };
+      },
       transformResponse: (result: ProductsRespone) => result.products,
     }),
+
     searchProducts: builder.query<ProductsRespone, FetchArgs>({
-      query: ({ searchTerm, skip }) =>
-        `${API_ENDPOINTS.PRODUCTS}${API_ENDPOINTS.SEARCH}${searchTerm}&limit=${PAGINATION_LIMIT}&skip=${skip}`,
+      query({ searchTerm, skip }) {
+        return {
+          url: `${API_ENDPOINTS.PRODUCTS}${API_ENDPOINTS.SEARCH}${searchTerm}&limit=${PAGINATION_LIMIT}&skip=${skip}`,
+        };
+      },
     }),
+
     addUserOrder: builder.mutation({
-      query: (orderData: UserOrderData) => ({
-        url: `${API_ENDPOINTS.USERS}/add`,
-        method: "POST",
-        body: orderData,
-      }),
+      query(orderData: UserOrderData) {
+        return {
+          url: `${API_ENDPOINTS.USERS}/add`,
+          method: "POST",
+          body: orderData,
+        };
+      },
     }),
   }),
 });
@@ -67,6 +97,7 @@ export const shopApi = createApi({
 export const {
   useGetProductsByCategoryQuery,
   useGetProductByIdQuery,
+  useGetProductForPreviewQuery,
   useGetProductsQuery,
   useSearchProductsForPreviewQuery,
   useSearchProductsQuery,
