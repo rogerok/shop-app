@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   Typography,
@@ -15,7 +15,9 @@ import { loginSchema } from "../../utils/validations/validationSchema";
 import { useLoginMutation } from "../../services/authApi";
 
 import RequestStatus from "../common/RequestStatus/RequestStatus";
-import TextInput from "../common/TextInput/TextInput";
+import TextInput from "../common/inputs/TextInput";
+import PasswordInput from "../common/inputs/PasswordInput";
+
 import Button from "../common/Button/Button";
 import { LoginDataType } from "../../ts/types";
 import { LocationParamsType } from "../../ts/LocationParamsType";
@@ -32,6 +34,7 @@ const defaultValues = {
 };
 
 const SignIn = () => {
+  const [passwordShown, togglePasswordShown] = useState(false);
   const { control, reset, handleSubmit } = useForm({
     defaultValues,
     mode: "onBlur",
@@ -90,7 +93,7 @@ const SignIn = () => {
               fullWidth
               variant="outlined"
             />
-            <TextInput
+            <PasswordInput
               control={control}
               name="password"
               type="password"

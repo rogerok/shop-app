@@ -1,6 +1,12 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPType, FavoritesType } from "../../ts/types";
 import { UserData } from "../../ts/UserData";
+import { PAGINATION_LIMIT } from "../../utils/constants/PAGINATION_LIMIT";
+
+type IntervalType = {
+  from: number;
+  to: number;
+};
 
 type UserState = {
   userData: UserData | null;
@@ -73,7 +79,22 @@ export const selectFavoritesThumbnails = createSelector(
   (userState) => Object.values(userState.favorites).slice(-5).reverse()
 );
 
-export const selectFavoritesIds = ({ user }: { user: UserState }) =>
+export const selectFavoritesKeys = ({ user }: { user: UserState }) =>
   Object.keys(user.favorites);
+/* 
+export const selectFavoritesProducts = createSelector(
+  [selectFavorites, (state, interval: IntervalType) => interval],
+  (favorites, interval) =>
+    Object.keys(favorites).slice(interval.from, interval.to)
+); */
+export const selectFavoritesProducts = createSelector(
+  [selectFavorites, (state, interval) => interval],
+  (favorites, interval) => Object.keys(favorites).slice(interval)
+);
+
+export const selectFavoritesKeysByInterval = createSelector(
+  [selectFavorites, (state, interval: number) => interval],
+  (favorites, interval) => Object.keys(favorites).slice(0, interval)
+);
 
 export default userSlice.reducer;

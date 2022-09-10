@@ -52,7 +52,7 @@ export const shopApi = createApi({
     getProductForPreview: builder.query<ProductType, string | number>({
       query(id) {
         return {
-          url: `${API_ENDPOINTS.PRODUCTS}/${id}?select=thumbnail,price, title`,
+          url: `${API_ENDPOINTS.PRODUCTS}/${id}?select=thumbnail,price,title,rating`,
         };
       },
     }),

@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider, CssBaseline, GlobalStyles } from "@mui/material";
 import { store, persistor } from "./redux/store";
 
 import { theme } from "./utils/theme";
@@ -18,6 +18,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <CssBaseline />
+      <GlobalStyles styles={{ ul: { listStyleType: "none" } }} />
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>

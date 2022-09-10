@@ -35,7 +35,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite({ id, thumbnail }));
-    /*     dispatch(toggleFavorite(id)); */
   };
 
   const handleButtonClick = () => {
@@ -44,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   };
 
   return (
-    <Grid item xs={4} component="li" key={title}>
+    <Grid item xs={4} component="li" key={title} sx={{ transiti: " all 0.3" }}>
       <Card sx={{ pb: 2 }}>
         <Link component={RouterLink} to={`/product/${id}`}>
           <CardMedia

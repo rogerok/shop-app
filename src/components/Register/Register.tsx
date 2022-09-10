@@ -13,7 +13,7 @@ import {
   useRegisterUserMutation,
 } from "../../services/authApi";
 
-import TextInput from "../common/TextInput/TextInput";
+import TextInput from "../common/inputs/TextInput";
 import RadioGroup from "../common/RadioGroup/RadioGroup";
 import Button from "../common/Button/Button";
 // import DatePicker from "../common/DatePicker/DatePicker";

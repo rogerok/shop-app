@@ -9,14 +9,14 @@ import { useAppSelector } from "../../../../hooks/redux";
 import {
   selectFavorites,
   selectFavoritesThumbnails,
+  selectFavoritesKeys,
 } from "../../../../redux/user/userSlice";
 import Link from "../../../common/Link/Link";
 import { Overlay, StyledPaper } from "../../Account.styles";
 
 const Favorites = () => {
-  const favorites = useAppSelector(selectFavorites);
+  const totalFavorites = useAppSelector(selectFavoritesKeys).length;
   const thumbnails = [...useAppSelector(selectFavoritesThumbnails)];
-
   return (
     <StyledPaper>
       <Link to={`/${RoutesNames.ACCOUNT_FAVORITES}`}>
@@ -34,12 +34,11 @@ const Favorites = () => {
             <FavoriteIcon />
             </Link>
           </Overlay> */}
-          <AvatarGroup total={Number(favorites.length)}>
+          <AvatarGroup total={totalFavorites}>
             {thumbnails.length &&
               thumbnails.map((thumbnail) => (
                 <Avatar src={thumbnail} alt="product image" key={thumbnail} />
               ))}
-            {/*     <AvatarGroup src={thumbnails[0]} /> */}
           </AvatarGroup>
         </Box>
         <Typography variant="h6">Favorites</Typography>

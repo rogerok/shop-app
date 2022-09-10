@@ -13,7 +13,7 @@ import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 
 import RequestStatus from "../../common/RequestStatus/RequestStatus";
 import Button from "../../common/Button/Button";
-import TextInput from "../../common/TextInput/TextInput";
+import TextInput from "../../common/inputs/TextInput";
 
 const defaultValues = {
   firstName: "",

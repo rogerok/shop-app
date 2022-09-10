@@ -1,16 +1,22 @@
 import React from "react";
 import { useAppSelector } from "../../../../hooks/redux";
-import { selectFavoritesIds } from "../../../../redux/user/userSlice";
+import { selectFavoritesKeys } from "../../../../redux/user/userSlice";
+import {
+  useGetProductForPreviewQuery,
+  useGetProductByIdQuery,
+} from "../../../../services/shopApi";
 import { useGetProductThumbnailQuery } from "../../../../services/userApi";
+
+import ProductCard from "../../../ProductCard/ProductCard";
 
 type FavoriteWrapperProps = {
   id: string | number;
 };
 
 const FavoritesWrapper: React.FC<FavoriteWrapperProps> = ({ id }) => {
-  const { data, isLoading } = useGetProductThumbnailQuery(id as string);
-  console.log(data);
-  return <div>FavoriteWrapper</div>;
+  const { data, isLoading } = useGetProductByIdQuery(id);
+  if (!data) return null;
+  return <ProductCard product={data} isFavorite />;
 };
 
-export default FavoritesWrapper;
+export default React.memo(FavoritesWrapper);

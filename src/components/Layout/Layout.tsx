@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 
 import { Outlet } from "react-router-dom";
 
@@ -15,6 +15,13 @@ const Layout = () => (
       <Outlet />
     </Grid>
   </Grid>
+  /*   <Box>
+    <Sidebar />
+    <Header />
+    <Container maxWidth="xl">
+      <Outlet />
+    </Container>
+  </Box> */
 );
 
 export default Layout;
