@@ -81,12 +81,7 @@ export const selectFavoritesThumbnails = createSelector(
 
 export const selectFavoritesKeys = ({ user }: { user: UserState }) =>
   Object.keys(user.favorites);
-/* 
-export const selectFavoritesProducts = createSelector(
-  [selectFavorites, (state, interval: IntervalType) => interval],
-  (favorites, interval) =>
-    Object.keys(favorites).slice(interval.from, interval.to)
-); */
+
 export const selectFavoritesProducts = createSelector(
   [selectFavorites, (state, interval) => interval],
   (favorites, interval) => Object.keys(favorites).slice(interval)

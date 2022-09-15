@@ -17,7 +17,7 @@ type CartListItemProps = {
 
 const CartListItem: React.FC<CartListItemProps> = ({ product }) => {
   const dispatch = useAppDispatch();
-  const { id, thumbnail, title, quantity, price } = product;
+  const { id, thumbnail, title, quantity, price, discountPercentage } = product;
 
   const handleIncreaseQuantity = () => {
     dispatch(addToCart(product));

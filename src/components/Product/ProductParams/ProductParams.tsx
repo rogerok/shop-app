@@ -32,4 +32,4 @@ const ProductParams: React.FC<ProductParamsProps> = ({
   );
 };
 
-export default ProductParams;
+export default React.memo(ProductParams);

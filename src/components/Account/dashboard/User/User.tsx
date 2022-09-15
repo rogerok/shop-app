@@ -1,15 +1,18 @@
-import React from "react";
-import { Grid, Avatar, Typography } from "@mui/material";
+import React, { useMemo } from "react";
+import { Grid, Avatar, Typography, Link } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { Link as RouterLink } from "react-router-dom";
+
 import { UserData } from "../../../../ts/UserData";
 import { useLogoutMutation } from "../../../../services/authApi";
 
 import Button from "../../../common/Button/Button";
 import RequestStatus from "../../../common/RequestStatus/RequestStatus";
-import Link from "../../../common/Link/Link";
-import { Overlay, StyledPaper } from "../../Account.styles";
+import { StyledPaper } from "../../Account.styles";
 import { RoutesNames } from "../../../../router/routes";
+import PersonalData from "../../PersonalData/PersonalDataItem";
+import PersonalDataHeader from "../../PersonalData/PersonalDataHeader";
 
 type UserProps = {
   data: Pick<UserData, "firstName" | "lastName" | "email" | "phone" | "image">;
@@ -23,6 +26,20 @@ const User: React.FC<UserProps> = ({ data }) => {
     await logout();
   };
 
+  const personalData = useMemo(
+    () => [
+      {
+        title: "Email",
+        content: email,
+      },
+      {
+        title: "Phone number",
+        content: phone,
+      },
+    ],
+    [email, phone]
+  );
+
   if (isLoading || isSuccess || isError)
     return (
       <RequestStatus
@@ -35,54 +52,28 @@ const User: React.FC<UserProps> = ({ data }) => {
 
   return (
     <StyledPaper>
-      <Overlay>
-        <Link to={`/${RoutesNames.ACCOUNT_DETAILS}`}>
-          Go to profile &#160;
-          <AccountCircleIcon />
-        </Link>
-      </Overlay>
-      <Grid container display="flex" flexDirection="column" px={2}>
-        <Grid item xs={12} display="flex" flexWrap="wrap">
-          <Avatar
-            src={image}
-            alt="user photo"
-            sx={{ width: 120, height: 120 }}
-          />
-          <Typography
-            variant="h5"
-            component="span"
-            fontWeight={600}
-            alignSelf="flex-end"
-          >
-            {firstName}&#160;
-          </Typography>
-          <Typography
-            variant="h5"
-            component="span"
-            fontWeight={600}
-            alignSelf="flex-end"
-          >
-            {lastName}
-          </Typography>
+      <Link
+        to={`/${RoutesNames.ACCOUNT_PAGE}/${RoutesNames.ACCOUNT_DETAILS}`}
+        component={RouterLink}
+      >
+        <Grid container display="flex" flexDirection="column" px={2}>
+          <Grid item xs={12} display="flex" flexWrap="wrap">
+            <PersonalDataHeader
+              firstName={firstName}
+              lastName={lastName}
+              image={image}
+            />
+          </Grid>
+          {personalData.map(({ title, content }) => (
+            <Grid item xs={12} display="flex" mb={2}>
+              <PersonalData key={title} title={title} content={content} />
+            </Grid>
+          ))}
         </Grid>
-        <Grid item xs={12} display="flex" mb={2}>
-          <Typography variant="body1" fontWeight={600}>
-            Phone number:&#160;
-          </Typography>
-          <Typography variant="body1">{phone}</Typography>
-        </Grid>
-        <Grid item xs={12} display="flex" mb={2}>
-          <Typography variant="body1" fontWeight={600}>
-            Email:&#160;
-          </Typography>
-          <Typography variant="body1">{phone}</Typography>
-        </Grid>
-        <Grid item xs={6} ml="auto" mb={2}>
-          <Button onClick={handleLogout}>
-            Logout &#160; <LogoutIcon />
-          </Button>
-        </Grid>
-      </Grid>
+      </Link>
+      <Button onClick={handleLogout} sx={{ ml: "auto" }}>
+        <LogoutIcon />
+      </Button>
     </StyledPaper>
   );
 };

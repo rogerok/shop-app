@@ -5,6 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import { NavLink } from "react-router-dom";
+import { RoutesNames } from "../../router/routes";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { selectIsSidebarOpen, setSidebarOpen } from "../../redux/ui/uiSlice";
@@ -22,7 +23,7 @@ import {
 const iconLinksData = [
   {
     name: "Account",
-    path: "account",
+    path: `${RoutesNames.ACCOUNT_PAGE}/${RoutesNames.ACCOUNT_DASHBOARD}`,
     icon: <PersonIcon />,
   },
   {

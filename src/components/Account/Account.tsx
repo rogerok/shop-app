@@ -1,39 +1,52 @@
 import React from "react";
-import { Container, Grid, Paper } from "@mui/material";
+import { Container, List, ListItem, Typography } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import { Outlet } from "react-router-dom";
 
-import { useAppSelector } from "../../hooks/redux";
-import { selectUserData } from "../../redux/user/userSlice";
+import Link from "../common/Link/Link";
+import { RoutesNames } from "../../router/routes";
 
-import ActiveSessions from "./AccountDetails/ActiveSessions/ActiveSessions";
-import Favorites from "./dashboard/Favorites/Favorites";
-import User from "./dashboard/User/User";
-import Reviews from "./dashboard/Reviews/Reviews";
-import Orders from "./dashboard/Orders/Orders";
-
-const components = [ActiveSessions, Favorites, User, Reviews, Orders];
-
-const Account = () => {
-  const userData = useAppSelector(selectUserData)!;
-  const { firstName, lastName, email, phone, image } = userData;
-
-  return (
-    <Container maxWidth="xl">
-      <Grid container spacing={10} justifyContent="space-around">
-        <Grid item xs={4}>
-          <User data={{ firstName, lastName, email, phone, image }} />
-        </Grid>
-        <Grid item xs={4}>
-          <Reviews />
-        </Grid>
-        <Grid item xs={4}>
-          <Orders />
-        </Grid>
-        <Grid item xs={4}>
-          <Favorites />
-        </Grid>
-      </Grid>
-    </Container>
-  );
-};
+const Account = () => (
+  <Container maxWidth="xl">
+    <List sx={{ display: "flex" }}>
+      <ListItem>
+        <Link to={RoutesNames.ACCOUNT_DASHBOARD}>
+          <AccountCircleIcon />
+          <Typography variant="body1" component="span" fontWeight={600} p={1}>
+            Dashboard
+          </Typography>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link to={RoutesNames.ACCOUNT_FAVORITES}>
+          <FavoriteIcon />
+          <Typography variant="body1" component="span" fontWeight={600} p={1}>
+            Favorites
+          </Typography>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link to={RoutesNames.ACCOUNT_ORDERS}>
+          <ShoppingCartIcon />
+          <Typography variant="body1" component="span" fontWeight={600} p={1}>
+            Orders
+          </Typography>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link to={RoutesNames.ACCOUNT_REVIEWS}>
+          <ReviewsIcon />
+          <Typography variant="body1" component="span" fontWeight={600} p={1}>
+            Reviews
+          </Typography>
+        </Link>
+      </ListItem>
+    </List>
+    <Outlet />
+  </Container>
+);
 
 export default Account;

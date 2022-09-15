@@ -1,12 +1,15 @@
 import { ReactNode } from "react";
 import { To } from "react-router-dom";
+import { LinkProps as MuiLinkProps } from "@mui/material";
 
 export type LinkProps = {
   component?: React.ElementType;
-  to?: To;
+  to: string;
   children?: ReactNode;
   onClick?: () => void;
-};
+  withBackground?: boolean;
+  selected?: boolean;
+} & MuiLinkProps;
 export type RadioOptionType = {
   label: string;
   value: string;

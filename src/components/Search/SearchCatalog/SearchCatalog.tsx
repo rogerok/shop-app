@@ -41,7 +41,9 @@ const SearchCatalog: React.FC<SearchCatalogProps> = ({
             <ProductPreview key={item.id} {...item} />
           ))}
 
-          <Link to={`search/${searchTerm}`}>Show more</Link>
+          <Link to={`search/${searchTerm}`} withBackground>
+            Show more
+          </Link>
         </>
       );
     }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { Box, InputAdornment, ClickAwayListener } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -18,10 +18,15 @@ const SearchInput = () => {
   };
   const isActive = isFocused && debouncedSearchTerm;
 
-  const handleClearInput = () => {
+  /*   const handleClearInput = () => {
     setIsFocused(false);
     setSearchTerm("");
-  };
+  }; */
+
+  const handleClearInput = useCallback(() => {
+    setIsFocused(false);
+    setSearchTerm("");
+  }, []);
 
   return (
     <ClickAwayListener onClickAway={handleClearInput}>

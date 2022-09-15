@@ -33,7 +33,7 @@ const AccountFavorites = () => {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Typography variant="h1" textAlign="center" gutterBottom>
+      <Typography variant="h1" textAlign="center" mb={8}>
         Your favorites products
       </Typography>
       <Grid container component="ul" spacing={4} mb={4}>

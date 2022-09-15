@@ -33,7 +33,7 @@ const ProductsGrid = ({ carouselRef }: { carouselRef: any }) => {
           <ProductCard
             product={product}
             key={product.id}
-            isFavorite={product.id in favorites}
+            isFavorite={!!favorites[product.id]}
           />
         ))
       )}

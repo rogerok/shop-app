@@ -19,4 +19,4 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ details }) => {
   );
 };
 
-export default ProductDetails;
+export default React.memo(ProductDetails);

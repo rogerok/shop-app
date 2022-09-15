@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Paper } from "@mui/material";
 import { UserData } from "../../../../ts/UserData";
 import {
   browserDetect,
@@ -30,7 +30,7 @@ const ActiveSessions: React.FC<ActiveSessionProps> = ({
   );
 
   return (
-    <StyledPaper sx={{ p: 2 }}>
+    <Paper sx={{ p: 2 }} elevation={5}>
       <Box component="section" mb={2}>
         <Typography variant="h5" fontWeight={600} gutterBottom>
           Active Session
@@ -57,7 +57,7 @@ const ActiveSessions: React.FC<ActiveSessionProps> = ({
           <b>IP:</b> {previousIP}
         </Typography>
       </Box>
-    </StyledPaper>
+    </Paper>
   );
 };
 

@@ -18,4 +18,4 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
   </Box>
 );
 
-export default ProductDescription;
+export default React.memo(ProductDescription);

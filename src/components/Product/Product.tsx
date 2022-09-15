@@ -14,12 +14,19 @@ import Backdrop from "../common/Backdrop/Backdrop";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductPriceBlock from "./ProductPriceblock/ProductPriceBlock";
 import ProductDescription from "./ProductDescription/ProductDescription";
+import { ProductType } from "../../ts/ProductsTypes";
 
 const Carousel = React.lazy(() => import("../common/Carousel/Carousel"));
 
-const Product = () => {
+type ProductProps = {
+  data: ProductType;
+};
+
+const Product: React.FC<ProductProps> = ({ data }) => {
   const { productId } = useParams();
-  const { data, isLoading } = useGetProductByIdQuery(productId!) ?? [];
+  /*   const { data, isLoading } = useGetProductByIdQuery(productId!) ?? []; */
+
+  /*   if (isLoading || !data) return <Backdrop />; */
 
   const {
     title,
@@ -31,12 +38,13 @@ const Product = () => {
     price,
     rating,
     stock,
-  } = data! ?? [];
+  } = data;
 
   const dispatch = useAppDispatch();
   const { isOpen, handleOpen, handleClose } = useSnackbar();
+
   const handleButtonClick = () => {
-    dispatch(addToCart(data!));
+    dispatch(addToCart(data));
     handleOpen();
   };
 
@@ -45,7 +53,7 @@ const Product = () => {
     category,
     stock,
   };
-  if (isLoading || !data) return <Backdrop />;
+
   return (
     <Box component="section" p={4}>
       <Typography variant="h3" align="left" gutterBottom>

@@ -34,38 +34,15 @@ const MissPage = React.lazy(() => import("../pages/MissPage/MissPage"));
 const RequireAuth = React.lazy(
   () => import("../components/RequireAuth/RequireAuth")
 );
+const Dashboard = React.lazy(
+  () => import("../components/Account/Dashboard/Dashboard")
+);
 const AccountDetails = React.lazy(
   () => import("../components/Account/AccountDetails/AccountDetails")
 );
 const AccountFavorites = React.lazy(
   () => import("../components/Account/AccountFavorites/AccountFavorites")
 );
-
-export const routes: RouteObject[] = [
-  {
-    path: RoutesNames.HOME,
-    element: <Layout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: "*", element: <MissPage /> },
-      { path: RoutesNames.ADRESS, element: <AdressPage /> },
-      {
-        path: RoutesNames.COLLECTION_PAGE,
-        element: <CollectionPage />,
-      },
-      { path: RoutesNames.PRODUCT_PAGE, element: <ProductPage /> },
-      { path: RoutesNames.CART, element: <CartPage /> },
-
-      {
-        path: RoutesNames.ACCOUNT,
-        element: <AccountPage />,
-      },
-      { path: RoutesNames.SEARCH_RESULT_PAGE, element: <SearchResultPage /> },
-      { path: RoutesNames.REGISTER_PAGE, element: <RegisterPage /> },
-      { path: RoutesNames.SIGN_IN_PAGE, element: <SignInPage /> },
-    ],
-  },
-];
 
 export const AppRouter = () => (
   <Routes>
@@ -84,20 +61,20 @@ export const AppRouter = () => (
 
       {/* protected routes */}
       <Route element={<RequireAuth />}>
-        <Route path={RoutesNames.ACCOUNT} element={<AccountPage />} />
+        <Route path={`${RoutesNames.ACCOUNT_PAGE}/*`} element={<AccountPage />}>
+          <Route path={RoutesNames.ACCOUNT_DASHBOARD} element={<Dashboard />} />
+          <Route
+            path={RoutesNames.ACCOUNT_FAVORITES}
+            element={<AccountFavorites />}
+          />
+          <Route
+            path={RoutesNames.ACCOUNT_DETAILS}
+            element={<AccountDetails />}
+          />
+        </Route>
       </Route>
-      <Route element={<RequireAuth />}>
-        <Route
-          path={RoutesNames.ACCOUNT_DETAILS}
-          element={<AccountDetails />}
-        />
-      </Route>
-      <Route element={<RequireAuth />}>
-        <Route
-          path={RoutesNames.ACCOUNT_FAVORITES}
-          element={<AccountFavorites />}
-        />
-      </Route>
+      <Route element={<RequireAuth />} />
+      <Route element={<RequireAuth />} />
     </Route>
   </Routes>
 );

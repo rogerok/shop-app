@@ -5,25 +5,13 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import { NavLink } from "react-router-dom";
 import { StyledIconLink } from "./IconLink.styles";
+import { RoutesNames } from "../../../router/routes";
 
 type IconLinkProps = {
   name: string;
   path: string;
   icon: React.ReactElement;
 };
-
-const data: IconLinkProps[] = [
-  {
-    name: "Account",
-    path: "account",
-    icon: <PersonIcon />,
-  },
-  {
-    name: "Addresses",
-    path: "addresses",
-    icon: <LocationOnIcon />,
-  },
-];
 
 const IconLink: FC<IconLinkProps> = ({ name, path, icon }) => (
   <StyledIconLink to={path} component={NavLink}>
