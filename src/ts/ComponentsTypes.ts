@@ -29,7 +29,7 @@ export type StatusType = {
 
 export type RadioOptionsType = RadioOptionType[];
 
-export type FormInputType = {
+export type TextInputType = {
   control: any;
   name: string;
   label: string;

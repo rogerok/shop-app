@@ -6,9 +6,9 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
-import { FormInputType } from "../../../ts/ComponentsTypes";
+import { TextInputType } from "../../../ts/ComponentsTypes";
 
-const DatePicker: React.FC<FormInputType> = ({ name, label, control }) => (
+const DatePicker: React.FC<TextInputType> = ({ name, label, control }) => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Controller
       name={name}

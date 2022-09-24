@@ -4,18 +4,21 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link as RouterLink } from "react-router-dom";
 
-import { UserData } from "../../../../ts/UserData";
+import { UserDataType } from "../../../../ts/UserData";
 import { useLogoutMutation } from "../../../../services/authApi";
 
 import Button from "../../../common/Button/Button";
 import RequestStatus from "../../../common/RequestStatus/RequestStatus";
 import { StyledPaper } from "../../Account.styles";
 import { RoutesNames } from "../../../../router/routes";
-import PersonalData from "../../PersonalData/PersonalDataItem";
+import PersonalDataItem from "../../PersonalData/PersonalDataItem";
 import PersonalDataHeader from "../../PersonalData/PersonalDataHeader";
 
 type UserProps = {
-  data: Pick<UserData, "firstName" | "lastName" | "email" | "phone" | "image">;
+  data: Pick<
+    UserDataType,
+    "firstName" | "lastName" | "email" | "phone" | "image"
+  >;
 };
 
 const User: React.FC<UserProps> = ({ data }) => {
@@ -66,7 +69,7 @@ const User: React.FC<UserProps> = ({ data }) => {
           </Grid>
           {personalData.map(({ title, content }) => (
             <Grid item xs={12} display="flex" mb={2}>
-              <PersonalData key={title} title={title} content={content} />
+              <PersonalDataItem key={title} title={title} content={content} />
             </Grid>
           ))}
         </Grid>

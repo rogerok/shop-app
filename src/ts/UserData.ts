@@ -31,7 +31,7 @@ export interface Company {
   title: string;
 }
 
-export interface UserData {
+export interface UserDataType {
   id: number;
   firstName: string;
   lastName: string;

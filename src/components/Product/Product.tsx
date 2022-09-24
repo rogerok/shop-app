@@ -1,20 +1,16 @@
 import React from "react";
 import { Grid, Typography, Box, Rating, Link } from "@mui/material";
 
-import { useParams, Link as RouterLink } from "react-router-dom";
-import { useGetProductByIdQuery } from "../../services/shopApi";
+import { Link as RouterLink } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/redux";
-import useSnackbar from "../../hooks/useSnackbar";
 import { addToCart } from "../../redux/cart/cartSlice";
 import { RoutesNames } from "../../router/routes";
 
-/* import Carousel from "../common/Carousel/Carousel"; */
-import Snackbar from "../common/Snackbar/Snackbar";
-import Backdrop from "../common/Backdrop/Backdrop";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductPriceBlock from "./ProductPriceblock/ProductPriceBlock";
 import ProductDescription from "./ProductDescription/ProductDescription";
 import { ProductType } from "../../ts/ProductsTypes";
+import { setSnackbarOpen } from "../../redux/ui/uiSlice";
 
 const Carousel = React.lazy(() => import("../common/Carousel/Carousel"));
 
@@ -23,11 +19,6 @@ type ProductProps = {
 };
 
 const Product: React.FC<ProductProps> = ({ data }) => {
-  const { productId } = useParams();
-  /*   const { data, isLoading } = useGetProductByIdQuery(productId!) ?? []; */
-
-  /*   if (isLoading || !data) return <Backdrop />; */
-
   const {
     title,
     brand,
@@ -41,11 +32,10 @@ const Product: React.FC<ProductProps> = ({ data }) => {
   } = data;
 
   const dispatch = useAppDispatch();
-  const { isOpen, handleOpen, handleClose } = useSnackbar();
 
   const handleButtonClick = () => {
     dispatch(addToCart(data));
-    handleOpen();
+    dispatch(setSnackbarOpen("added to cart"));
   };
 
   const details = {
@@ -95,11 +85,6 @@ const Product: React.FC<ProductProps> = ({ data }) => {
           />
         </Grid>
       </Grid>
-      <Snackbar
-        isOpen={isOpen}
-        handleClose={handleClose}
-        message="ADDED TO CART"
-      />
     </Box>
   );
 };

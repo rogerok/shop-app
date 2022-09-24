@@ -1,24 +1,23 @@
 import React from "react";
 import { Button, IconButton, Snackbar as MuiSnackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useAppSelector, useAppDispatch } from "../../../hooks/redux";
+import { setSnackbarClose } from "../../../redux/ui/uiSlice";
 
-type SnackbarProps = {
-  isOpen: boolean;
-  handleClose: (e?: Event | React.SyntheticEvent, reason?: string) => void;
-  message: string;
-};
+const Snackbar: React.FC = () => {
+  const isSnackbarOpen = useAppSelector((state) => state.ui.isSnackbarOpen);
+  const message = useAppSelector(
+    (state) => state.ui.snackbarMessage
+  ).toUpperCase();
+  const dispatch = useAppDispatch();
+  const onClose = () => dispatch(setSnackbarClose());
 
-const Snackbar: React.FC<SnackbarProps> = ({
-  isOpen,
-  handleClose,
-  message,
-}) => {
   const action = (
     <>
-      <Button onClick={handleClose} size="medium" color="secondary">
+      <Button onClick={onClose} size="medium" color="secondary">
         CLOSE
       </Button>
-      <IconButton onClick={handleClose} size="medium" color="inherit">
+      <IconButton onClick={onClose} size="medium" color="inherit">
         <CloseIcon fontSize="small" />
       </IconButton>
     </>
@@ -26,8 +25,8 @@ const Snackbar: React.FC<SnackbarProps> = ({
 
   return (
     <MuiSnackbar
-      open={isOpen}
-      onClose={handleClose}
+      open={isSnackbarOpen}
+      onClose={onClose}
       message={message}
       action={action}
       autoHideDuration={3000}

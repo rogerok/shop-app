@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { Controller } from "react-hook-form";
 import {
-  FormInputType,
+  TextInputType,
   RadioOptionsType,
   RadioOptionType,
 } from "../../../ts/ComponentsTypes";
@@ -17,7 +17,7 @@ import Radio from "../Radio/Radio";
 type RadioGroupProps = {
   options: RadioOptionsType;
 } & MuiRadioGroupProps &
-  FormInputType;
+  TextInputType;
 
 const RadioGroup: React.FC<RadioGroupProps> = ({
   options,

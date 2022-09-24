@@ -1,19 +1,15 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPType, FavoritesType } from "../../ts/types";
-import { UserData } from "../../ts/UserData";
+import { IPType, FavoritesType, UserGeoType } from "../../ts/types";
+import { UserDataType } from "../../ts/UserData";
 import { PAGINATION_LIMIT } from "../../utils/constants/PAGINATION_LIMIT";
 
-type IntervalType = {
-  from: number;
-  to: number;
-};
-
 type UserState = {
-  userData: UserData | null;
+  userData: UserDataType | null;
   token: string | null;
   ip: string | null;
   favorites: FavoritesType;
   favoritesThumbnails: string[];
+  userGeo: UserGeoType | null;
 };
 
 const initialState: UserState = {
@@ -22,6 +18,7 @@ const initialState: UserState = {
   ip: null,
   favorites: {},
   favoritesThumbnails: [],
+  userGeo: null,
 };
 
 const userSlice = createSlice({
@@ -32,7 +29,7 @@ const userSlice = createSlice({
       state.userData = initialState.userData;
       state.token = initialState.token;
     },
-    setUser: (state: UserState, action: PayloadAction<UserData>) => {
+    setUser: (state: UserState, action: PayloadAction<UserDataType>) => {
       state.userData = action.payload;
     },
     setCredentials: (state: UserState, action: PayloadAction<string>) => {
@@ -40,6 +37,9 @@ const userSlice = createSlice({
     },
     setUserIP: (state: UserState, action: PayloadAction<IPType>) => {
       state.ip = action.payload.ip;
+    },
+    setUserGeo: (state: UserState, action: PayloadAction<UserGeoType>) => {
+      state.userGeo = action.payload;
     },
     toggleFavorite(
       state: UserState,
@@ -57,15 +57,21 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout, setUser, setCredentials, setUserIP, toggleFavorite } =
-  userSlice.actions;
+export const {
+  logout,
+  setUser,
+  setCredentials,
+  setUserIP,
+  setUserGeo,
+  toggleFavorite,
+} = userSlice.actions;
 
 const selectUserState = ({ user }: { user: UserState }) => user;
 
 export const selectUserToken = ({ user }: { user: UserState }) => user.token;
 
 export const selectUserData = ({ user }: { user: UserState }) =>
-  user?.userData as UserData;
+  user?.userData as UserDataType;
 
 export const selectUserIP = ({ user }: { user: UserState }) => user?.ip;
 
@@ -83,12 +89,12 @@ export const selectFavoritesKeys = ({ user }: { user: UserState }) =>
   Object.keys(user.favorites);
 
 export const selectFavoritesProducts = createSelector(
-  [selectFavorites, (state, interval) => interval],
+  [selectFavorites, (_, interval) => interval],
   (favorites, interval) => Object.keys(favorites).slice(interval)
 );
 
 export const selectFavoritesKeysByInterval = createSelector(
-  [selectFavorites, (state, interval: number) => interval],
+  [selectFavorites, (_, interval: number) => interval],
   (favorites, interval) => Object.keys(favorites).slice(0, interval)
 );
 

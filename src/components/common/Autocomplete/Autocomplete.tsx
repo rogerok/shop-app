@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller } from "react-hook-form";
 import { Autocomplete as MuiAutocomplete, TextField, Box } from "@mui/material";
-import { FormInputType } from "../../../ts/ComponentsTypes";
+import { TextInputType } from "../../../ts/ComponentsTypes";
 
 type Base = {
   label: string;
@@ -9,7 +9,7 @@ type Base = {
 
 type AutocompleteProps<TOption> = {
   options: TOption[];
-} & FormInputType;
+} & TextInputType;
 
 const Autocomplete = <TOption extends Base>({
   options,

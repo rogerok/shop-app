@@ -3,7 +3,7 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 // eslint-disable-next-line import/no-cycle
 import { RootState } from "../redux/rootReducer";
 import { setUser } from "../redux/user/userSlice";
-import { UserData } from "../ts/UserData";
+import { UserDataType } from "../ts/UserData";
 import { API_ENDPOINTS } from "../utils/constants/API";
 
 export const userApi = createApi({
@@ -20,7 +20,7 @@ export const userApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getUserData: builder.query<UserData, number>({
+    getUserData: builder.query<UserDataType, number>({
       query(id) {
         return {
           url: `/users/${id}`,

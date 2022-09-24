@@ -7,9 +7,9 @@ import {
 } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
-import { FormInputType } from "../../../ts/ComponentsTypes";
+import { TextInputType } from "../../../ts/ComponentsTypes";
 
-type TextInputrops = {} & MuiTextFieldProps & FormInputType;
+type TextInputrops = {} & MuiTextFieldProps & TextInputType;
 
 const PasswordInput: React.FC<TextInputrops> = ({
   type,

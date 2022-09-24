@@ -38,10 +38,10 @@ export type GeoType = {
 };
 
 export type UserGeoType = {
-  city: string;
-  country: string;
-  region: string;
-  state: string;
+  city?: string;
+  country?: string;
+  region?: string;
+  state?: string;
 };
 
 export type FavoritesType = {

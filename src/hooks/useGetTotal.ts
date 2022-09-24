@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   selectTotalSum,
   selectTotalQuantity,
@@ -17,11 +17,15 @@ const useGetTotal = (options: string[]): TotalData => {
   const totalSum = useAppSelector(selectTotalSum);
   const totalQuantity = useAppSelector(selectTotalQuantity);
 
-  const data = options.map((option) => ({
-    type: option,
-    total: option === "sum" ? totalSum : totalQuantity,
-    description: option === "sum" ? "Amount" : "Products",
-  }));
+  const data = useMemo(
+    () =>
+      options.map((option) => ({
+        type: option,
+        total: option === "sum" ? totalSum : totalQuantity,
+        description: option === "sum" ? "Amount" : "Products",
+      })),
+    [totalSum, totalQuantity]
+  );
 
   useEffect(() => {
     dispatch(getTotalSum());

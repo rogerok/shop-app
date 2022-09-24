@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Box, Paper, Typography, Divider } from "@mui/material";
 
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import useGetTotal from "../../../hooks/useGetTotal";
+import { useAddUserOrderMutation } from "../../../services/shopApi";
+import { selectUserData } from "../../../redux/user/userSlice";
+import Button from "../../common/Button/Button";
+import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
+import RequestStatus from "../../common/RequestStatus/RequestStatus";
 
 type TotalData = {
   type: string;
@@ -32,13 +38,41 @@ const TotalTitle = React.memo(() => (
 
 const CartTotal = () => {
   const data: TotalData[] = useGetTotal(totalOptions);
+  const [addUserOrder, { isLoading, isSuccess, isError }] =
+    useAddUserOrderMutation();
+  const dispatch = useAppDispatch();
+  const isUserLoggedIn = useAppSelector((state) => state.user.token);
+  const cartItems = useAppSelector(selectCartItems);
+  const { firstName, lastName, phone, email } = useAppSelector(selectUserData);
+  const isCartEmpty = !cartItems.length;
+
+  const handleOrder = async () => {
+    const userData = {
+      firstName,
+      lastName,
+      phone,
+      email,
+    };
+    await addUserOrder({ cartItems, userData });
+  };
+
+  useEffect(() => {
+    if (isSuccess) dispatch(clearCart());
+  }, [isSuccess]);
 
   return (
     <Box display="flex" flexDirection="column">
+      {isSuccess || isLoading || isError ? (
+        <RequestStatus
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+          isError={isError}
+          navigateTo="/"
+        />
+      ) : null}
       <Paper elevation={3} sx={{ p: 2 }}>
         <TotalTitle />
         <Divider />
-
         {data.map((unit) => (
           <Total
             key={unit.type}
@@ -47,6 +81,12 @@ const CartTotal = () => {
             type={unit.type}
           />
         ))}
+
+        {isUserLoggedIn && (
+          <Button onClick={handleOrder} disabled={isCartEmpty}>
+            order
+          </Button>
+        )}
       </Paper>
     </Box>
   );

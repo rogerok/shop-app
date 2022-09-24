@@ -1,9 +1,9 @@
 import React from "react";
 import { Avatar, Typography } from "@mui/material";
-import { UserData } from "../../../ts/UserData";
+import { UserDataType } from "../../../ts/UserData";
 
 type PersonalDataHeaderProps = Pick<
-  UserData,
+  UserDataType,
   "firstName" | "lastName" | "image"
 >;
 

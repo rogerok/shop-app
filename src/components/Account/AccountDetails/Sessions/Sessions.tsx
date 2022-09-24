@@ -1,26 +1,26 @@
 import React, { useMemo } from "react";
 import { Typography, Box, Paper } from "@mui/material";
-import { UserData } from "../../../../ts/UserData";
+import { UserDataType } from "../../../../ts/UserData";
 import {
   browserDetect,
   convertBrowserName,
 } from "../../../../utils/helpers/browserDetect";
 import { UserGeoType } from "../../../../ts/types";
-import { StyledPaper } from "../../Account.styles";
 
-type ActiveSessionProps = Pick<UserData, "macAddress"> & {
+type SessionProps = {
   currentIP: string;
   location?: UserGeoType | undefined;
   previousUserAgent: string;
   previousIP: string;
+  previousLocation: UserGeoType;
 };
 
-const ActiveSessions: React.FC<ActiveSessionProps> = ({
-  macAddress,
+const Sessions: React.FC<SessionProps> = ({
   currentIP,
   location,
   previousUserAgent,
   previousIP,
+  previousLocation,
 }) => {
   const userAgent = navigator.userAgent.toLowerCase();
   const browser = useMemo(() => browserDetect(), [userAgent]);
@@ -56,9 +56,13 @@ const ActiveSessions: React.FC<ActiveSessionProps> = ({
         <Typography variant="body1">
           <b>IP:</b> {previousIP}
         </Typography>
+        <Typography variant="body1">
+          <b>Location:</b>
+          {`${previousLocation?.city}, ${previousLocation?.state} `}
+        </Typography>
       </Box>
     </Paper>
   );
 };
 
-export default ActiveSessions;
+export default Sessions;

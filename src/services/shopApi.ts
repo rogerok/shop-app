@@ -23,7 +23,7 @@ type FetchArgs = {
 
 type UserOrderData = {
   cartItems: CartProductsType;
-  formData: {
+  userData: {
     [key: string]: string;
   };
 };

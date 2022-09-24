@@ -18,11 +18,9 @@ import { addToCart } from "../../redux/cart/cartSlice";
 import { toggleFavorite, selectFavorites } from "../../redux/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
-import useSnackbar from "../../hooks/useSnackbar";
-
-import Snackbar from "../common/Snackbar/Snackbar";
 import Button from "../common/Button/Button";
 import CardContent from "./CardContent/CardContent";
+import { setSnackbarOpen } from "../../redux/ui/uiSlice";
 
 type ProductCardProps = {
   product: ProductType;
@@ -50,25 +48,13 @@ const CardFooter: React.FC<CardFooterProps> = ({
   </CardActions>
 );
 
-const Memoized = React.memo(CardFooter);
-
 const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   const dispatch = useAppDispatch();
-  const { isOpen, handleOpen, handleClose } = useSnackbar();
   const { title, thumbnail, discountPercentage, rating, price, id } = product;
-  /* 
-  const handleToggleFavorite = () => {
-    dispatch(toggleFavorite({ id, thumbnail }));
-  }; */
-
-  /*   const handleButtonClick = () => {
-    dispatch(addToCart(product));
-    handleOpen();
-  }; */
 
   const handleButtonClick = useCallback(() => {
     dispatch(addToCart(product));
-    handleOpen();
+    dispatch(setSnackbarOpen("added to cart"));
   }, []);
 
   const handleToggleFavorite = useCallback(() => {
@@ -93,26 +79,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
           rating={rating}
           price={price}
         />
-        {/*         <CardActions>
+        <CardActions>
           <Button size="medium" fullWidth onClick={handleButtonClick}>
             Add to cart
           </Button>
           <IconButton color="secondary" onClick={handleToggleFavorite}>
             {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
-        </CardActions> */}
-        <Memoized
-          handleButtonClick={handleButtonClick}
-          handleToggleFavorite={handleToggleFavorite}
-          isFavorite={!!isFavorite}
-        />
+        </CardActions>
       </Card>
-      <Snackbar
-        isOpen={isOpen}
-        handleClose={handleClose}
-        message="ADDED TO CART"
-      />
     </Grid>
   );
 };
-export default React.memo(ProductCard);
+export default ProductCard;

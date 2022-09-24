@@ -26,24 +26,23 @@ const OrderForm = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(selectCartItems);
   const isCartEmpty = !cartItems.length;
-  const navigate = useNavigate();
+
   const [addUserOrder, { isLoading, isSuccess, isError }] =
     useAddUserOrderMutation();
 
   const {
     control,
-    getValues,
     reset,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { isValid },
   } = useForm<FormDataType>({
     defaultValues,
     mode: "onBlur",
     resolver: yupResolver(orderSchema),
   });
 
-  const onSubmit = async (formData: FormDataType) => {
-    await addUserOrder({ cartItems, formData });
+  const onSubmit = async (userData: FormDataType) => {
+    await addUserOrder({ cartItems, userData });
   };
 
   useEffect(() => {
@@ -52,18 +51,16 @@ const OrderForm = () => {
     reset();
   }, [isSuccess]);
 
-  if (isLoading || isSuccess || isError)
-    return (
-      <RequestStatus
-        isLoading={isLoading}
-        isSuccess={isSuccess}
-        isError={isError}
-        navigateTo="/"
-      />
-    );
-
   return (
     <Box>
+      {isSuccess || isLoading || isError ? (
+        <RequestStatus
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+          isError={isError}
+          navigateTo="/"
+        />
+      ) : null}
       <Paper elevation={3} sx={{ p: 4 }}>
         <Typography variant="h3" gutterBottom>
           Checkout
@@ -128,7 +125,7 @@ const OrderForm = () => {
               display: "flex",
               mx: "left",
             }}
-            disabled={isValid && isCartEmpty}
+            disabled={!isValid || isCartEmpty}
           >
             Order
           </Button>

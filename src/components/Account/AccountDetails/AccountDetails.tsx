@@ -1,20 +1,13 @@
 import React, { useMemo } from "react";
-import {
-  Container,
-  Typography,
-  Paper,
-  Avatar,
-  Grid,
-  Stack,
-} from "@mui/material";
+import { Container, Paper, Grid, Stack, Box, Typography } from "@mui/material";
 
 import usePosition from "../../../hooks/usePosition";
 import { useGetUserGeoQuery } from "../../../services/personalSafetyApi";
 import { useAppSelector } from "../../../hooks/redux";
 import { selectUserData, selectUserIP } from "../../../redux/user/userSlice";
 
-import ActiveSessions from "./ActiveSessions/ActiveSessions";
-import PersonalData from "../PersonalData/PersonalDataItem";
+import Sessions from "./Sessions/Sessions";
+import PersonalDataItem from "../PersonalData/PersonalDataItem";
 import PersonalDataHeader from "../PersonalData/PersonalDataHeader";
 
 const AccountDetails = () => {
@@ -24,11 +17,12 @@ const AccountDetails = () => {
     lastName,
     userAgent,
     email,
-    macAddress,
     phone,
     image,
     ip,
     birthDate,
+    address: { city, state },
+    bank,
   } = userData;
 
   const userIP = useAppSelector(selectUserIP) || "unknow";
@@ -36,6 +30,7 @@ const AccountDetails = () => {
   const { data: location } = useGetUserGeoQuery(position, {
     skip,
   });
+
   const formattedBirthDate = useMemo(
     () => birthDate.split("-").reverse().join("."),
     [birthDate]
@@ -60,8 +55,8 @@ const AccountDetails = () => {
   );
 
   return (
-    <Container>
-      <Paper elevation={5} sx={{ px: 4, py: 2 }}>
+    <Container maxWidth="xl">
+      <Paper elevation={5} sx={{ px: 4, pt: 2, pb: 4, mb: 4 }}>
         <Grid container component="section">
           <Grid item xs={12} display="flex" alignItems="center" mb={4}>
             <PersonalDataHeader
@@ -79,19 +74,45 @@ const AccountDetails = () => {
           >
             {personalData.map(({ title, content }) => (
               <Stack>
-                <PersonalData key={title} title={title} content={content} />
+                <PersonalDataItem key={title} title={title} content={content} />
               </Stack>
             ))}
           </Grid>
         </Grid>
       </Paper>
-      <ActiveSessions
-        macAddress={macAddress}
-        currentIP={userIP}
-        location={location}
-        previousUserAgent={userAgent}
-        previousIP={ip}
-      />
+      <Box mb={4}>
+        <Sessions
+          currentIP={userIP}
+          location={location}
+          previousUserAgent={userAgent}
+          previousIP={ip}
+          previousLocation={{ city, state }}
+        />
+      </Box>
+
+      <Paper elevation={5} sx={{ p: 4 }}>
+        <Box
+          sx={{
+            width: "30%",
+            height: "80%",
+            backgroundColor: "pink",
+            borderRadius: "5px",
+            p: 2,
+          }}
+        >
+          <Typography variant="body1" mb={6}>
+            Main card
+          </Typography>
+          <Box display="flex" justifyContent="space-between">
+            <Typography variant="body1" gutterBottom>
+              {bank.cardNumber}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {bank.cardExpire}
+            </Typography>
+          </Box>
+        </Box>
+      </Paper>
     </Container>
   );
 };

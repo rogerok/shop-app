@@ -18,14 +18,14 @@ const Account = () => {
         <Grid item xs={4}>
           <User data={{ firstName, lastName, email, phone, image }} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={8}>
           <Reviews />
-        </Grid>
-        <Grid item xs={4}>
-          <Orders />
         </Grid>
         <Grid item xs={6}>
           <Favorites />
+        </Grid>
+        <Grid item xs={6}>
+          <Orders />
         </Grid>
       </Grid>
     </Container>
