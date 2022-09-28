@@ -7,11 +7,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import { NavLink } from "react-router-dom";
 import { RoutesNames } from "../../router/routes";
 
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { selectIsSidebarOpen, setSidebarOpen } from "../../redux/ui/uiSlice";
+import { useAppDispatch } from "../../hooks/redux";
+import { setSidebarOpen } from "../../redux/ui/uiSlice";
 
 import SearchInput from "../Search/SearchInput";
-import IconLink from "./IconLink/IconLink";
+import IconLink from "../common/IconLink/IconLink";
 import CartIcon from "./CartIcon/CartIcon";
 import {
   StyledAppBar,
@@ -56,7 +56,7 @@ const Header = () => {
 
           <SearchInput />
           {iconLinksData.map((link) => (
-            <IconLink key={link.path} {...link} />
+            <IconLink key={link.path} {...link} component={NavLink} />
           ))}
           <CartIcon />
         </StyledToolbar>

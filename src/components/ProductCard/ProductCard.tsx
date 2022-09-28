@@ -15,12 +15,13 @@ import { Link as RouterLink } from "react-router-dom";
 import { ProductType } from "../../ts/ProductsTypes";
 
 import { addToCart } from "../../redux/cart/cartSlice";
-import { toggleFavorite, selectFavorites } from "../../redux/user/userSlice";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { toggleFavorite } from "../../redux/user/userSlice";
+import { useAppDispatch } from "../../hooks/redux";
 
 import Button from "../common/Button/Button";
 import CardContent from "./CardContent/CardContent";
 import { setSnackbarOpen } from "../../redux/ui/uiSlice";
+import { DiscountLabel } from "./ProductCard.styles";
 
 type ProductCardProps = {
   product: ProductType;
@@ -64,21 +65,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   return (
     <Grid item xs={4} component="li" key={title} sx={{ transiti: " all 0.3" }}>
       <Card sx={{ pb: 2 }}>
-        <Link component={RouterLink} to={`/product/${id}`}>
+        <Link
+          component={RouterLink}
+          to={`/product/${id}`}
+          sx={{ position: "relative" }}
+        >
           <CardMedia
             component="img"
             image={thumbnail}
             sx={{ aspectRatio: "2/1" }}
             alt={title}
           />
+          <DiscountLabel variant="h5" paragraph gutterBottom>
+            -{discountPercentage}%
+          </DiscountLabel>
         </Link>
 
-        <CardContent
-          title={title}
-          discountPercentage={discountPercentage}
-          rating={rating}
-          price={price}
-        />
+        <CardContent title={title} rating={rating} price={price} />
         <CardActions>
           <Button size="medium" fullWidth onClick={handleButtonClick}>
             Add to cart

@@ -89,30 +89,6 @@ const AccountDetails = () => {
           previousLocation={{ city, state }}
         />
       </Box>
-
-      <Paper elevation={5} sx={{ p: 4 }}>
-        <Box
-          sx={{
-            width: "30%",
-            height: "80%",
-            backgroundColor: "pink",
-            borderRadius: "5px",
-            p: 2,
-          }}
-        >
-          <Typography variant="body1" mb={6}>
-            Main card
-          </Typography>
-          <Box display="flex" justifyContent="space-between">
-            <Typography variant="body1" gutterBottom>
-              {bank.cardNumber}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {bank.cardExpire}
-            </Typography>
-          </Box>
-        </Box>
-      </Paper>
     </Container>
   );
 };

@@ -5,26 +5,14 @@ import {
   Rating,
 } from "@mui/material";
 import { ProductType } from "../../../ts/ProductsTypes";
-import { DiscountLabel } from "./CardContent.styles";
 
-type CardContentProps = Pick<
-  ProductType,
-  "title" | "discountPercentage" | "price" | "rating"
->;
+type CardContentProps = Pick<ProductType, "title" | "price" | "rating">;
 
-const CardContent: React.FC<CardContentProps> = ({
-  title,
-  discountPercentage,
-  price,
-  rating,
-}) => (
+const CardContent: React.FC<CardContentProps> = ({ title, price, rating }) => (
   <MuiCardContent sx={{ position: "relative" }}>
     <Typography variant="h6" component="h6" gutterBottom>
       {title.length > 15 ? `${title.slice(0, 15)}...` : title}
     </Typography>
-    <DiscountLabel variant="h5" paragraph gutterBottom>
-      -{discountPercentage}%
-    </DiscountLabel>
     <Typography variant="h5" paragraph gutterBottom>
       ${price}
     </Typography>

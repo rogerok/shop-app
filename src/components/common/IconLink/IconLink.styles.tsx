@@ -8,6 +8,7 @@ export const StyledIconLink = styled(Link)<LinkProps>(({ theme }) => ({
   alignItems: "center",
   color: theme.palette.text.secondary,
   transition: `0.2s color ${theme.transitions.easing.sharp}`,
+  cursor: "pointer",
   "&: MuiSvgIcon-root": {
     fontSize: "4rem",
     color: theme.palette.text.secondary,

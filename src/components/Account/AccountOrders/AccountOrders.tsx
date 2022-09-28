@@ -9,12 +9,14 @@ import {
   IconButton,
   Collapse,
   TableBody,
-  TablePagination,
   Box,
+  Link,
 } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { OrderedProductType, OrderType } from "../../../ts/ProductsTypes";
+import { Link as RouterLink } from "react-router-dom";
+import { RoutesNames } from "../../../router/routes";
+import { OrderType } from "../../../ts/ProductsTypes";
 import { useGetUserOrdersQuery } from "../../../services/userApi";
 import FullScreenLoader from "../../common/FullScreenLoader/FullScreenLoader";
 
@@ -25,7 +27,6 @@ type RowProps = {
 const Row: React.FC<RowProps> = ({
   order: { id, discountedTotal, total, totalProducts, totalQuantity, products },
 }) => {
-  const num = 0;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
@@ -60,8 +61,20 @@ const Row: React.FC<RowProps> = ({
               <TableBody>
                 {products.map((product) => (
                   <TableRow key={product.title}>
-                    <TableCell component="th" scope="row">
-                      {product.title}
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      sx={{
+                        p: 2,
+                      }}
+                    >
+                      <Link
+                        to={`/${RoutesNames.PRODUCT}/${id}`}
+                        component={RouterLink}
+                        underline="hover"
+                      >
+                        {product.title}
+                      </Link>
                     </TableCell>
                     <TableCell>{product.quantity}</TableCell>
                     <TableCell align="right">{product.price}</TableCell>
@@ -81,12 +94,7 @@ const Row: React.FC<RowProps> = ({
 
 const AccountOrders = () => {
   const { data, isLoading } = useGetUserOrdersQuery();
-  const [page, setPage] = useState(5);
   if (isLoading || !data) return <FullScreenLoader />;
-
-  const handlePageChange = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
 
   return (
     <Box>
