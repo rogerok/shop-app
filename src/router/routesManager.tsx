@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Route, RouteObject, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Layout from "../components/Layout/Layout";
 import { RoutesNames } from "./routes";
@@ -44,6 +44,10 @@ const AccountFavorites = React.lazy(
   () => import("../components/Account/AccountFavorites/AccountFavorites")
 );
 
+const AccountOrders = React.lazy(
+  () => import("../components/Account/AccountOrders/AccountOrders")
+);
+
 export const AppRouter = () => (
   <Routes>
     <Route path={RoutesNames.HOME} element={<Layout />}>
@@ -70,6 +74,10 @@ export const AppRouter = () => (
           <Route
             path={RoutesNames.ACCOUNT_DETAILS}
             element={<AccountDetails />}
+          />
+          <Route
+            path={RoutesNames.ACCOUNT_ORDERS}
+            element={<AccountOrders />}
           />
         </Route>
       </Route>

@@ -3,8 +3,16 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 // eslint-disable-next-line import/no-cycle
 import { RootState } from "../redux/rootReducer";
 import { setUser } from "../redux/user/userSlice";
+import { OrderType } from "../ts/ProductsTypes";
 import { UserDataType } from "../ts/UserData";
 import { API_ENDPOINTS } from "../utils/constants/API";
+
+type UserOrdersResult = {
+  carts: OrderType[];
+  limit: number;
+  skip: number;
+  total: number;
+};
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -43,7 +51,19 @@ export const userApi = createApi({
         };
       },
     }),
+    getUserOrders: builder.query<OrderType[], void>({
+      query() {
+        return {
+          url: "/carts",
+        };
+      },
+      transformResponse: (result: UserOrdersResult) => result.carts,
+    }),
   }),
 });
 
-export const { useGetUserDataQuery, useGetProductThumbnailQuery } = userApi;
+export const {
+  useGetUserDataQuery,
+  useGetProductThumbnailQuery,
+  useGetUserOrdersQuery,
+} = userApi;

@@ -13,6 +13,7 @@ interface ShopState extends EntityState<ProductType> {
 }
 
 const shopAdapter = createEntityAdapter<ProductType>({
+  // @ts-ignore
   sortComparer: (a, b) => a.id.localeCompare(b.id),
 });
 

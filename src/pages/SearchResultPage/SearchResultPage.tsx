@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
 import { useParams } from "react-router-dom";
-import Backdrop from "../../components/common/Backdrop/Backdrop";
+import FullScreenLoader from "../../components/common/FullScreenLoader/FullScreenLoader";
 import Pagination from "../../components/common/Pagination/Pagination";
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
 import { useAppSelector } from "../../hooks/redux";
@@ -19,7 +19,7 @@ const SearchResultPage = () => {
     skip: skippedProducts,
   });
 
-  if (isLoading || !data) return <Backdrop />;
+  if (isLoading || !data) return <FullScreenLoader />;
 
   return (
     <Container>

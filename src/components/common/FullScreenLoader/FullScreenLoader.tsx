@@ -2,10 +2,10 @@ import React from "react";
 import { Backdrop as MuiBackdrop } from "@mui/material";
 import Spinner from "../Spinner/Spinner";
 
-const Backdrop = () => (
+const FullScreenLoader = () => (
   <MuiBackdrop open>
     <Spinner />
   </MuiBackdrop>
 );
 
-export default Backdrop;
+export default FullScreenLoader;

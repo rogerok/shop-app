@@ -29,7 +29,8 @@ const Favorites = () => {
           p={2}
         >
           <Typography variant="h5">
-            Favorites <FavoriteIcon />
+            Favorites
+            <FavoriteIcon color="secondary" />
           </Typography>
 
           <StyledAvatarGroup max={6} total={totalFavorites}>

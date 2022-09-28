@@ -21,7 +21,7 @@ const Sidebar = () => {
     <Box component="aside">
       <Drawer open={isSidebarOpen} onClose={handleClose} anchor="left">
         <Box>
-          <StyledList onClick={handleClose}>
+          <StyledList>
             {PRODUCTS_CATEGORIES.map((category) => (
               <SidebarItem key={category} category={category} />
             ))}

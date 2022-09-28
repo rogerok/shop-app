@@ -9,7 +9,7 @@ import { selectFavorites } from "../../redux/user/userSlice";
 import { useGetProductsByCategoryQuery } from "../../services/shopApi";
 
 import ProductsCollection from "../../components/ProductsCollection/ProductsCollection";
-import Backdrop from "../../components/common/Backdrop/Backdrop";
+import FullScreenLoader from "../../components/common/FullScreenLoader/FullScreenLoader";
 
 const Pagination = React.lazy(
   () => import("../../components/common/Pagination/Pagination")
@@ -25,7 +25,7 @@ const CollectionPage = () => {
 
   const favorites = useAppSelector(selectFavorites);
 
-  if (isLoading || !data) return <Backdrop />;
+  if (isLoading || !data) return <FullScreenLoader />;
 
   return (
     <Container>

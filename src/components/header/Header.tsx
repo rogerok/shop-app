@@ -35,7 +35,6 @@ const iconLinksData = [
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const isSidebarOpen = useAppSelector(selectIsSidebarOpen);
   const handleSidebarOpen = () => dispatch(setSidebarOpen(true));
 
   return (

@@ -10,7 +10,7 @@ import {
 import { shopApi } from "../../../services/shopApi";
 import FavoritesWrapper from "./FavoritesWrapper/FavoriteWrapper";
 import Button from "../../common/Button/Button";
-import Backdrop from "../../common/Backdrop/Backdrop";
+import FullScreenLoader from "../../common/FullScreenLoader/FullScreenLoader";
 
 const AccountFavorites = () => {
   const [interval, setInterval] = useState(6);
@@ -29,25 +29,34 @@ const AccountFavorites = () => {
   const loadMore = () => {
     setInterval(() => interval + 6);
   };
-  if (initialLoading) return <Backdrop />;
+
+  if (initialLoading) return <FullScreenLoader />;
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
       <Typography variant="h1" textAlign="center" mb={8}>
         Your favorites products
       </Typography>
-      <Grid container component="ul" spacing={4} mb={4}>
-        {ids.map((id) => (
-          <FavoritesWrapper key={id} id={id} />
-        ))}
-      </Grid>
-      <Button
-        onClick={loadMore}
-        sx={{ margin: "0 auto", width: "30%" }}
-        disabled={isEnd}
-      >
-        {isLoading ? "loading..." : "load more"}
-      </Button>
+      {ids.length ? (
+        <>
+          <Grid container component="ul" spacing={4} mb={4}>
+            {ids.map((id) => (
+              <FavoritesWrapper key={id} id={id} />
+            ))}
+          </Grid>
+          <Button
+            onClick={loadMore}
+            sx={{ margin: "0 auto", width: "30%" }}
+            disabled={isEnd}
+          >
+            {isLoading ? "loading..." : "load more"}
+          </Button>
+        </>
+      ) : (
+        <Typography variant="h3" textAlign="center">
+          List is empty ;(
+        </Typography>
+      )}
     </Container>
   );
 };

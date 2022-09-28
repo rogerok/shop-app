@@ -1,5 +1,5 @@
 export interface ProductType {
-  id: string;
+  id: string | string;
   title: string;
   description: string;
   price: number;
@@ -17,9 +17,23 @@ export type CartProductType = Omit<
   ProductType,
   "images" | "rating" | "description"
 >;
+
+export type OrderedProductType = Pick<
+  ProductType,
+  "id" | "title" | "price" | "quantity" | "discountPercentage"
+> & {
+  discountedPrice: number;
+};
+
+export type OrderType = {
+  id: number | string;
+  products: OrderedProductType[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+};
+
 export type CartProductsType = CartProductType[];
 export type ProductsType = ProductType[];
-
-export type AddedProductType = ProductType & {
-  quantity: number;
-};
