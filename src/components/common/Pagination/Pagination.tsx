@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useCallback, useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import { Pagination as MuiPagination } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import {
   selectProductsPerPage,
   setSkippedProducts,
-} from "../../../redux/pagination/paginationSlice";
+} from "../../../store/pagination/paginationSlice";
 
 type PaginationProps = {
   scrollToRef?: any;

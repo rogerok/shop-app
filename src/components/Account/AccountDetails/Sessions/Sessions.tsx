@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Typography, Box, Paper } from "@mui/material";
-import { UserDataType } from "../../../../ts/UserData";
+
 import {
   browserDetect,
   convertBrowserName,

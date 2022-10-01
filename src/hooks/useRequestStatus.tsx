@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { NavigateOptions, To, useNavigate } from "react-router-dom";
-import StatusError from "../components/common/StatusComponents/StatusError";
-import Spinner from "../components/common/Spinner/Spinner";
-import StatusSuccess from "../components/common/StatusComponents/StatusSuccess";
 import { StatusType } from "../ts/ComponentsTypes";
+
+import StatusComponent from "../components/common/StatusComponent/StatucComponent";
+import Spinner from "../components/common/Spinner/Spinner";
 
 const getContent = ({
   isLoading,
@@ -13,9 +13,14 @@ const getContent = ({
   errorMessage,
 }: RequestStatusType) => {
   if (isLoading) return <Spinner />;
-  if (isError) return <StatusError message={errorMessage} />;
-  if (isSuccess) return <StatusSuccess message={succesMessage} />;
-  return null;
+  return (
+    <StatusComponent
+      isError={isError}
+      isSucces={isSuccess}
+      errorMessage={errorMessage}
+      succesMessage={succesMessage}
+    />
+  );
 };
 
 type RequestStatusType = {

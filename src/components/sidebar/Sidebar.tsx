@@ -2,8 +2,7 @@ import React from "react";
 import { Drawer, Box } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { selectIsSidebarOpen, setSidebarOpen } from "../../redux/ui/uiSlice";
-
+import { selectIsSidebarOpen, setSidebarOpen } from "../../store/ui/uiSlice";
 import { PRODUCTS_CATEGORIES } from "../../utils/constants/PRODUCTS_CATEGORIES";
 
 import SidebarItem from "./SidebarItem/SidebarItem";

@@ -2,10 +2,9 @@ import React from "react";
 import { Grid, Box } from "@mui/material";
 
 import { useAppSelector } from "../../../hooks/redux";
-import { selectSkippedProducts } from "../../../redux/pagination/paginationSlice";
-import { selectFavorites } from "../../../redux/user/userSlice";
 import { useGetProductsQuery } from "../../../services/shopApi";
-
+import { selectFavorites } from "../../../store/user/userSlice";
+import { selectSkippedProducts } from "../../../store/pagination/paginationSlice";
 import { ProductType } from "../../../ts/ProductsTypes";
 
 import Spinner from "../../common/Spinner/Spinner";

@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import {
   selectTotalQuantity,
   getTotalQuantity,
-} from "../../../redux/cart/cartSlice";
+} from "../../../store/cart/cartSlice";
 
 import IconLink from "../../common/IconLink/IconLink";
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import {
   selectTotalSum,
   selectTotalQuantity,
   getTotalSum,
-} from "../redux/cart/cartSlice";
+} from "../store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "./redux";
 
 type TotalData = {

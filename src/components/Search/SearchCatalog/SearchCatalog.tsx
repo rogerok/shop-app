@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
 
-import { ProductType, ProductsType } from "../../../ts/ProductsTypes";
 import { useSearchProductsForPreviewQuery } from "../../../services/shopApi";
+import { ProductType, ProductsType } from "../../../ts/ProductsTypes";
 
+import CustomLink from "../../common/CustomLink/CustomLink";
 import ProductPreview from "../ProductPreview/ProductPreview";
 import Spinner from "../../common/Spinner/Spinner";
-import Link from "../../common/Link/Link";
 import { StyledList, StyledPaper } from "./SearchCatalog.styles";
 
 type SearchCatalogProps = {
@@ -41,9 +41,9 @@ const SearchCatalog: React.FC<SearchCatalogProps> = ({
             <ProductPreview key={item.id} {...item} />
           ))}
 
-          <Link to={`search/${searchTerm}`} withBackground>
+          <CustomLink to={`search/${searchTerm}`} withBackground>
             Show more
-          </Link>
+          </CustomLink>
         </>
       );
     }

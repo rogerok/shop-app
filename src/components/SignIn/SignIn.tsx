@@ -13,14 +13,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/validations/validationSchema";
 
 import { useLoginMutation } from "../../services/authApi";
-
-import RequestStatus from "../common/RequestStatus/RequestStatus";
-import TextInput from "../common/inputs/TextInput";
-import PasswordInput from "../common/inputs/PasswordInput";
-
-import Button from "../common/Button/Button";
 import { LoginDataType } from "../../ts/types";
 import { LocationParamsType } from "../../ts/LocationParamsType";
+
+import Button from "../common/Button/Button";
+import PasswordInput from "../common/inputs/PasswordInput";
+import RequestStatus from "../common/RequestStatus/RequestStatus";
+import TextInput from "../common/inputs/TextInput";
 
 type LocationState = {
   from: {

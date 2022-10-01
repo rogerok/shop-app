@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setUserIP, setUserGeo } from "../redux/user/userSlice";
+import { setUserIP, setUserGeo } from "../store/user/userSlice";
 import { IPType, GeoType, UserGeoType } from "../ts/types";
 
 const geoApiKey = "d00e9e3d1d2b4476b379f2880d3c89b9";

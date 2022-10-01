@@ -1,7 +1,7 @@
 import React from "react";
-import { useLocation, useNavigate, Outlet, Navigate } from "react-router-dom";
+import { useLocation, Outlet, Navigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux";
-import { selectUserToken } from "../../redux/user/userSlice";
+import { selectUserToken } from "../../store/user/userSlice";
 
 const RequireAuth = () => {
   const location = useLocation();

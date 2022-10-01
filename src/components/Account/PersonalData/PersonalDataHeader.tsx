@@ -1,5 +1,6 @@
 import React from "react";
 import { Avatar, Typography } from "@mui/material";
+
 import { UserDataType } from "../../../ts/UserData";
 
 type PersonalDataHeaderProps = Pick<

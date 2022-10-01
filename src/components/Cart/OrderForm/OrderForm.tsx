@@ -3,16 +3,15 @@ import { Box, Paper, Typography } from "@mui/material";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
 import { orderSchema } from "../../../utils/validations/validationSchema";
 
-import { FormDataType } from "../../../ts/types";
 import { useAddUserOrderMutation } from "../../../services/shopApi";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
+import { clearCart, selectCartItems } from "../../../store/cart/cartSlice";
+import { FormDataType } from "../../../ts/types";
 
-import RequestStatus from "../../common/RequestStatus/RequestStatus";
 import Button from "../../common/Button/Button";
+import RequestStatus from "../../common/RequestStatus/RequestStatus";
 import TextInput from "../../common/inputs/TextInput";
 
 const defaultValues = {

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Grid, Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import image1 from "../../assets/home-page-carousel/1.jpg";
 import image2 from "../../assets/home-page-carousel/2.jpg";

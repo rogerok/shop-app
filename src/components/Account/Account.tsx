@@ -4,45 +4,46 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ReviewsIcon from "@mui/icons-material/Reviews";
-import { Outlet } from "react-router-dom";
 
-import Link from "../common/Link/Link";
+import { Outlet } from "react-router-dom";
 import { RoutesNames } from "../../router/routes";
+
+import CustomLink from "../common/CustomLink/CustomLink";
 
 const Account = () => (
   <Container maxWidth="xl">
     <List sx={{ display: "flex" }}>
       <ListItem>
-        <Link to={RoutesNames.ACCOUNT_DASHBOARD}>
+        <CustomLink to={RoutesNames.ACCOUNT_DASHBOARD}>
           <AccountCircleIcon />
           <Typography variant="body1" component="span" fontWeight={600} p={1}>
             Dashboard
           </Typography>
-        </Link>
+        </CustomLink>
       </ListItem>
       <ListItem>
-        <Link to={RoutesNames.ACCOUNT_FAVORITES}>
+        <CustomLink to={RoutesNames.ACCOUNT_FAVORITES}>
           <FavoriteIcon />
           <Typography variant="body1" component="span" fontWeight={600} p={1}>
             Favorites
           </Typography>
-        </Link>
+        </CustomLink>
       </ListItem>
       <ListItem>
-        <Link to={RoutesNames.ACCOUNT_ORDERS}>
+        <CustomLink to={RoutesNames.ACCOUNT_ORDERS}>
           <ShoppingCartIcon />
           <Typography variant="body1" component="span" fontWeight={600} p={1}>
             Orders
           </Typography>
-        </Link>
+        </CustomLink>
       </ListItem>
       <ListItem>
-        <Link to={RoutesNames.ACCOUNT_REVIEWS}>
+        <CustomLink to={RoutesNames.ACCOUNT_REVIEWS}>
           <ReviewsIcon />
           <Typography variant="body1" component="span" fontWeight={600} p={1}>
             Reviews
           </Typography>
-        </Link>
+        </CustomLink>
       </ListItem>
     </List>
     <Outlet />

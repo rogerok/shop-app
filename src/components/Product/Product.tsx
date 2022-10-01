@@ -1,24 +1,25 @@
 import React from "react";
 import { Grid, Typography, Box, Rating, Link } from "@mui/material";
 
-import { Link as RouterLink } from "react-router-dom";
-import { useAppDispatch } from "../../hooks/redux";
-import { addToCart } from "../../redux/cart/cartSlice";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import { RoutesNames } from "../../router/routes";
+import { useAppDispatch } from "../../hooks/redux";
+import { useGetProductByIdQuery } from "../../services/shopApi";
+import { addToCart } from "../../store/cart/cartSlice";
+import { setSnackbarOpen } from "../../store/ui/uiSlice";
 
+import FullScreenLoader from "../common/FullScreenLoader/FullScreenLoader";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductPriceBlock from "./ProductPriceblock/ProductPriceBlock";
 import ProductDescription from "./ProductDescription/ProductDescription";
-import { ProductType } from "../../ts/ProductsTypes";
-import { setSnackbarOpen } from "../../redux/ui/uiSlice";
 
 const Carousel = React.lazy(() => import("../common/Carousel/Carousel"));
 
-type ProductProps = {
-  data: ProductType;
-};
+const Product = () => {
+  const { productId } = useParams();
+  const { data, isLoading } = useGetProductByIdQuery(productId!) ?? [];
+  if (isLoading || !data) return <FullScreenLoader />;
 
-const Product: React.FC<ProductProps> = ({ data }) => {
   const {
     title,
     brand,

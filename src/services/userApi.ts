@@ -1,8 +1,8 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
 // eslint-disable-next-line import/no-cycle
-import { RootState } from "../redux/rootReducer";
-import { setUser } from "../redux/user/userSlice";
+import { RootState } from "../store/rootReducer";
+import { setUser } from "../store/user/userSlice";
 import { OrderType } from "../ts/ProductsTypes";
 import { UserDataType } from "../ts/UserData";
 import { API_ENDPOINTS } from "../utils/constants/API";

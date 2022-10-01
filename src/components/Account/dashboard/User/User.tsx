@@ -1,18 +1,17 @@
 import React, { useMemo } from "react";
-import { Grid, Avatar, Typography, Link } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Grid, Link } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link as RouterLink } from "react-router-dom";
 
+import { Link as RouterLink } from "react-router-dom";
 import { UserDataType } from "../../../../ts/UserData";
 import { useLogoutMutation } from "../../../../services/authApi";
+import { RoutesNames } from "../../../../router/routes";
 
 import Button from "../../../common/Button/Button";
-import RequestStatus from "../../../common/RequestStatus/RequestStatus";
-import { StyledPaper } from "../../Account.styles";
-import { RoutesNames } from "../../../../router/routes";
 import PersonalDataItem from "../../PersonalData/PersonalDataItem";
 import PersonalDataHeader from "../../PersonalData/PersonalDataHeader";
+import RequestStatus from "../../../common/RequestStatus/RequestStatus";
+import { StyledPaper } from "../../Account.styles";
 
 type UserProps = {
   data: Pick<

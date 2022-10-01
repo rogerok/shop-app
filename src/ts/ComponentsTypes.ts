@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { To } from "react-router-dom";
 import { LinkProps as MuiLinkProps } from "@mui/material";
 
 export type LinkProps = {

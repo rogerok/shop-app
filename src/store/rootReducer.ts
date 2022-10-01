@@ -10,7 +10,6 @@ import { shopApi } from "../services/shopApi";
 
 import cartReducer from "./cart/cartSlice";
 import uiReducer from "./ui/uiSlice";
-import shopReducer from "./shop/shopSlice";
 import paginationReducer from "./pagination/paginationSlice";
 import userReducer from "./user/userSlice";
 
@@ -21,7 +20,6 @@ const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [personalSafetyApi.reducerPath]: personalSafetyApi.reducer,
   ui: uiReducer,
-  shop: shopReducer,
   pagination: paginationReducer,
   user: userReducer,
 });

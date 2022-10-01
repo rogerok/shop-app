@@ -1,6 +1,8 @@
 import React from "react";
 import { Paper, Grid, Stack } from "@mui/material";
+
 import { UserDataType } from "../../../../ts/UserData";
+
 import PersonalDataHeader from "../../PersonalData/PersonalDataHeader";
 import PersonalDataItem from "../../PersonalData/PersonalDataItem";
 

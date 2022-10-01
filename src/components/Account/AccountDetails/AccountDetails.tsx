@@ -1,14 +1,14 @@
 import React, { useMemo } from "react";
-import { Container, Paper, Grid, Stack, Box, Typography } from "@mui/material";
+import { Container, Paper, Grid, Stack, Box } from "@mui/material";
 
 import usePosition from "../../../hooks/usePosition";
 import { useGetUserGeoQuery } from "../../../services/personalSafetyApi";
 import { useAppSelector } from "../../../hooks/redux";
-import { selectUserData, selectUserIP } from "../../../redux/user/userSlice";
+import { selectUserData, selectUserIP } from "../../../store/user/userSlice";
 
-import Sessions from "./Sessions/Sessions";
 import PersonalDataItem from "../PersonalData/PersonalDataItem";
 import PersonalDataHeader from "../PersonalData/PersonalDataHeader";
+import Sessions from "./Sessions/Sessions";
 
 const AccountDetails = () => {
   const userData = useAppSelector(selectUserData)!;

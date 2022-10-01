@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Typography, IconProps } from "@mui/material";
-import { NavLink } from "react-router-dom";
 import { LinkProps } from "../../../ts/ComponentsTypes";
 import { StyledIconLink } from "./IconLink.styles";
 

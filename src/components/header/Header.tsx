@@ -1,16 +1,15 @@
 import React from "react";
-
 import { Typography, Grid } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
+
 import { NavLink } from "react-router-dom";
 import { RoutesNames } from "../../router/routes";
-
 import { useAppDispatch } from "../../hooks/redux";
-import { setSidebarOpen } from "../../redux/ui/uiSlice";
+import { setSidebarOpen } from "../../store/ui/uiSlice";
 
-import SearchInput from "../Search/SearchInput";
+import SearchInput from "../Search/SearchInput/SearchInput";
 import IconLink from "../common/IconLink/IconLink";
 import CartIcon from "./CartIcon/CartIcon";
 import {

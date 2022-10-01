@@ -1,5 +1,5 @@
-import { Box, Typography, Divider } from "@mui/material";
 import React from "react";
+import { Box, Typography, Divider } from "@mui/material";
 
 type ProductParamsProps = {
   param: string;
@@ -32,4 +32,4 @@ const ProductParams: React.FC<ProductParamsProps> = ({
   );
 };
 
-export default React.memo(ProductParams);
+export default ProductParams;

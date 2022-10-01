@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, IconButton, Snackbar as MuiSnackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+
 import { useAppSelector, useAppDispatch } from "../../../hooks/redux";
-import { setSnackbarClose } from "../../../redux/ui/uiSlice";
+import { setSnackbarClose } from "../../../store/ui/uiSlice";
 
 const Snackbar: React.FC = () => {
   const isSnackbarOpen = useAppSelector((state) => state.ui.isSnackbarOpen);

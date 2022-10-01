@@ -1,35 +1,15 @@
 import React, { FC, useMemo } from "react";
 import { Paper, Typography } from "@mui/material";
-import Button from "../../common/Button/Button";
+
 import { countPriceWithDiscount } from "../../../utils/helpers/countPriceWithDiscount";
+
+import Button from "../../common/Button/Button";
 
 type ProductPriceBlockProps = {
   handleClick: () => void;
   price: number | string;
   discountPercentage: number | string;
 };
-
-const Price = React.memo(({ price }: { price: number | string }) => (
-  <Typography
-    variant="h4"
-    sx={{
-      color: "primary.main",
-      textDecoration: "line-through",
-      textDecorationThickness: "4px",
-    }}
-    gutterBottom
-  >
-    ${price}
-  </Typography>
-));
-
-const PriceWithDiscount = React.memo(
-  ({ priceWithDiscount }: { priceWithDiscount: number | string }) => (
-    <Typography variant="h4" sx={{ color: "error.main" }}>
-      ${priceWithDiscount}
-    </Typography>
-  )
-);
 
 const ProductPriceBlock: FC<ProductPriceBlockProps> = ({
   price,
@@ -46,8 +26,21 @@ const ProductPriceBlock: FC<ProductPriceBlockProps> = ({
       elevation={3}
       sx={{ display: "flex", flexDirection: "column", padding: 2 }}
     >
-      <Price price={price} />
-      <PriceWithDiscount priceWithDiscount={priceWithDiscount} />
+      <Typography
+        variant="h4"
+        sx={{
+          color: "primary.main",
+          textDecoration: "line-through",
+          textDecorationThickness: "4px",
+        }}
+        gutterBottom
+      >
+        ${price}
+      </Typography>
+      <Typography variant="h4" sx={{ color: "error.main" }}>
+        ${priceWithDiscount}
+      </Typography>
+
       <Button
         size="large"
         onClick={handleClick}
@@ -60,4 +53,4 @@ const ProductPriceBlock: FC<ProductPriceBlockProps> = ({
   );
 };
 
-export default React.memo(ProductPriceBlock);
+export default ProductPriceBlock;

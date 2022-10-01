@@ -17,13 +17,6 @@ const Layout = () => (
     </Grid>
     <Footer />
   </Grid>
-  /*   <Box>
-    <Sidebar />
-    <Header />
-    <Container maxWidth="xl">
-      <Outlet />
-    </Container>
-  </Box> */
 );
 
 export default Layout;

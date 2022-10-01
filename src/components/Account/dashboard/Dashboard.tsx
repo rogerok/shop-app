@@ -2,11 +2,12 @@ import React from "react";
 import { Container, Grid } from "@mui/material";
 
 import { useAppSelector } from "../../../hooks/redux";
-import { selectUserData } from "../../../redux/user/userSlice";
+import { selectUserData } from "../../../store/user/userSlice";
+
 import Favorites from "./Favorites/Favorites";
 import Orders from "./Orders/Orders";
-import User from "./User/User";
 import Reviews from "./Reviews/Reviews";
+import User from "./User/User";
 
 const Account = () => {
   const userData = useAppSelector(selectUserData)!;

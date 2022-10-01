@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { Autocomplete as MuiAutocomplete, TextField, Box } from "@mui/material";
+import { Autocomplete as MuiAutocomplete, TextField } from "@mui/material";
 import { TextInputType } from "../../../ts/ComponentsTypes";
 
 type Base = {
@@ -28,7 +28,6 @@ const Autocomplete = <TOption extends Base>({
           onChange={(e, data) => field.onChange(data?.label)}
           options={options}
           getOptionLabel={(option: TOption) => option.label}
-          /*   value={field.value} */
           renderInput={(params) => (
             <TextField
               {...params}

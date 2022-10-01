@@ -5,11 +5,11 @@ import { useAppSelector } from "../../../hooks/redux";
 import {
   selectFavoritesKeysByInterval,
   selectFavoritesKeys,
-} from "../../../redux/user/userSlice";
-
+} from "../../../store/user/userSlice";
 import { shopApi } from "../../../services/shopApi";
-import FavoritesWrapper from "./FavoritesWrapper/FavoriteWrapper";
+
 import Button from "../../common/Button/Button";
+import FavoritesWrapper from "./FavoritesWrapper/FavoriteWrapper";
 import FullScreenLoader from "../../common/FullScreenLoader/FullScreenLoader";
 
 const AccountFavorites = () => {

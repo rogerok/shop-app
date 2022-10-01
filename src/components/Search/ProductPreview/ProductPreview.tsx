@@ -1,9 +1,9 @@
 import React from "react";
 import { ListItem, Card, CardMedia, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { ProductType } from "../../../ts/ProductsTypes";
 
+import { useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../../router/routes";
+import { ProductType } from "../../../ts/ProductsTypes";
 
 const ProductPreview: React.FC<ProductType> = (product) => {
   const { thumbnail, title, price, id } = product;

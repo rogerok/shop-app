@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from "react";
-
 import { Box } from "@mui/material";
+
 import { AppRouter } from "./router/routesManager";
 
 import FullScreenLoader from "./components/common/FullScreenLoader/FullScreenLoader";

@@ -5,21 +5,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../../utils/validations/validationSchema";
 
-import { CountryType, RegisterDataType } from "../../ts/types";
+import { useRegisterUserMutation } from "../../services/authApi";
 import { RadioOptionsType } from "../../ts/ComponentsTypes";
-
-import {
-  useLoginMutation,
-  useRegisterUserMutation,
-} from "../../services/authApi";
-
-import TextInput from "../common/inputs/TextInput";
-import RadioGroup from "../common/RadioGroup/RadioGroup";
-import Button from "../common/Button/Button";
-// import DatePicker from "../common/DatePicker/DatePicker";
-import Autocomplete from "../common/Autocomplete/Autocomplete";
-import RequestStatus from "../common/RequestStatus/RequestStatus";
+import { CountryType, RegisterDataType } from "../../ts/types";
 import { COUNTRIES_LIST } from "../../utils/constants/COUNTRIES_LIST";
+
+import Autocomplete from "../common/Autocomplete/Autocomplete";
+import Button from "../common/Button/Button";
+import RadioGroup from "../common/RadioGroup/RadioGroup";
+import RequestStatus from "../common/RequestStatus/RequestStatus";
+import TextInput from "../common/inputs/TextInput";
 
 const DatePicker = React.lazy(() => import("../common/DatePicker/DatePicker"));
 

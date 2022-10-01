@@ -2,7 +2,7 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 import { personalSafetyApi } from "./personalSafetyApi";
 import { IPType, LoginDataType, RegisterDataType } from "../ts/types";
 
-import { logout, setCredentials, setUserIP } from "../redux/user/userSlice";
+import { logout, setCredentials, setUserIP } from "../store/user/userSlice";
 // eslint-disable-next-line import/no-cycle
 import { userApi } from "./userApi";
 

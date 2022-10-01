@@ -1,4 +1,4 @@
-import { Paper, styled, Box, Typography } from "@mui/material";
+import { Box, Paper, styled } from "@mui/material";
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   position: "relative",

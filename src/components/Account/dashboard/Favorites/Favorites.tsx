@@ -1,14 +1,15 @@
 import React from "react";
 import { Avatar, Box, Link, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import { Link as RouterLink } from "react-router-dom";
 import { RoutesNames } from "../../../../router/routes";
-
 import { useAppSelector } from "../../../../hooks/redux";
 import {
   selectFavoritesThumbnails,
   selectFavoritesKeys,
-} from "../../../../redux/user/userSlice";
+} from "../../../../store/user/userSlice";
+
 import { StyledPaper } from "../../Account.styles";
 import { StyledAvatarGroup } from "./Favorites.styles";
 

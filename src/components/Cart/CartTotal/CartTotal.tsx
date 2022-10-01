@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { Box, Paper, Typography, Divider } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import useGetTotal from "../../../hooks/useGetTotal";
 import { useAddUserOrderMutation } from "../../../services/shopApi";
-import { selectUserData } from "../../../redux/user/userSlice";
+import { selectUserData } from "../../../store/user/userSlice";
+import useGetTotal from "../../../hooks/useGetTotal";
+import { clearCart, selectCartItems } from "../../../store/cart/cartSlice";
+
 import Button from "../../common/Button/Button";
-import { clearCart, selectCartItems } from "../../../redux/cart/cartSlice";
 import RequestStatus from "../../common/RequestStatus/RequestStatus";
 
 type TotalData = {

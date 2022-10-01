@@ -1,5 +1,6 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Box } from "@mui/material";
+
 import ProductParams from "../ProductParams/ProductParams";
 
 type ProductDetailsProps = {
@@ -19,4 +20,4 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ details }) => {
   );
 };
 
-export default React.memo(ProductDetails);
+export default ProductDetails;
