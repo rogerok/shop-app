@@ -9,14 +9,23 @@ import Footer from "../Footer/Footer";
 const Sidebar = React.lazy(() => import("../Sidebar/Sidebar"));
 
 const Layout = () => (
-  <Grid container>
+  <Box component="main" position="relative">
     <Sidebar />
     <Header />
-    <Grid item xs={10} style={{ margin: "0 auto", minHeight: "100vh" }}>
-      <Outlet />
+    <Grid
+      container
+      xs={12}
+      style={{ margin: "0 auto" }}
+      justifyContent="center"
+    >
+      <Grid item xs={10} minHeight="100vh">
+        <Outlet />
+      </Grid>
+      <Grid item xs={12}>
+        <Footer />
+      </Grid>
     </Grid>
-    <Footer />
-  </Grid>
+  </Box>
 );
 
 export default Layout;

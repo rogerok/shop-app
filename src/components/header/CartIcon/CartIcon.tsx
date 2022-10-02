@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Badge } from "@mui/material";
+import { Badge, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { NavLink } from "react-router-dom";
@@ -22,12 +22,11 @@ const CartIcon = () => {
 
   return (
     <Badge badgeContent={cartQuantity} overlap="circular" color="secondary">
-      <IconLink
-        name="Cart"
-        path="/cart"
-        icon={<ShoppingCartIcon />}
-        component={NavLink}
-      />
+      <IconLink path="/cart" icon={<ShoppingCartIcon />} component={NavLink}>
+        <Typography variant="body1" component="span" fontWeight={300}>
+          Cart
+        </Typography>
+      </IconLink>
     </Badge>
   );
 };

@@ -34,7 +34,7 @@ const Row: React.FC<RowProps> = ({
 
   return (
     <>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+      <TableRow>
         <TableCell>
           <IconButton size="small" onClick={handleOpen}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}

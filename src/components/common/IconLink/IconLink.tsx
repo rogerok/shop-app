@@ -1,30 +1,29 @@
-import React, { FC } from "react";
+import React, { ComponentType, FC } from "react";
 import { Typography, IconProps } from "@mui/material";
 import { LinkProps } from "../../../ts/ComponentsTypes";
 import { StyledIconLink } from "./IconLink.styles";
 
 type IconLinkProps = {
-  name: string;
   path?: string;
-  icon: React.ReactElement;
-  iconProps?: IconProps;
+  icon: React.ReactElement<IconProps>;
   href?: string;
 } & Partial<LinkProps>;
 
 const IconLink: FC<IconLinkProps> = ({
-  name,
   path,
   icon,
-  iconProps,
   component,
   href,
+  children,
   ...props
 }) => (
   <StyledIconLink to={path || ""} component={component} href={href} {...props}>
-    {React.cloneElement(icon, { ...iconProps })}
-    <Typography variant="body1" component="span" fontWeight={300}>
+    {/*     {React.cloneElement(icon, { ...iconProps })} */}
+    {icon}
+    {/*     <Typography variant="body1" component="span" fontWeight={300}>
       {name}
-    </Typography>
+    </Typography> */}
+    {children}
   </StyledIconLink>
 );
 

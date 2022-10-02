@@ -58,8 +58,13 @@ const User: React.FC<UserProps> = ({ data }) => {
         to={`/${RoutesNames.ACCOUNT_PAGE}/${RoutesNames.ACCOUNT_DETAILS}`}
         component={RouterLink}
       >
-        <Grid container display="flex" flexDirection="column" px={2}>
-          <Grid item xs={12} display="flex" flexWrap="wrap">
+        <Grid
+          container
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+        >
+          <Grid item xs={12} display="flex" flexWrap="wrap" mb={2}>
             <PersonalDataHeader
               firstName={firstName}
               lastName={lastName}
@@ -67,7 +72,7 @@ const User: React.FC<UserProps> = ({ data }) => {
             />
           </Grid>
           {personalData.map(({ title, content }) => (
-            <Grid item xs={12} display="flex" mb={2}>
+            <Grid item xs={12} display="flex" mb={1}>
               <PersonalDataItem key={title} title={title} content={content} />
             </Grid>
           ))}

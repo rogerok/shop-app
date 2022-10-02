@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Box } from "@mui/material";
+import { Link, Box, Typography } from "@mui/material";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import IconLink from "../common/IconLink/IconLink";
@@ -12,19 +12,25 @@ const Footer = () => (
       <IconLink
         href="https://t.me/slaavikkk"
         target="_blank"
-        name="Telegram"
         icon={<TelegramIcon />}
         component={Link}
-      />
+      >
+        <Typography variant="body1" component="span" fontWeight={300}>
+          Telegram
+        </Typography>
+      </IconLink>
     </Box>
     <Box component="p" mr={4}>
       <IconLink
         href="https://github.com/rogerok"
         target="_blank"
-        name="GitHub"
         icon={<GitHubIcon />}
         component={Link}
-      />
+      >
+        <Typography variant="body1" component="span" fontWeight={300}>
+          GitHub
+        </Typography>
+      </IconLink>
     </Box>
   </StyledFooter>
 );

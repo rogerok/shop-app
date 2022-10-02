@@ -21,12 +21,12 @@ import {
 
 const iconLinksData = [
   {
-    name: "Account",
+    title: "Account",
     path: `${RoutesNames.ACCOUNT_PAGE}/${RoutesNames.ACCOUNT_DASHBOARD}`,
     icon: <PersonIcon />,
   },
   {
-    name: "Addresses",
+    title: "Addresses",
     path: "addresses",
     icon: <LocationOnIcon />,
   },
@@ -55,7 +55,16 @@ const Header = () => {
 
           <SearchInput />
           {iconLinksData.map((link) => (
-            <IconLink key={link.path} {...link} component={NavLink} />
+            <IconLink
+              key={link.path}
+              {...link}
+              component={NavLink}
+              icon={link.icon}
+            >
+              <Typography variant="body1" component="span" fontWeight={300}>
+                {link.title}
+              </Typography>
+            </IconLink>
           ))}
           <CartIcon />
         </StyledToolbar>

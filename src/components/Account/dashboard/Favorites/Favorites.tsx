@@ -26,15 +26,17 @@ const Favorites = () => {
         <Box
           display="flex"
           flexDirection="column"
-          alignItems="flex-start"
-          p={2}
+          alignItems="center"
+          pt={3}
+          height="100%"
+          maxWidth="100%"
         >
-          <Typography variant="h5">
-            Favorites
+          <Box display="flex" alignItems="center" mb={1} component="p">
+            <Typography variant="h5">Favorites</Typography>
             <FavoriteIcon color="secondary" />
-          </Typography>
+          </Box>
 
-          <StyledAvatarGroup max={6} total={totalFavorites}>
+          <StyledAvatarGroup max={4} total={totalFavorites}>
             {thumbnails.length &&
               thumbnails.map((thumbnail) => (
                 <Avatar src={thumbnail} alt="product image" key={thumbnail} />
