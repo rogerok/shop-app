@@ -5,7 +5,6 @@ import { useAppSelector } from "../../hooks/redux";
 import Accordion from "../common/Accordion/Accordion";
 import CartList from "./CartList/CartList";
 import CartTotal from "./CartTotal/CartTotal";
-import OrderForm from "./OrderForm/OrderForm";
 
 const Cart = () => {
   const isUserLoggedIn = useAppSelector((state) => state.user.token);
@@ -13,30 +12,53 @@ const Cart = () => {
   return (
     <Grid
       container
-      spacing={6}
+      spacing={4}
       mt={2}
       p={2}
       component="section"
-      alignItems="baseline"
+      alignItems={{ lg: "baseline", md: "center" }}
+      justifyContent={{ md: "center" }}
     >
-      <Grid item xs={8}>
+      <Grid item xl={9} lg={9} md={12} sm={12} mb={4}>
         <Accordion title="Cart">
           <CartList />
         </Accordion>
       </Grid>
-      <Grid container item spacing={4} xs={4}>
+      <Grid container item spacing={4} lg={3} md={6} sm={12}>
         <Container>
-          <Box mb={4}>
+          <Box mb={4} width="100%">
             <CartTotal />
           </Box>
-          {!isUserLoggedIn && (
-            <Box>
-              <OrderForm />
-            </Box>
-          )}
         </Container>
       </Grid>
     </Grid>
   );
 };
 export default Cart;
+
+<Grid
+  container
+  spacing={4}
+  mt={2}
+  p={2}
+  component="section"
+  alignItems="baseline"
+>
+  <Grid item lg={9} md={12} sm={12} mb={4}>
+    <Accordion title="Cart">
+      <CartList />
+    </Accordion>
+  </Grid>
+  <Grid container item spacing={4} lg={3} md={6} sm={12}>
+    <Container>
+      <Box mb={4}>
+        <CartTotal />
+      </Box>
+      {/*           {!isUserLoggedIn && (
+            <Box>
+              <OrderForm />
+            </Box>
+          )} */}
+    </Container>
+  </Grid>
+</Grid>;

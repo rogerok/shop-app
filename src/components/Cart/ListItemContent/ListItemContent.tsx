@@ -24,7 +24,7 @@ const ListItemContent: React.FC<ListItemContentProps> = ({
     >
       <StyledCardMedia component="img" image={thumbnail} />
       <Typography variant="h6" ml={2}>
-        {title}
+        {title.length > 15 ? `${title.slice(0, 15)}...` : title}
       </Typography>
     </Link>
   </StyledCardContent>

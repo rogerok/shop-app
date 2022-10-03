@@ -16,26 +16,17 @@ const carouselImages = [image1, image2, image3, image4, image5];
 const Home = () => {
   const scrollTo = useRef<any>();
   return (
-    <Grid
-      container
-      pt={10}
-      pb={10}
-      spacing={6}
-      display="flex"
-      justifyContent="center"
-    >
-      <Grid item xs={10} ref={scrollTo}>
+    <Grid container pt={10} pb={10} display="flex" justifyContent="center">
+      <Grid item lg={10} md={10} sm={12} ref={scrollTo}>
         <Carousel images={carouselImages} height={370} indicators={false} />
       </Grid>
 
       <Grid
         container
-        item
-        my={6}
+        my={{ xl: 6, lg: 4, md: 2, sm: 2 }}
         component="ul"
         display="flex"
         justifyContent="center"
-        margin="auto"
       >
         <ProductsGrid carouselRef={scrollTo} />
       </Grid>

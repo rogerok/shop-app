@@ -1,7 +1,7 @@
 import React from "react";
-import { Grid, Typography, Box, Rating, Link } from "@mui/material";
+import { Grid, Typography, Rating } from "@mui/material";
 
-import { Link as RouterLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { RoutesNames } from "../../router/routes";
 import { useAppDispatch } from "../../hooks/redux";
 import { useGetProductByIdQuery } from "../../services/shopApi";
@@ -12,6 +12,7 @@ import FullScreenLoader from "../common/FullScreenLoader/FullScreenLoader";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductPriceBlock from "./ProductPriceblock/ProductPriceBlock";
 import ProductDescription from "./ProductDescription/ProductDescription";
+import CustomLink from "../common/CustomLink/CustomLink";
 
 const Carousel = React.lazy(() => import("../common/Carousel/Carousel"));
 
@@ -46,31 +47,47 @@ const Product = () => {
   };
 
   return (
-    <Box component="section" p={4}>
-      <Typography variant="h3" align="left" gutterBottom>
-        {title.toUpperCase()}
-      </Typography>
-      <Rating
-        readOnly
-        value={Number(rating)}
-        precision={0.1}
-        sx={{ maginBottom: 4 }}
-      />
-      <Typography variant="h5" component="p">
-        <Link
-          component={RouterLink}
-          to={`/${RoutesNames.COLLECTION}/${category}`}
-        >
-          {category.toUpperCase()}
-        </Link>
-      </Typography>
-      <Grid container spacing={4} mt={4} justifyContent="space-between">
-        <Grid item xs={4}>
+    <Grid container component="section" p={4}>
+      <Grid item lg={12}>
+        <Typography variant="h3" align="left" fontWeight={600} gutterBottom>
+          {title.toUpperCase()}
+        </Typography>
+        <Rating
+          readOnly
+          value={Number(rating)}
+          precision={0.1}
+          sx={{ maginBottom: 4 }}
+        />
+        <Typography variant="body1" component="p">
+          <CustomLink
+            to={`/${RoutesNames.COLLECTION}/${category}`}
+            sx={{ fontSize: "2rem" }}
+          >
+            {category.toUpperCase()}
+          </CustomLink>
+        </Typography>
+      </Grid>
+      <Grid
+        container
+        spacing={4}
+        mt={4}
+        justifyContent={{
+          lg: "space-between",
+          md: "center",
+          sm: "center",
+          xs: "center",
+        }}
+      >
+        <Grid item xs={12} sm={12} md={10} lg={4}>
           <Carousel images={images} title={title} aspectRatio="1/1" />
         </Grid>
         <Grid
           item
-          xs={5}
+          xs={12}
+          sm={12}
+          md={8}
+          xl={5}
+          lg={5}
           component="article"
           display="flex"
           flexDirection="column"
@@ -78,7 +95,7 @@ const Product = () => {
           <ProductDescription description={description} />
           <ProductDetails details={details} />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={10} sm={10} md={4} lg={3} xl={3}>
           <ProductPriceBlock
             discountPercentage={discountPercentage}
             handleClick={handleButtonClick}
@@ -86,7 +103,7 @@ const Product = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+    </Grid>
   );
 };
 

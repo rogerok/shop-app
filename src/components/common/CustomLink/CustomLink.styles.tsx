@@ -4,12 +4,9 @@ import { LinkProps } from "../../../ts/ComponentsTypes";
 
 export const StyledLink = styled(Link)<LinkProps>(
   ({ withBackground, selected, theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     ...(withBackground
       ? {
-          padding: theme.spacing(2),
+          p: theme.spacing(2),
           backgroundColor: theme.palette.secondary.main,
           borderRadius: theme.shape.borderRadius,
           color: theme.palette.text.secondary,
@@ -23,7 +20,7 @@ export const StyledLink = styled(Link)<LinkProps>(
         }
       : {
           color: theme.palette.text.primary,
-          padding: theme.spacing(2),
+          py: theme.spacing(2),
           fontSize: "1rem",
           fontWeight: theme.typography.fontWeightBold,
           textTransform: "uppercase",

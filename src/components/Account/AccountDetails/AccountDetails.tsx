@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Container, Paper, Grid, Stack, Box } from "@mui/material";
+import { Container, Paper, Grid, Box } from "@mui/material";
 
 import usePosition from "../../../hooks/usePosition";
 import { useGetUserGeoQuery } from "../../../services/personalSafetyApi";
@@ -65,17 +65,11 @@ const AccountDetails = () => {
               image={image}
             />
           </Grid>
-          <Grid
-            item
-            xs={12}
-            display="flex"
-            justifyContent="space-between"
-            px={2}
-          >
+          <Grid container item xs={12} display="flex" spacing={4} px={2}>
             {personalData.map(({ title, content }) => (
-              <Stack>
+              <Grid item lg={4} md={6} sm={6}>
                 <PersonalDataItem key={title} title={title} content={content} />
-              </Stack>
+              </Grid>
             ))}
           </Grid>
         </Grid>

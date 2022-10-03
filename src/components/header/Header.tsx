@@ -48,7 +48,14 @@ const Header = () => {
             <MenuIcon />
           </StyledIconButton>
           <Logo to="/" variant="h4" component={NavLink}>
-            <Typography variant="h2" component="span">
+            <Typography
+              variant="h2"
+              component="span"
+              sx={{
+                typography: { lg: "h3", md: "h5" },
+                fontWeight: { md: 500 },
+              }}
+            >
               CHERRYBERRIES
             </Typography>
           </Logo>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Typography } from "@mui/material";
+import { Avatar, Grid, Typography } from "@mui/material";
 
 import { UserDataType } from "../../../ts/UserData";
 
@@ -13,18 +13,22 @@ const PersonalDataHeader: React.FC<PersonalDataHeaderProps> = ({
   lastName,
   image,
 }) => (
-  <>
-    <Avatar src={image} alt="user photo" sx={{ width: 120, height: 120 }} />
-    <Typography
-      variant="h5"
-      component="span"
-      fontWeight={600}
-      alignSelf="center"
-    >
-      {firstName}&#160;
-      {lastName}
-    </Typography>
-  </>
+  <Grid container alignItems="center">
+    <Grid item lg={2}>
+      <Avatar src={image} alt="user photo" sx={{ width: 120, height: 120 }} />
+    </Grid>
+    <Grid item lg={10}>
+      <Typography
+        variant="h5"
+        component="span"
+        fontWeight={600}
+        alignSelf="center"
+      >
+        {firstName}&#160;
+        {lastName}
+      </Typography>
+    </Grid>
+  </Grid>
 );
 
 export default PersonalDataHeader;

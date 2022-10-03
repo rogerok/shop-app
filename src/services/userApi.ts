@@ -3,15 +3,23 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 // eslint-disable-next-line import/no-cycle
 import { RootState } from "../store/rootReducer";
 import { setUser } from "../store/user/userSlice";
-import { OrderType } from "../ts/ProductsTypes";
+import { CartProductsType, OrderType } from "../ts/ProductsTypes";
 import { UserDataType } from "../ts/UserData";
 import { API_ENDPOINTS } from "../utils/constants/API";
+import { clearCart } from "../store/cart/cartSlice";
 
 type UserOrdersResult = {
   carts: OrderType[];
   limit: number;
   skip: number;
   total: number;
+};
+
+type UserOrderData = {
+  cartItems: CartProductsType;
+  userData: {
+    [key: string]: string;
+  };
 };
 
 export const userApi = createApi({
@@ -59,6 +67,15 @@ export const userApi = createApi({
       },
       transformResponse: (result: UserOrdersResult) => result.carts,
     }),
+    addUserOrder: builder.mutation({
+      query(orderData: UserOrderData) {
+        return {
+          url: `${API_ENDPOINTS.USERS}/add`,
+          method: "POST",
+          body: orderData,
+        };
+      },
+    }),
   }),
 });
 
@@ -66,4 +83,5 @@ export const {
   useGetUserDataQuery,
   useGetProductThumbnailQuery,
   useGetUserOrdersQuery,
+  useAddUserOrderMutation,
 } = userApi;

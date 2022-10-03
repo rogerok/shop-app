@@ -40,4 +40,7 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
 export const Logo = styled(Link)<LinkProps>(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   userSelect: "none",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));

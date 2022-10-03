@@ -17,7 +17,7 @@ const ProductsGrid = ({ carouselRef }: { carouselRef: any }) => {
   const favorites = useAppSelector(selectFavorites);
 
   return (
-    <Grid container item xs={10} spacing={4}>
+    <Grid container item xl={12} xs={12} md={12} sm={12} spacing={4}>
       {isFetching || isLoading ? (
         <Box
           display="flex"

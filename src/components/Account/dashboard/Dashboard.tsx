@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Stack, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { useAppSelector } from "../../../hooks/redux";
 import { selectUserData } from "../../../store/user/userSlice";
@@ -13,14 +13,14 @@ const Account = () => {
   const { firstName, lastName, email, phone, image } = userData;
 
   return (
-    <Grid container spacing={4}>
-      <Grid item xs={4}>
+    <Grid container spacing={2}>
+      <Grid item lg={4} md={7} sm={12} xs={12}>
         <User data={{ firstName, lastName, email, phone, image }} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item lg={4} sm={6} xs={12}>
         <Favorites />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item lg={4} md={7} sm={6} xs={12}>
         <Orders />
       </Grid>
     </Grid>

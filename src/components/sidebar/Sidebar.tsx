@@ -18,7 +18,14 @@ const Sidebar = () => {
 
   return (
     <Box component="aside">
-      <Drawer open={isSidebarOpen} onClose={handleClose} anchor="left">
+      <Drawer
+        open={isSidebarOpen}
+        onClose={handleClose}
+        anchor="left"
+        PaperProps={{
+          sx: { width: { xs: "70%", md: "25vw", lg: "25vw" } },
+        }}
+      >
         <Box>
           <StyledList>
             {PRODUCTS_CATEGORIES.map((category) => (

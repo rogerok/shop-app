@@ -14,6 +14,7 @@ const Layout = () => (
     <Header />
     <Grid
       container
+      item
       xs={12}
       style={{ margin: "0 auto" }}
       justifyContent="center"

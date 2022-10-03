@@ -22,7 +22,7 @@ const Accordion: React.FC<AccordionProps> = ({ children, title }) => (
       </Typography>
     </AccordionSummary>
     <Divider />
-    <Paper elevation={3} sx={{ p: 3 }}>
+    <Paper>
       <AccordionDetails>{children}</AccordionDetails>
     </Paper>
   </MuiAccordion>

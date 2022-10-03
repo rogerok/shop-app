@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { Box, Paper, Typography, Divider } from "@mui/material";
+import { Box, Divider, Paper, Typography } from "@mui/material";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { useAddUserOrderMutation } from "../../../services/shopApi";
-import { selectUserData } from "../../../store/user/userSlice";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../hooks/redux";
 import useGetTotal from "../../../hooks/useGetTotal";
-import { clearCart, selectCartItems } from "../../../store/cart/cartSlice";
 
 import Button from "../../common/Button/Button";
-import RequestStatus from "../../common/RequestStatus/RequestStatus";
+import ButtonForOrder from "./ButtonForOrder";
 
 type TotalData = {
   type: string;
@@ -39,38 +37,13 @@ const TotalTitle = React.memo(() => (
 
 const CartTotal = () => {
   const data: TotalData[] = useGetTotal(totalOptions);
-  const [addUserOrder, { isLoading, isSuccess, isError }] =
-    useAddUserOrderMutation();
-  const dispatch = useAppDispatch();
   const isUserLoggedIn = useAppSelector((state) => state.user.token);
-  const cartItems = useAppSelector(selectCartItems);
-  const { firstName, lastName, phone, email } = useAppSelector(selectUserData);
-  const isCartEmpty = !cartItems.length;
+  const navigate = useNavigate();
 
-  const handleOrder = async () => {
-    const userData = {
-      firstName,
-      lastName,
-      phone,
-      email,
-    };
-    await addUserOrder({ cartItems, userData });
-  };
-
-  useEffect(() => {
-    if (isSuccess) dispatch(clearCart());
-  }, [isSuccess]);
+  const handleClick = () => navigate("/sign-in");
 
   return (
     <Box display="flex" flexDirection="column">
-      {isSuccess || isLoading || isError ? (
-        <RequestStatus
-          isLoading={isLoading}
-          isSuccess={isSuccess}
-          isError={isError}
-          navigateTo="/"
-        />
-      ) : null}
       <Paper elevation={3} sx={{ p: 2 }}>
         <TotalTitle />
         <Divider />
@@ -83,11 +56,8 @@ const CartTotal = () => {
           />
         ))}
 
-        {isUserLoggedIn && (
-          <Button onClick={handleOrder} disabled={isCartEmpty}>
-            order
-          </Button>
-        )}
+        {isUserLoggedIn && <ButtonForOrder />}
+        {!isUserLoggedIn && <Button onClick={handleClick}>Order</Button>}
       </Paper>
     </Box>
   );

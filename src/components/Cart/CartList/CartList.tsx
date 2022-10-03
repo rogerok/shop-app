@@ -18,7 +18,7 @@ const CartList = () => {
   const cartItems = useAppSelector(selectCartItems);
 
   return (
-    <Box mt={4} display="flex" flexDirection="column">
+    <Box my={4} display="flex" flexDirection="column">
       {cartItems.length ? (
         cartItems.map((product: CartProductType) => (
           <CartListItem product={product} key={product.id} />

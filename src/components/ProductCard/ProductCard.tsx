@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   }, []);
 
   return (
-    <Grid item xs={4} component="li" key={title} sx={{ transiti: " all 0.3" }}>
+    <Grid item xs={12} sm={12} md={6} lg={4} xl={4} component="li" key={title}>
       <Card sx={{ pb: 2 }}>
         <Link
           component={RouterLink}
