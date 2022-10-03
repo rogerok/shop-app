@@ -3,10 +3,10 @@ import { Box, Container, Grid } from "@mui/material";
 
 import { Outlet } from "react-router-dom";
 
-import Header from "../Header/Header";
+import Header from "../Head/CartIcon/Header";
 import Footer from "../Footer/Footer";
 
-const Sidebar = React.lazy(() => import("../Sidebar/Sidebar"));
+const Sidebar = React.lazy(() => import("../Sideb/Sidebar"));
 
 const Layout = () => (
   <Box component="main" position="relative">
