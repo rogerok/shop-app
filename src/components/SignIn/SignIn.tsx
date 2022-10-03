@@ -81,7 +81,13 @@ const SignIn = () => {
           p={2}
           spacing={2}
         >
-          <Grid item xs={6} component="form" onSubmit={handleSubmit(onSubmit)}>
+          <Grid
+            item
+            sm={12}
+            md={6}
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <TextInput
               control={control}
               name="name"
@@ -109,7 +115,12 @@ const SignIn = () => {
           <Grid item xs={12} display="flex" justifyContent="center">
             <Typography variant="body1" component="p" gutterBottom mt={2}>
               Don&apos;t have account?&#160;
-              <MuiLink component={RouterLink} to="/register" color="secondary">
+              <MuiLink
+                component={RouterLink}
+                to="/register"
+                color="secondary"
+                px={2}
+              >
                 Create
               </MuiLink>
             </Typography>

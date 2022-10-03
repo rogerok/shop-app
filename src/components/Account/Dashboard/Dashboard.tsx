@@ -13,14 +13,14 @@ const Account = () => {
   const { firstName, lastName, email, phone, image } = userData;
 
   return (
-    <Grid container spacing={2}>
-      <Grid item lg={4} md={7} sm={12} xs={12}>
+    <Grid container spacing={2} mx="auto">
+      <Grid item xs={12} md={12} lg={4}>
         <User data={{ firstName, lastName, email, phone, image }} />
       </Grid>
-      <Grid item lg={4} sm={6} xs={12}>
+      <Grid item xs={12} md={6} lg={4}>
         <Favorites />
       </Grid>
-      <Grid item lg={4} md={7} sm={6} xs={12}>
+      <Grid item xs={12} md={6} lg={4}>
         <Orders />
       </Grid>
     </Grid>

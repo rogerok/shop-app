@@ -83,12 +83,12 @@ const Register = () => {
         >
           <Grid
             container
-            spacing={4}
+            spacing={{ lg: 4, md: 1 }}
             display="flex"
             justifyContent="space-between"
             mb={2}
           >
-            <Grid item xs={6}>
+            <Grid item lg={6} xs={12}>
               <TextInput
                 control={control}
                 name="firstName"
@@ -100,7 +100,7 @@ const Register = () => {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item lg={6} xs={12}>
               <TextInput
                 control={control}
                 name="lastName"
@@ -113,7 +113,7 @@ const Register = () => {
               />
             </Grid>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} mb={2}>
             <RadioGroup
               control={control}
               name="gender"
@@ -122,10 +122,10 @@ const Register = () => {
               row
             />
           </Grid>
-          <Grid item mb={2} xs={6}>
+          <Grid item lg={6} md={6} xs={12} mb={4}>
             <DatePicker control={control} name="bornDate" label="Born date" />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} mb={2}>
             <Autocomplete<CountryType>
               control={control}
               name="country"
@@ -180,12 +180,12 @@ const Register = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Grid item xs={4}>
+            <Grid item lg={4} md={5} xs={12} mb={2}>
               <Button onClick={handleReset} fullWidth>
                 clear
               </Button>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item lg={4} md={5} xs={12} mb={2}>
               <Button type="submit" fullWidth>
                 submit
               </Button>

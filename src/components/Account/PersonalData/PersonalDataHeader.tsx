@@ -14,7 +14,7 @@ const PersonalDataHeader: React.FC<PersonalDataHeaderProps> = ({
   image,
 }) => (
   <Grid container alignItems="center">
-    <Grid item lg={2}>
+    <Grid item lg={3}>
       <Avatar src={image} alt="user photo" sx={{ width: 120, height: 120 }} />
     </Grid>
     <Grid item lg={10}>
