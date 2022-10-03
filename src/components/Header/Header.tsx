@@ -5,19 +5,19 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 
 import { NavLink } from "react-router-dom";
-import { RoutesNames } from "../../../router/routes";
-import { useAppDispatch } from "../../../hooks/redux";
-import { setSidebarOpen } from "../../../store/ui/uiSlice";
+import { RoutesNames } from "../../router/routes";
+import { useAppDispatch } from "../../hooks/redux";
+import { setSidebarOpen } from "../../store/ui/uiSlice";
 
-import SearchInput from "../../Search/SearchInput/SearchInput";
-import IconLink from "../../common/IconLink/IconLink";
-import CartIcon from "./CartIcon";
+import SearchInput from "../Search/SearchInput/SearchInput";
+import IconLink from "../common/IconLink/IconLink";
+import CartIcon from "./CartIcon/CartIcon";
 import {
   StyledAppBar,
   StyledIconButton,
   StyledToolbar,
   Logo,
-} from "../Header.styles";
+} from "./Header.styles";
 
 const iconLinksData = [
   {
