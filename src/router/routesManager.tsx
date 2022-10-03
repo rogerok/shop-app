@@ -35,7 +35,7 @@ const RequireAuth = React.lazy(
   () => import("../components/RequireAuth/RequireAuth")
 );
 const Dashboard = React.lazy(
-  () => import("../components/Account/Dash/Dashboard")
+  () => import("../components/Account/Dashboard/Dashboard")
 );
 const AccountDetails = React.lazy(
   () => import("../components/Account/AccountDetails/AccountDetails")
