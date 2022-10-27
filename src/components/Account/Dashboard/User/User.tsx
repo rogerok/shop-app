@@ -72,7 +72,7 @@ const User: React.FC<UserProps> = ({ data }) => {
             />
           </Grid>
           {personalData.map(({ title, content }) => (
-            <Grid item xs={12} display="flex" mb={1}>
+            <Grid key={title} item xs={12} display="flex" mb={1}>
               <PersonalDataItem key={title} title={title} content={content} />
             </Grid>
           ))}

@@ -31,7 +31,7 @@ const Favorites = () => {
           height="100%"
           maxWidth="100%"
         >
-          <Box display="flex" alignItems="center" mb={1} component="p">
+          <Box display="flex" alignItems="center" mb={1}>
             <Typography variant="h5">Favorites</Typography>
             <FavoriteIcon color="secondary" />
           </Box>

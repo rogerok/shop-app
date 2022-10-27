@@ -12,6 +12,8 @@ import Button from "../../common/Button/Button";
 import FavoritesWrapper from "./FavoritesWrapper/FavoriteWrapper";
 import FullScreenLoader from "../../common/FullScreenLoader/FullScreenLoader";
 
+// Здесь получение данных с сервера выглядит таким образом т.к. на сервере отсуствует пагинация
+
 const AccountFavorites = () => {
   const [interval, setInterval] = useState(6);
 

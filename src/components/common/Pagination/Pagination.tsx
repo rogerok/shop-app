@@ -16,6 +16,7 @@ const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
   const productsPerPage = useAppSelector(selectProductsPerPage);
 
   const totalPages = Math.round(Number(total) / productsPerPage);
+  console.log(totalPages);
 
   const handlePaginationChange = (
     event: ChangeEvent<unknown>,
@@ -36,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({ scrollToRef, total }) => {
 
   return (
     <MuiPagination
-      count={totalPages}
+      count={totalPages || 0}
       onChange={handlePaginationChange}
       color="secondary"
       shape="rounded"

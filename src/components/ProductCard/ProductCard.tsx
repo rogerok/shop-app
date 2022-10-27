@@ -34,11 +34,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   const handleButtonClick = useCallback(() => {
     dispatch(addToCart(product));
     dispatch(setSnackbarOpen("added to cart"));
-  }, []);
+  }, [id]);
 
   const handleToggleFavorite = useCallback(() => {
     dispatch(toggleFavorite({ id, thumbnail }));
-  }, []);
+  }, [id]);
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} xl={4} component="li" key={title}>
