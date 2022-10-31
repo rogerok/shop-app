@@ -8,7 +8,7 @@ const useDebounce = (value: string, delay: number): string => {
     return () => clearTimeout(timer);
   }, [value, delay]);
 
-  return debounceValue!;
+  return debounceValue;
 };
 
 export default useDebounce;
