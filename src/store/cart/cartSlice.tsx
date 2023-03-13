@@ -11,7 +11,7 @@ type CartState = {
   cartTotalSum: number;
   cartQuantity: number;
 };
-
+//
 const initialState: CartState = {
   cartItems: [],
   cartTotalSum: 0,
